@@ -6,6 +6,9 @@ nltk.download("stopwords")
 from nltk.corpus import stopwords
 
 STOP_WORDS = stopwords.words("english")
+MIN_DESCRIPTION_WORD_COUNT = 20
+MIN_YEAR = 0
+MAX_YEAR = 2026
 
 
 def clean_artist_name(artist):
