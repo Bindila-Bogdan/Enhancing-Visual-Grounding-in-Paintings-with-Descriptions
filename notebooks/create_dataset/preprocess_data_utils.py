@@ -5,10 +5,112 @@ nltk.download("stopwords")
 
 from nltk.corpus import stopwords
 
+# constants for data retrieval and initial filtering
 STOP_WORDS = stopwords.words("english")
 MIN_DESCRIPTION_WORD_COUNT = 20
 MIN_YEAR = 0
 MAX_YEAR = 2026
+MIN_YEAR_FILTERING = 1300
+MET_KEPT_OBJECT_TYPES = ["Painting", "Drawing", "Painting, drawing", "Painting, sketch", "Print"]
+WGA_KEPT_TECHNIQUES = [
+    "oil panel",
+    "oil wood",
+    "oil oak panel",
+    "oil copper",
+    "wood",
+    "oil oak",
+    "oil tempera limewood",
+    "oil tempera wood",
+    "oil tempera red beechwood",
+    "oil poplar panel",
+    "oil tempera panel",
+    "oil tempera panel",
+    "poplar panel",
+]
+
+# constants for normalizing the styles and types of paintings
+REPLACEMENTS = {
+    "middle byzantine (c. 850–1204)": "byzantine",
+    "novgorod school of icon painting": "",
+    "late byzantine/palaeologan renaissance (c. 1261–1453)": "byzantine",
+    "macedonian renaissance (867–1056)": "",
+    "ink and wash painting": "",
+    "\xa0": " ",
+    " (modern)": "",
+    " painting": "",
+    " (nu)": "",
+}
+
+FILTERED_OUT_TYPES = ["trompe-l'œil", "sculpture", "design", "quadratura", "poster"]
+
+FINE_GRAINED_TYPES_MAPPING = {
+    "icon": "religious",
+    "architecture": "veduta",
+    "vanitas": "portrait",
+    "wildlife": "animal",
+    "illustration": None,
+    "yakusha-e": None,
+    "panorama": None,
+    "caricature": None,
+}
+
+FILTERED_OUT_STYLES = [
+    "mosan art",
+    "muralism",
+    "conceptual art, pop art",
+    "early christian",
+    "new kingdom",
+    "3rd intermediate period",
+    "photorealism",
+    "cubo-expressionism",
+]
+
+STYLES_MAPPING = {
+    "social realism": "realism",
+    "new realism": "realism",
+    "contemporary realism": "realism",
+    "american realism": "realism",
+    "socialist realism": "realism",
+    "hyper-realism": "realism",
+    "neo-rococo": "rococo",
+    "new european painting": None,
+    "art brut": None,
+    "new european": None,
+    "op art": "pop art",
+    "analytical realism": None,
+    "kanō school style": None,
+    "lowbrow art": None,
+    "mughal": None,
+    "purism": None,
+    "neo-suprematism": None,
+    "modernism": None,
+    "intimism": None,
+    "naturalism": None,
+    "neo-expressionism": None,
+    "metaphysical art": None,
+    "art deco": None,
+    "kitsch": None,
+    "neo-baroque": None,
+    "precisionism": None,
+    "tonalism": None,
+    "postcolonial art": None,
+    "ukiyo-e": None,
+    "gothic": None,
+    "biedermeier": None,
+    "synthetism": None,
+    "luminism": None,
+    "native art": None,
+    "verism": None,
+    "feminist art": None,
+    "safavid period": None,
+    "japonism": None,
+    "proto renaissance": None,
+    "international gothic": None,
+    "byzantine": None,
+    "": None,
+}
+
+FILTERED_OUT_COARSE_TYPES = ["sketch and study", "interior"]
 
 
 def clean_artist_name(artist):
@@ -107,3 +209,29 @@ def is_same_painting(searched_title, searched_artist, title, artist):
     found_title = searched_title in title or title in searched_title
 
     return found_artist and found_title
+
+
+def replace_text(text):
+    if text is None:
+        return None
+
+    for to_replace, replacement in REPLACEMENTS.items():
+        text = text.replace(to_replace, replacement)
+
+    return text
+
+
+def sort_elements(properties, first_name, second_name):
+    updated_properties = [
+        replace_text(properties[first_name]),
+        replace_text(properties[second_name]),
+    ]
+
+    if updated_properties[0] is None:
+        return [updated_properties[1], None]
+
+    elif updated_properties[1] is None:
+        return [updated_properties[0], None]
+
+    else:
+        return sorted([updated_properties[0], updated_properties[1]])
