@@ -5,13 +5,72 @@ nltk.download("stopwords")
 
 from nltk.corpus import stopwords
 
-# constants for data retrieval and initial filtering
+# constants for data retrieval filtering
 STOP_WORDS = stopwords.words("english")
 MIN_DESCRIPTION_WORD_COUNT = 20
 MIN_YEAR = 0
 MAX_YEAR = 2026
 MIN_YEAR_FILTERING = 1300
+
 MET_KEPT_OBJECT_TYPES = ["Painting", "Drawing", "Painting, drawing", "Painting, sketch", "Print"]
+
+WIKIART_KEPT_TYPES = [
+    "bijinga",
+    "capriccio",
+    "cityscape",
+    "cloudscape",
+    "design",
+    "icon",
+    "interior",
+    "landscape",
+    "marina",
+    "miniature",
+    "painting",
+    "pastorale",
+    "portrait",
+    "still life",
+    "veduta",
+    "yakusha-e",
+]
+
+WIKIART_LEFT_OUT_TYPES = [
+    "abstract",
+    "advertisement",
+    "architecture",
+    "calligraphy",
+    "caricature",
+    "digital",
+    "graffiti",
+    "furniture",
+    "jewelry",
+    "illustration",
+    "installation",
+    "mosaic",
+    "mural",
+    "ornament",
+    "performance",
+    "photo",
+    "poster",
+    "sculpture",
+    "sketch and study",
+    "tapestry",
+    "utensil",
+    "vanitas",
+    "video",
+]
+
+WIKIART_LEFT_OUT_STYLES = ["abstract", "cubism", "cubo-futurism", "dada", "futurism", "orphism"]
+
+WIKIART_LEFT_OUT_MEDIA = [
+    "engraving",
+    "photography",
+    "crayon",
+    "lithography",
+    "collage",
+    "etching",
+    "japanese paper",
+]
+
 WGA_KEPT_TECHNIQUES = [
     "oil panel",
     "oil wood",
@@ -28,6 +87,21 @@ WGA_KEPT_TECHNIQUES = [
     "poplar panel",
 ]
 
+FILTERED_OUT_TYPES = ["trompe-l'œil", "sculpture", "design", "quadratura", "poster"]
+
+FILTERED_OUT_STYLES = [
+    "mosan art",
+    "muralism",
+    "conceptual art, pop art",
+    "early christian",
+    "new kingdom",
+    "3rd intermediate period",
+    "photorealism",
+    "cubo-expressionism",
+]
+
+FILTERED_OUT_COARSE_TYPES = ["sketch and study", "interior"]
+
 # constants for normalizing the styles and types of paintings
 REPLACEMENTS = {
     "middle byzantine (c. 850–1204)": "byzantine",
@@ -41,8 +115,6 @@ REPLACEMENTS = {
     " (nu)": "",
 }
 
-FILTERED_OUT_TYPES = ["trompe-l'œil", "sculpture", "design", "quadratura", "poster"]
-
 FINE_GRAINED_TYPES_MAPPING = {
     "icon": "religious",
     "architecture": "veduta",
@@ -53,17 +125,6 @@ FINE_GRAINED_TYPES_MAPPING = {
     "panorama": None,
     "caricature": None,
 }
-
-FILTERED_OUT_STYLES = [
-    "mosan art",
-    "muralism",
-    "conceptual art, pop art",
-    "early christian",
-    "new kingdom",
-    "3rd intermediate period",
-    "photorealism",
-    "cubo-expressionism",
-]
 
 STYLES_MAPPING = {
     "social realism": "realism",
@@ -109,8 +170,6 @@ STYLES_MAPPING = {
     "byzantine": None,
     "": None,
 }
-
-FILTERED_OUT_COARSE_TYPES = ["sketch and study", "interior"]
 
 
 def clean_artist_name(artist):
