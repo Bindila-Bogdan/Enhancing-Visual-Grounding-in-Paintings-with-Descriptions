@@ -1,0 +1,43 @@
+id,source,type,style,words_no,set
+549,met,landscape,mannerism (late renaissance),1701,train_val
+2702,wikiart,,regionalism,541,train_val
+1753,wikiart,,naïve art (primitivism),93,train_val
+2628,wikiart,genre,impressionism,210,train_val
+2461,wikiart,,orientalism,199,train_val
+2024,wikiart,,magic realism,324,train_val
+11819,wga,still life,baroque,300,train_val
+518,met,still life,post-impressionism,96,train_val
+256,met,mythological,northern renaissance,978,train_val
+2156,wikiart,portrait,early renaissance,67,train_val
+91,met,,academicism,98,train_val
+517,met,portrait,neo-impressionism,76,train_val
+1799,wikiart,landscape,realism,121,train_val
+9053,wga,mythological,classicism,193,train_val
+2737,wikiart,religious,high renaissance,465,train_val
+1722,wikiart,,pop art,533,train_val
+2613,wikiart,,pointillism,397,train_val
+10676,wga,portrait,cloisonnism,203,train_val
+2484,wikiart,,surrealism,374,train_val
+1056,met,religious,tenebrism,476,train_val
+6660,wga,genre,divisionism,94,train_val
+1966,wikiart,,art nouveau,74,train_val
+1006,met,history,baroque,628,train_val
+3687,wga,religious,,132,train_val
+2657,wikiart,,figurative expressionism,148,train_val
+1667,wikiart,,fauvism,170,train_val
+2549,wikiart,,neo-romanticism,503,train_val
+2225,wikiart,mythological,expressionism,116,train_val
+723,met,genre,rococo,712,train_val
+10748,wga,landscape,symbolism,64,train_val
+2441,wikiart,,neo-figurative art,191,train_val
+1823,wikiart,history,romanticism,123,train_val
+4416,wga,history,neoclassicism,524,train_val
+8316,wga,mythological,renaissance,325,train_val
+8344,wga,still life,,97,prompt
+1466,met,,,624,prompt
+11422,wga,landscape,rococo,60,prompt
+3344,wga,religious,early renaissance,233,prompt
+5551,wga,portrait,,89,prompt
+8197,wga,genre,,128,prompt
+11593,wga,mythological,neoclassicism,231,prompt
+9821,wga,history,romanticism,128,prompt

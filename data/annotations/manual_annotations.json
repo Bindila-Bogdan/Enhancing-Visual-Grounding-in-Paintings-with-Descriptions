@@ -1,0 +1,1240 @@
+[
+    {
+        "painting_id": 549,
+        "object_name": "city",
+        "linguistic_expression": "",
+        "description_spans": [
+            "it seeks to portray the essence of the city rather than to record its actual appearance",
+            "included only the easternmost portion, above the Tagus river"
+        ],
+        "object_description": "",
+        "coarse_object_class": "",
+        "bounding_box": []
+    },
+    {
+        "painting_id": 549,
+        "object_name": "cathedral",
+        "linguistic_expression": "",
+        "description_spans": [
+            "cathedral, which he therefore imaginatively moved to the left of the dominant Alcázar or royal palace"
+        ],
+        "object_description": "",
+        "coarse_object_class": "",
+        "bounding_box": []
+    },
+    {
+        "painting_id": 549,
+        "object_name": "meadows",
+        "linguistic_expression": "",
+        "description_spans": [
+            "pale green meadows behind the trees, standing like insomniacs"
+        ],
+        "object_description": "",
+        "coarse_object_class": "",
+        "bounding_box": []
+    },
+    {
+        "painting_id": 2702,
+        "object_name": "women who dance",
+        "linguistic_expression": "",
+        "description_spans": [
+            "taxi dancers: women who dance with their male partners for ten cents a ticket"
+        ],
+        "object_description": "",
+        "coarse_object_class": "",
+        "bounding_box": []
+    },
+    {
+        "painting_id": 2702,
+        "object_name": "worried stockbroker",
+        "linguistic_expression": "",
+        "description_spans": [
+            "a worried stockbroker that watches the market returns on a ticker tape machine. Benton painted the mural at a time of great economic despair and inequity of the Great Depression, that began in 1929."
+        ],
+        "object_description": "",
+        "coarse_object_class": "",
+        "bounding_box": []
+    },
+    {
+        "painting_id": 2156,
+        "object_name": "red cloak",
+        "linguistic_expression": "",
+        "description_spans": [
+            "Dante is wearing a red cloak and red cap above a white bonnet"
+        ],
+        "object_description": "",
+        "coarse_object_class": "",
+        "bounding_box": []
+    },
+    {
+        "painting_id": 2156,
+        "object_name": "laurel wreath",
+        "linguistic_expression": "",
+        "description_spans": [
+            "the first to show the poet with a laurel wreath on his head."
+        ],
+        "object_description": "",
+        "coarse_object_class": "",
+        "bounding_box": []
+    },
+    {
+        "painting_id": 11819,
+        "object_name": "playful puppy",
+        "linguistic_expression": "",
+        "description_spans": [
+            "playful puppy may well have portrayed actual animals owned by the patron"
+        ],
+        "object_description": "",
+        "coarse_object_class": "",
+        "bounding_box": []
+    },
+    {
+        "painting_id": 11819,
+        "object_name": "glass ewer",
+        "linguistic_expression": "",
+        "description_spans": [
+            "glass ewer with aloja, an aromatic drink popular at the time"
+        ],
+        "object_description": "",
+        "coarse_object_class": "",
+        "bounding_box": []
+    },
+    {
+        "painting_id": 11819,
+        "object_name": "glass vases with floral arrangements",
+        "linguistic_expression": "",
+        "description_spans": [
+            "glass vases with floral arrangements. These vessels represent a type of luxury decorative object that suited the status of Van der Hamen’s patron",
+            "the flowers they contain stand out for the copiousness and variety of their blooms",
+            "They doubtlessly evoke real arrangements of flowers that formed a part of the rich decor of Soire's house",
+            "these were not painted from life and are artificial images in representing blooms in such perfect condition and in bringing together flowers that bloom at different times of the year."
+        ],
+        "object_description": "",
+        "coarse_object_class": "",
+        "bounding_box": []
+    },
+    {
+        "painting_id": 91,
+        "object_name": "Breton costumes",
+        "linguistic_expression": "",
+        "description_spans": [
+            "traditional Breton costumes, epitomize the ideal of virtuous and attractive peasants living a simple life in close contact with nature"
+        ],
+        "object_description": "",
+        "coarse_object_class": "",
+        "bounding_box": []
+    },
+    {
+        "painting_id": 2024,
+        "object_name": "Mosques and Churches",
+        "linguistic_expression": "",
+        "description_spans": [
+            "The symbols of the homeland remained lofty- where Jerusalem takes pride in the sanctity given to it by God, with its Mosques and Churches, grand by virtue of its history and heritage."
+        ],
+        "object_description": "",
+        "coarse_object_class": "",
+        "bounding_box": []
+    },
+    {
+        "painting_id": 3344,
+        "object_name": "figure",
+        "linguistic_expression": "",
+        "description_spans": [
+            "separate the figure from the landscape, attributing them thus to different hands (Bellini and Basaiti, Bellini and workshop), to that of a different interpretation of the date or to the later completition of the painting most of which was executed a long time before."
+        ],
+        "object_description": "",
+        "coarse_object_class": "",
+        "bounding_box": []
+    },
+    {
+        "painting_id": 3344,
+        "object_name": "landscape",
+        "linguistic_expression": "",
+        "description_spans": [
+            "The landscape is laden with the usual symbols and religious metaphores which Bellini was very careful about (the fig-tree, the withered tree, the ivy, the layered, agglomerated, crumbling rocks, etc.)",
+            "very clear landscape view all these elements, affectionately and lyrically portrayed one by one, have not yet found the sublime harmony that was typical of the backgrounds which Bellini"
+        ],
+        "object_description": "",
+        "coarse_object_class": "",
+        "bounding_box": []
+    },
+    {
+        "painting_id": 2628,
+        "object_name": "the dense vegetation",
+        "linguistic_expression": "",
+        "description_spans": [
+            "the dense vegetation serves as a protective shield, shutting out the external world and safeguarding the young woman's innocence and beauty"
+        ],
+        "object_description": "",
+        "coarse_object_class": "",
+        "bounding_box": []
+    },
+    {
+        "painting_id": 2628,
+        "object_name": "subject",
+        "linguistic_expression": "",
+        "description_spans": [
+            "subject appears apprehensive and distracted, as if she is waiting for someone before leaving the unknown event"
+        ],
+        "object_description": "",
+        "coarse_object_class": "",
+        "bounding_box": []
+    },
+    {
+        "painting_id": 2461,
+        "object_name": "two camels",
+        "linguistic_expression": "",
+        "description_spans": [
+            ""
+        ],
+        "object_description": "",
+        "coarse_object_class": "",
+        "bounding_box": []
+    },
+    {
+        "painting_id": 2461,
+        "object_name": "girl",
+        "linguistic_expression": "",
+        "description_spans": [
+            "young Moorish girl in her native costume"
+        ],
+        "object_description": "",
+        "coarse_object_class": "",
+        "bounding_box": []
+    },
+    {
+        "painting_id": 2461,
+        "object_name": "old camel-driver",
+        "linguistic_expression": "",
+        "description_spans": [
+            ""
+        ],
+        "object_description": "",
+        "coarse_object_class": "",
+        "bounding_box": []
+    },
+    {
+        "painting_id": 518,
+        "object_name": "shoes",
+        "linguistic_expression": "",
+        "description_spans": [
+            "\"still life of old peasants' shoes\" may have been those of Patience Escalier, whose portrait Van Gogh executed around the same time, late summer 1888.",
+            "evinces a unique return to the earlier motif"
+        ],
+        "object_description": "",
+        "coarse_object_class": "",
+        "bounding_box": []
+    },
+    {
+        "painting_id": 518,
+        "object_name": "the red-tile floor",
+        "linguistic_expression": "",
+        "description_spans": [
+            "the red-tile floor of the Yellow House"
+        ],
+        "object_description": "",
+        "coarse_object_class": "",
+        "bounding_box": []
+    },
+    {
+        "painting_id": 256,
+        "object_name": "Paris",
+        "linguistic_expression": "",
+        "description_spans": [
+            "Paris, dressed in a contemporary suit of armor",
+            "Paris chose Venus and embarked for Sparta to abduct Helen and bring her to Troy, thus instigating the Trojan War.",
+            "Paris as a hunter"
+        ],
+        "object_description": "",
+        "coarse_object_class": "",
+        "bounding_box": []
+    },
+    {
+        "painting_id": 256,
+        "object_name": "three goddesses",
+        "linguistic_expression": "",
+        "description_spans": [
+            "three goddesses: Minerva, Venus, and Juno",
+            "all claimed ownership of the prize, and Jupiter decreed that their dispute could be settled only by Paris, son of the king of Troy",
+            "After Mercury brought the goddesses to the Trojan prince, each offered him a bribe: Juno, power; Minerva, all human knowledge; and Venus, the love of Helen of Troy, wife of the Spartan king, Menelaus, and the world's most beautiful woman.",
+            "goddesses present themselves naked",
+            "their faces appear too generalized for such an assertion. The figures depicted here are only slightly differentiated, perhaps to emphasize the difficulty of Paris's decision.",
+            "the vita contemplativa, represented by Minerva, the vita activa, represented by Juno, or the vita voluptaria, represented by Venus.",
+            "A challenge to the humanist interpretation was offered by Hinz (1994), who argued that for such an interpretation to be valid, the goddesses would have to be clearly identifiable in order to link them with the alternative ways of life. Instead, he regarded the similarity of the goddeses as an attempt to \"provoke a play of ideas and meanings\"—and perhaps to introduce an element of ambiguity—which has little to do with the rigorous humanism found in images by contemporary artists"
+        ],
+        "object_description": "",
+        "coarse_object_class": "",
+        "bounding_box": []
+    },
+    {
+        "painting_id": 256,
+        "object_name": "Cupid",
+        "linguistic_expression": "",
+        "description_spans": [
+            "Cupid aims his arrow at Venus, signaling Paris’s decision in favor of the goddess of love"
+        ],
+        "object_description": "",
+        "coarse_object_class": "",
+        "bounding_box": []
+    },
+    {
+        "painting_id": 256,
+        "object_name": "Venus",
+        "linguistic_expression": "",
+        "description_spans": [
+            "Which is Juno and which is Minerva is unclear, but the central figure must be Venus. It is she who is the most suggestively alluring, and it is also she who points to Cupid, who in turn prepares to shoot his arrow at her."
+        ],
+        "object_description": "",
+        "coarse_object_class": "",
+        "bounding_box": []
+    },
+    {
+        "painting_id": 256,
+        "object_name": "Mercury ",
+        "linguistic_expression": "",
+        "description_spans": [
+            "Mercury stands nearby holding the coveted prize—a golden apple (here transformed into a glass orb)"
+        ],
+        "object_description": "",
+        "coarse_object_class": "",
+        "bounding_box": []
+    },
+    {
+        "painting_id": 256,
+        "object_name": "Mount Ida",
+        "linguistic_expression": "",
+        "description_spans": [
+            ""
+        ],
+        "object_description": "",
+        "coarse_object_class": "",
+        "bounding_box": []
+    },
+    {
+        "painting_id": 256,
+        "object_name": "horse",
+        "linguistic_expression": "",
+        "description_spans": [
+            ""
+        ],
+        "object_description": "",
+        "coarse_object_class": "",
+        "bounding_box": []
+    },
+    {
+        "painting_id": 256,
+        "object_name": "tree",
+        "linguistic_expression": "",
+        "description_spans": [
+            ""
+        ],
+        "object_description": "",
+        "coarse_object_class": "",
+        "bounding_box": []
+    },
+    {
+        "painting_id": 1799,
+        "object_name": "ruins",
+        "linguistic_expression": "",
+        "description_spans": [
+            "the great Roman ruins"
+        ],
+        "object_description": "",
+        "coarse_object_class": "",
+        "bounding_box": []
+    },
+    {
+        "painting_id": 9053,
+        "object_name": "dolphins",
+        "linguistic_expression": "",
+        "description_spans": [
+            "Amphitrite fled from Neptune's wooing, but he sent dolphins after her which succeeded in persuading her to return to become his bride."
+        ],
+        "object_description": "",
+        "coarse_object_class": "",
+        "bounding_box": []
+    },
+    {
+        "painting_id": 9053,
+        "object_name": "Neptune",
+        "linguistic_expression": "",
+        "description_spans": [
+            "She rides beside his chariot on a dolphin's back"
+        ],
+        "object_description": "",
+        "coarse_object_class": "",
+        "bounding_box": []
+    },
+    {
+        "painting_id": 9053,
+        "object_name": "an arch of drapery",
+        "linguistic_expression": "",
+        "description_spans": [
+            "an arch of drapery billows over her head, a common feature of sea-goddesses from antiquity"
+        ],
+        "object_description": "",
+        "coarse_object_class": "",
+        "bounding_box": []
+    },
+    {
+        "painting_id": 9053,
+        "object_name": "Tritons",
+        "linguistic_expression": "",
+        "description_spans": [
+            "(the name for mermen in general)"
+        ],
+        "object_description": "",
+        "coarse_object_class": "",
+        "bounding_box": []
+    },
+    {
+        "painting_id": 9053,
+        "object_name": "Nereids",
+        "linguistic_expression": "",
+        "description_spans": [
+            "(sea-nymphs, the daughters of Nereus, the 'old man of the sea' in Greek mythology)"
+        ],
+        "object_description": "",
+        "coarse_object_class": "",
+        "bounding_box": []
+    },
+    {
+        "painting_id": 2737,
+        "object_name": "lamb",
+        "linguistic_expression": "",
+        "description_spans": [
+            "lamb, a symbol associated with the Passion, hints to Christ’s destiny"
+        ],
+        "object_description": "",
+        "coarse_object_class": "",
+        "bounding_box": []
+    },
+    {
+        "painting_id": 2737,
+        "object_name": "mountainous landscape",
+        "linguistic_expression": "",
+        "description_spans": [
+            "atmospheric perspective to create the illusion of the distant mountains"
+        ],
+        "object_description": "",
+        "coarse_object_class": "",
+        "bounding_box": []
+    },
+    {
+        "painting_id": 2737,
+        "object_name": "infant",
+        "linguistic_expression": "",
+        "description_spans": [
+            "Jesus as an infant"
+        ],
+        "object_description": "",
+        "coarse_object_class": "",
+        "bounding_box": []
+    },
+    {
+        "painting_id": 2737,
+        "object_name": "Virgin Mary",
+        "linguistic_expression": "",
+        "description_spans": [
+            ""
+        ],
+        "object_description": "",
+        "coarse_object_class": "",
+        "bounding_box": []
+    },
+    {
+        "painting_id": 2737,
+        "object_name": "St Anne",
+        "linguistic_expression": "",
+        "description_spans": [
+            "her daughter",
+            "St Anne is the patron saint of pregnant women and women trying to get pregnant"
+        ],
+        "object_description": "",
+        "coarse_object_class": "",
+        "bounding_box": []
+    },
+    {
+        "painting_id": 1722,
+        "object_name": "girl drowning",
+        "linguistic_expression": "",
+        "description_spans": [
+            "the girl is drowning because of a leg cramp, but she is so grief-stricken that she decides to drown instead of calling out to her boyfriend for help.",
+            "The heroine is briefly heart-broken and distraught but ultimately gets her happy ending"
+        ],
+        "object_description": "",
+        "coarse_object_class": "",
+        "bounding_box": []
+    },
+    {
+        "painting_id": 2613,
+        "object_name": "lutes",
+        "linguistic_expression": "",
+        "description_spans": [
+            "Lutes are of two main types, those with trough-shaped resonators usually carved from a block of wood, and those with ovoid or circular resonators made from gourds. These are typically spike-lutes, in other words the neck is a stick that passes into the body of the resonator and the strings are looped over it once they pass the bridge, which is held to the skin soundboard by the pressure of the strings. More recently, small  instruments with resonators from sardine tins or even plastic bottles can be seen. The strings were typically gut or tendons, but are now usually made of nylon. Historically, these instruments seem to be associated with the northern regions and are typical of Hausa and Kanuri, but it seems they were long ago absorbed into the traditional music of many peoples of the Plateau."
+        ],
+        "object_description": "",
+        "coarse_object_class": "",
+        "bounding_box": []
+    },
+    {
+        "painting_id": 10676,
+        "object_name": "family",
+        "linguistic_expression": "",
+        "description_spans": [
+            "his friend, Claude-Émile Schuffenecker (1851-1934), a painter, art teacher and art collector. He painted here the family of his friend"
+        ],
+        "object_description": "",
+        "coarse_object_class": "",
+        "bounding_box": []
+    },
+    {
+        "painting_id": 2484,
+        "object_name": "hawk",
+        "linguistic_expression": "",
+        "description_spans": [
+            "hawk contemplating itself in a mirror",
+            "the hawk represents the material world",
+            "just as the bird \"watches itself in a glass, waiting for the image to move so as to know which is really alive, itself or the image\"",
+            "painted the bird from an Egyptian carving. Thus the \"real\" hawk is immobile and the flying hawk in the mirror is an illusion. The carving from which the hawk was painted now adorns the artist's grave."
+        ],
+        "object_description": "",
+        "coarse_object_class": "",
+        "bounding_box": []
+    },
+    {
+        "painting_id": 2484,
+        "object_name": "spheres",
+        "linguistic_expression": "",
+        "description_spans": [
+            "spheres, the soul"
+        ],
+        "object_description": "",
+        "coarse_object_class": "",
+        "bounding_box": []
+    },
+    {
+        "painting_id": 1056,
+        "object_name": "The Holy Family is on the right of the painting",
+        "linguistic_expression": "",
+        "description_spans": [
+            ""
+        ],
+        "object_description": "",
+        "coarse_object_class": "",
+        "bounding_box": []
+    },
+    {
+        "painting_id": 1056,
+        "object_name": "Saint Joseph standing",
+        "linguistic_expression": "",
+        "description_spans": [
+            ""
+        ],
+        "object_description": "",
+        "coarse_object_class": "",
+        "bounding_box": []
+    },
+    {
+        "painting_id": 1056,
+        "object_name": "the Virgin sitting next to him",
+        "linguistic_expression": "",
+        "description_spans": [
+            ""
+        ],
+        "object_description": "",
+        "coarse_object_class": "",
+        "bounding_box": []
+    },
+    {
+        "painting_id": 1056,
+        "object_name": "the Child on her knees",
+        "linguistic_expression": "",
+        "description_spans": [
+            ""
+        ],
+        "object_description": "",
+        "coarse_object_class": "",
+        "bounding_box": []
+    },
+    {
+        "painting_id": 1056,
+        "object_name": "Kneeling young woman",
+        "linguistic_expression": "",
+        "description_spans": [
+            "Kneeling in front of them is a young woman who kisses Christ’s outstretched right hand. Generally described as a \"female saint,\" she has been identified as Saint Catherine of Alexandria. According to the Golden Legend, Saint Catherine had a vision of Christ appearing to her, and was mystically married to him. This was a popular subject in Italian Renaissance paintings, and Catherine is often shown as accepting a wedding ring from the child Jesus."
+        ],
+        "object_description": "",
+        "coarse_object_class": "",
+        "bounding_box": []
+    },
+    {
+        "painting_id": 1056,
+        "object_name": "old woman",
+        "linguistic_expression": "",
+        "description_spans": [
+            "old woman, holding a basket with peaches and grapes, and offering a rose with her right hand. She has been recognized as a servant, or as the Virgin’s mother, Saint Anne"
+        ],
+        "object_description": "",
+        "coarse_object_class": "",
+        "bounding_box": []
+    },
+    {
+        "painting_id": 1056,
+        "object_name": "a basket with a pillow",
+        "linguistic_expression": "",
+        "description_spans": [
+            "a basket with a pillow used for embroidery"
+        ],
+        "object_description": "",
+        "coarse_object_class": "",
+        "bounding_box": []
+    },
+    {
+        "painting_id": 6660,
+        "object_name": "dining hall",
+        "linguistic_expression": "",
+        "description_spans": [
+            "The modest but clean setting of the women's dining hall serves as the backdrop for a touching human story that is revealed to us through the work's narrative title.",
+            "at the Pio Albergo Trivulzio, a retirement home in Milan founded in 1771 that housed more than eight hundred men and women by 1900."
+        ],
+        "object_description": "",
+        "coarse_object_class": "",
+        "bounding_box": []
+    },
+    {
+        "painting_id": 6660,
+        "object_name": "old people",
+        "linguistic_expression": "",
+        "description_spans": [
+            "old people"
+        ],
+        "object_description": "",
+        "coarse_object_class": "",
+        "bounding_box": []
+    },
+    {
+        "painting_id": 1966,
+        "object_name": "water",
+        "linguistic_expression": "",
+        "description_spans": [
+            "reflection of the village in its harbour",
+            "the shimmer of the moving water"
+        ],
+        "object_description": "",
+        "coarse_object_class": "",
+        "bounding_box": []
+    },
+    {
+        "painting_id": 1966,
+        "object_name": "buildings",
+        "linguistic_expression": "",
+        "description_spans": [
+            ""
+        ],
+        "object_description": "",
+        "coarse_object_class": "",
+        "bounding_box": []
+    },
+    {
+        "painting_id": 1006,
+        "object_name": "Aristotle",
+        "linguistic_expression": "",
+        "description_spans": [
+            "The richly clad Greek philosopher Aristotle (384–322 BCE) rests his hand pensively on a bust of Homer"
+        ],
+        "object_description": "",
+        "coarse_object_class": "",
+        "bounding_box": []
+    },
+    {
+        "painting_id": 1006,
+        "object_name": "bust of Homer",
+        "linguistic_expression": "",
+        "description_spans": [
+            "the epic poet who had attained literary immortality with his Iliad and Odyssey centuries before."
+        ],
+        "object_description": "",
+        "coarse_object_class": "",
+        "bounding_box": []
+    },
+    {
+        "painting_id": 1006,
+        "object_name": "gold medallion",
+        "linguistic_expression": "",
+        "description_spans": [
+            " ristotle wears a gold medallion with a portrait of his powerful pupil, Alexander the Great—perhaps the philosopher is weighing his own worldly success against Homer’s timeless achievement."
+        ],
+        "object_description": "",
+        "coarse_object_class": "",
+        "bounding_box": []
+    },
+    {
+        "painting_id": 3687,
+        "object_name": "The Virgin",
+        "linguistic_expression": "",
+        "description_spans": [
+            "seated broadly and holds the half-naked infant on her lap"
+        ],
+        "object_description": "",
+        "coarse_object_class": "",
+        "bounding_box": []
+    },
+    {
+        "painting_id": 3687,
+        "object_name": "half-naked infant",
+        "linguistic_expression": "",
+        "description_spans": [
+            ""
+        ],
+        "object_description": "",
+        "coarse_object_class": "",
+        "bounding_box": []
+    },
+    {
+        "painting_id": 3687,
+        "object_name": "Joseph",
+        "linguistic_expression": "",
+        "description_spans": [
+            "Joseph on the left is eclipsed by the two protagonists. He sits at an angle facing them, on a seat lower than the Virgin's. He looks up and focuses on a point  somewhere outside the picture, as if reflecting on the words he has just read in the open book on his lap. He holds his reading glasses absent-mindedly and is clearly lost in thought. The portrayal of Joseph as a young and vigorous man, in contrast to the traditional elderly figure, is in line with the dictates of Counter-Reformationist principles."
+        ],
+        "object_description": "",
+        "coarse_object_class": "",
+        "bounding_box": []
+    },
+    {
+        "painting_id": 3687,
+        "object_name": "glasses",
+        "linguistic_expression": "",
+        "description_spans": [
+            ""
+        ],
+        "object_description": "",
+        "coarse_object_class": "",
+        "bounding_box": []
+    },
+    {
+        "painting_id": 3687,
+        "object_name": "book",
+        "linguistic_expression": "",
+        "description_spans": [
+            ""
+        ],
+        "object_description": "",
+        "coarse_object_class": "",
+        "bounding_box": []
+    },
+    {
+        "painting_id": 2657,
+        "object_name": "individual figure",
+        "linguistic_expression": "",
+        "description_spans": [
+            "centered on the individual figure to convey the ‘different states of exhausting anticipation or loss,’ resulting from his experience of living under the occupation"
+        ],
+        "object_description": "",
+        "coarse_object_class": "",
+        "bounding_box": []
+    },
+    {
+        "painting_id": 2657,
+        "object_name": "mud",
+        "linguistic_expression": "",
+        "description_spans": [
+            "The combination of mud and acrylic on wood reflects the tension between the rough cracks of mud which is dominant, in contrast to adjacent areas of smoothly painted acrylic colors"
+        ],
+        "object_description": "",
+        "coarse_object_class": "",
+        "bounding_box": []
+    },
+    {
+        "painting_id": 2657,
+        "object_name": "acrylic",
+        "linguistic_expression": "",
+        "description_spans": [
+            ""
+        ],
+        "object_description": "",
+        "coarse_object_class": "",
+        "bounding_box": []
+    },
+    {
+        "painting_id": 1667,
+        "object_name": "model",
+        "linguistic_expression": "",
+        "description_spans": [
+            "The model for the picture, Mistinguett, was a successful actress and singer, and was one of Picabia's first famous friends from the entertainment industry (she was at one time the lover of Maurice Chevalier)."
+        ],
+        "object_description": "",
+        "coarse_object_class": "",
+        "bounding_box": []
+    },
+    {
+        "painting_id": 2549,
+        "object_name": "the male figures",
+        "linguistic_expression": "",
+        "description_spans": [
+            "the male figures that resemble Spencer seem to be dwarfed and overwhelmed by the female figures. In the foreground, the two men are in kneeling positions as the large female bodies tower over them. Similarly, the two further figures seem to be absorbed by the group of women in front of them."
+        ],
+        "object_description": "",
+        "coarse_object_class": "",
+        "bounding_box": []
+    },
+    {
+        "painting_id": 2549,
+        "object_name": "dominant figure in white",
+        "linguistic_expression": "",
+        "description_spans": [
+            "The dominant figure in white is usually interpreted as Preece."
+        ],
+        "object_description": "",
+        "coarse_object_class": "",
+        "bounding_box": []
+    },
+    {
+        "painting_id": 2549,
+        "object_name": "numerous gifts",
+        "linguistic_expression": "",
+        "description_spans": [
+            "numerous gifts: cased jewelry, perfume, coins, and wads of money. The theme of gifts had personal significance to Spencer. He lavished Preece with expensive presents, accumulating substantial amounts of debt that almost led him to financial ruin."
+        ],
+        "object_description": "",
+        "coarse_object_class": "",
+        "bounding_box": []
+    },
+    {
+        "painting_id": 2549,
+        "object_name": "jewelry placed directly underneath Preece’s dress",
+        "linguistic_expression": "",
+        "description_spans": [
+            "jewelry placed directly underneath Preece’s dress highlights the transactional nature of the relationship: the man bows down powerless, buying gifts in return for the woman’s favor."
+        ],
+        "object_description": "",
+        "coarse_object_class": "",
+        "bounding_box": []
+    },
+    {
+        "painting_id": 2225,
+        "object_name": "sexually mature woman",
+        "linguistic_expression": "",
+        "description_spans": [
+            "Mary, Mother of Jesus. Unlike the typical depiction of Mary as a fully clothed, chaste woman, this piece portrays her as a fully developed, sexually mature woman"
+        ],
+        "object_description": "",
+        "coarse_object_class": "",
+        "bounding_box": []
+    },
+    {
+        "painting_id": 723,
+        "object_name": "man enters",
+        "linguistic_expression": "",
+        "description_spans": [
+            "a man enters a milliner’s shop not to buy a hat but to elicit sex work from women whose class status has left them vulnerable to wealthier men. Holding out a coin, he negotiates with an older woman for the services of the pretty milliner who pauses her work to read his letter."
+        ],
+        "object_description": "",
+        "coarse_object_class": "",
+        "bounding_box": []
+    },
+    {
+        "painting_id": 723,
+        "object_name": "A pretty girl, dressed in pink and white",
+        "linguistic_expression": "",
+        "description_spans": [
+            "pretty milliner who pauses her work to read his letter",
+            "A pretty girl, dressed in pink and white, is intent in reading a love letter, presumably written by the older gentleman who enters the room from the right"
+        ],
+        "object_description": "",
+        "coarse_object_class": "",
+        "bounding_box": []
+    },
+    {
+        "painting_id": 723,
+        "object_name": "reclining mannequin’s head on the table",
+        "linguistic_expression": "",
+        "description_spans": [
+            "reclining mannequin’s head on the table foreshadows the result of their transaction"
+        ],
+        "object_description": "",
+        "coarse_object_class": "",
+        "bounding_box": []
+    },
+    {
+        "painting_id": 723,
+        "object_name": "young girl",
+        "linguistic_expression": "",
+        "description_spans": [
+            "young girl appraises her doll, paralleling the older woman’s actions",
+            "A young girl is innocently playing with her doll as this transaction takes place around her."
+        ],
+        "object_description": "",
+        "coarse_object_class": "",
+        "bounding_box": []
+    },
+    {
+        "painting_id": 2441,
+        "object_name": "Taxi Cab",
+        "linguistic_expression": "",
+        "description_spans": [
+            "an abandoned Taxi Cab, its trunk popped open in the marshes"
+        ],
+        "object_description": "",
+        "coarse_object_class": "",
+        "bounding_box": []
+    },
+    {
+        "painting_id": 2441,
+        "object_name": "marshes",
+        "linguistic_expression": "",
+        "description_spans": [
+            ""
+        ],
+        "object_description": "",
+        "coarse_object_class": "",
+        "bounding_box": []
+    },
+    {
+        "painting_id": 2441,
+        "object_name": "skyline",
+        "linguistic_expression": "",
+        "description_spans": [
+            "the backdrop of the New York City skyline at daybreak"
+        ],
+        "object_description": "",
+        "coarse_object_class": "",
+        "bounding_box": []
+    },
+    {
+        "painting_id": 1823,
+        "object_name": "man illuminated in white",
+        "linguistic_expression": "",
+        "description_spans": [
+            "one man, illuminated in white light in the middle of the painting, arms held out to the sides"
+        ],
+        "object_description": "",
+        "coarse_object_class": "",
+        "bounding_box": []
+    },
+    {
+        "painting_id": 1823,
+        "object_name": "firing squad",
+        "linguistic_expression": "",
+        "description_spans": [
+            "French firing squad"
+        ],
+        "object_description": "",
+        "coarse_object_class": "",
+        "bounding_box": []
+    },
+    {
+        "painting_id": 1823,
+        "object_name": "slain companions",
+        "linguistic_expression": "",
+        "description_spans": [
+            "His slain companions litter the ground."
+        ],
+        "object_description": "",
+        "coarse_object_class": "",
+        "bounding_box": []
+    },
+    {
+        "painting_id": 4416,
+        "object_name": "king",
+        "linguistic_expression": "",
+        "description_spans": [
+            "king was trying to cross the River Somme at Blanche Tache, near Abbeville, in order to escape the French army",
+            "Edward III encountered and engaged a part of the French force under Godemar de Faye, the outcome of which, like the Battle of Crécy itself",
+            "The king is on horseback just to the right of centre"
+        ],
+        "object_description": "",
+        "coarse_object_class": "",
+        "bounding_box": []
+    },
+    {
+        "painting_id": 4416,
+        "object_name": "archers seen in the upper right",
+        "linguistic_expression": "",
+        "description_spans": [
+            "the Battle of Crécy itself, was dependent upon the skill of the English archers seen in the upper right of the composition."
+        ],
+        "object_description": "",
+        "coarse_object_class": "",
+        "bounding_box": []
+    },
+    {
+        "painting_id": 8316,
+        "object_name": "oneiric figures",
+        "linguistic_expression": "",
+        "description_spans": [
+            "oneiric figures clad in pseudo-classical clothing in the manner of a Greek-inspired frieze."
+        ],
+        "object_description": "",
+        "coarse_object_class": "",
+        "bounding_box": []
+    },
+    {
+        "painting_id": 8316,
+        "object_name": "Venus",
+        "linguistic_expression": "",
+        "description_spans": [
+            "Venus can be seen as an exaltation of ideal beauty"
+        ],
+        "object_description": "",
+        "coarse_object_class": "",
+        "bounding_box": []
+    },
+    {
+        "painting_id": 8344,
+        "object_name": "charming flower",
+        "linguistic_expression": "",
+        "description_spans": [
+            "The pair of charming flower paintings in the Museo Diocesano y Catedralicio in the Cathedral of Valladolid are the best-known paintings of this type by him."
+        ],
+        "object_description": "",
+        "coarse_object_class": "",
+        "bounding_box": []
+    },
+    {
+        "painting_id": 1466,
+        "object_name": "Mary Magdalen",
+        "linguistic_expression": "",
+        "description_spans": [
+            "chose to spend her last days nourished only by angels’ song in an act of penitence.",
+            "her dressed for self-punishment—she wears a painful metal belt with spurs known as a cilice—and turning away from her contemplation of a skull, book, and crucifix to gaze on an angel.",
+            "Identity of the Female Saint: Saint Mary of Egypt was a third-century ascetic who, according to The Golden Legend, spent forty-seven years in the desert in repentance and mortification. While an identification with Saint Mary of Egypt cannot be completely eliminated, this picture more likely shows Christ's follower Mary Magdalen, who, according again to The Golden Legend, took refuge in a grotto near Marseilles, where she was visited daily by angels, who gave her divine sustenance through their songs. In the seventeenth century emphasis was placed on Mary Magdalen's conversion and/or penitence. As Mary Magdalen was thought to be a converted prostitute, Baroque poets and artists showed her as at once beautiful and penitent, thereby creating an image that combines sensuous beauty with deep feeling."
+        ],
+        "object_description": "",
+        "coarse_object_class": "",
+        "bounding_box": []
+    },
+    {
+        "painting_id": 1466,
+        "object_name": "angels",
+        "linguistic_expression": "",
+        "description_spans": [
+            ""
+        ],
+        "object_description": "",
+        "coarse_object_class": "",
+        "bounding_box": []
+    },
+    {
+        "painting_id": 1466,
+        "object_name": "skull",
+        "linguistic_expression": "",
+        "description_spans": [
+            ""
+        ],
+        "object_description": "",
+        "coarse_object_class": "",
+        "bounding_box": []
+    },
+    {
+        "painting_id": 1466,
+        "object_name": "book",
+        "linguistic_expression": "",
+        "description_spans": [
+            "possibly a breviary—open to a page with an illustration with the descent of the Holy Spirit, possibly referring to the dogma of the Trinity"
+        ],
+        "object_description": "",
+        "coarse_object_class": "",
+        "bounding_box": []
+    },
+    {
+        "painting_id": 1466,
+        "object_name": "crucifix",
+        "linguistic_expression": "",
+        "description_spans": [
+            ""
+        ],
+        "object_description": "",
+        "coarse_object_class": "",
+        "bounding_box": []
+    },
+    {
+        "painting_id": 5551,
+        "object_name": "eldest son",
+        "linguistic_expression": "",
+        "description_spans": [
+            "holding her eldest son Thomas (1772-1822) in her arms."
+        ],
+        "object_description": "",
+        "coarse_object_class": "",
+        "bounding_box": []
+    },
+    {
+        "painting_id": 5551,
+        "object_name": "sitter",
+        "linguistic_expression": "",
+        "description_spans": [
+            "The sitter of this portrait, Mrs. Anne heritage, in particular the work of Raphael. Carwardine (1752-1817) was the wife of Thomas Carwardine, a close friend of Romney. She is shown half-length, seated, wearing a black dress and a white lace shawl with a white bonnet"
+        ],
+        "object_description": "",
+        "coarse_object_class": "",
+        "bounding_box": []
+    },
+    {
+        "painting_id": 5551,
+        "object_name": "black dress",
+        "linguistic_expression": "",
+        "description_spans": [
+            ""
+        ],
+        "object_description": "",
+        "coarse_object_class": "",
+        "bounding_box": []
+    },
+    {
+        "painting_id": 5551,
+        "object_name": "white lace shawl",
+        "linguistic_expression": "",
+        "description_spans": [
+            ""
+        ],
+        "object_description": "",
+        "coarse_object_class": "",
+        "bounding_box": []
+    },
+    {
+        "painting_id": 5551,
+        "object_name": "white bonnet",
+        "linguistic_expression": "",
+        "description_spans": [
+            ""
+        ],
+        "object_description": "",
+        "coarse_object_class": "",
+        "bounding_box": []
+    },
+    {
+        "painting_id": 8197,
+        "object_name": "the satin dresses",
+        "linguistic_expression": "",
+        "description_spans": [
+            ""
+        ],
+        "object_description": "",
+        "coarse_object_class": "",
+        "bounding_box": []
+    },
+    {
+        "painting_id": 8197,
+        "object_name": "powdery skin",
+        "linguistic_expression": "",
+        "description_spans": [
+            ""
+        ],
+        "object_description": "",
+        "coarse_object_class": "",
+        "bounding_box": []
+    },
+    {
+        "painting_id": 8197,
+        "object_name": "hair",
+        "linguistic_expression": "",
+        "description_spans": [
+            "the casual perfection at their hair"
+        ],
+        "object_description": "",
+        "coarse_object_class": "",
+        "bounding_box": []
+    },
+    {
+        "painting_id": 8197,
+        "object_name": "shepherdess",
+        "linguistic_expression": "",
+        "description_spans": [
+            "the shepherdess type as an idealized protagonist for his decorative pictures"
+        ],
+        "object_description": "",
+        "coarse_object_class": "",
+        "bounding_box": []
+    },
+    {
+        "painting_id": 11593,
+        "object_name": "nymph Calypso",
+        "linguistic_expression": "",
+        "description_spans": [
+            "figure of Calypso who looks a powerful and seductive temptress in her classically inspired white dress casually wrapped to reveal",
+            "nymph"
+        ],
+        "object_description": "",
+        "coarse_object_class": "",
+        "bounding_box": []
+    },
+    {
+        "painting_id": 11593,
+        "object_name": "Telemachus",
+        "linguistic_expression": "",
+        "description_spans": [
+            "Odysseus's son"
+        ],
+        "object_description": "",
+        "coarse_object_class": "",
+        "bounding_box": []
+    },
+    {
+        "painting_id": 11593,
+        "object_name": "Mentor",
+        "linguistic_expression": "",
+        "description_spans": [
+            "Odysseus's long-time friend"
+        ],
+        "object_description": "",
+        "coarse_object_class": "",
+        "bounding_box": []
+    },
+    {
+        "painting_id": 9821,
+        "object_name": "the flag",
+        "linguistic_expression": "",
+        "description_spans": [
+            "the flag, for example, as depicted here was not introduced until six months after the event"
+        ],
+        "object_description": "",
+        "coarse_object_class": "",
+        "bounding_box": []
+    },
+    {
+        "painting_id": 11422,
+        "object_name": "landscape",
+        "linguistic_expression": "",
+        "description_spans": [
+            "development of English landscape art, for which the main reference point in the 18th century was the Dutch tradition associated with names such as Jacob van Ruisdael and Meindert Hobbema. On British soil their landscapes lost only dramatic effect, becoming brighter and more sentimental in mood."
+        ],
+        "object_description": "",
+        "coarse_object_class": "",
+        "bounding_box": []
+    },
+    {
+        "painting_id": 10748,
+        "object_name": "",
+        "linguistic_expression": "",
+        "description_spans": [
+            ""
+        ],
+        "object_description": "",
+        "coarse_object_class": "",
+        "bounding_box": []
+    },
+    {
+        "painting_id": 517,
+        "object_name": "",
+        "linguistic_expression": "",
+        "description_spans": [
+            ""
+        ],
+        "object_description": "",
+        "coarse_object_class": "",
+        "bounding_box": []
+    },
+    {
+        "painting_id": 1753,
+        "object_name": "boat",
+        "linguistic_expression": "",
+        "description_spans": [
+            ""
+        ],
+        "object_description": "",
+        "coarse_object_class": "",
+        "bounding_box": []
+    }
+]
