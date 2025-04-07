@@ -68,6 +68,28 @@
     },
     {
         "painting_id": 2156,
+        "object_name": "red cap",
+        "linguistic_expression": "",
+        "description_spans": [
+            ""
+        ],
+        "object_description": "",
+        "coarse_object_class": "",
+        "bounding_box": []
+    },
+    {
+        "painting_id": 2156,
+        "object_name": "a white bonnet",
+        "linguistic_expression": "",
+        "description_spans": [
+            ""
+        ],
+        "object_description": "",
+        "coarse_object_class": "",
+        "bounding_box": []
+    },
+    {
+        "painting_id": 2156,
         "object_name": "laurel wreath",
         "linguistic_expression": "",
         "description_spans": [
@@ -153,6 +175,61 @@
         "description_spans": [
             "The landscape is laden with the usual symbols and religious metaphores which Bellini was very careful about (the fig-tree, the withered tree, the ivy, the layered, agglomerated, crumbling rocks, etc.)",
             "very clear landscape view all these elements, affectionately and lyrically portrayed one by one, have not yet found the sublime harmony that was typical of the backgrounds which Bellini"
+        ],
+        "object_description": "",
+        "coarse_object_class": "",
+        "bounding_box": []
+    },
+    {
+        "painting_id": 3344,
+        "object_name": "the fig-tree",
+        "linguistic_expression": "",
+        "description_spans": [
+            ""
+        ],
+        "object_description": "",
+        "coarse_object_class": "",
+        "bounding_box": []
+    },
+    {
+        "painting_id": 3344,
+        "object_name": "the withered tree",
+        "linguistic_expression": "",
+        "description_spans": [
+            ""
+        ],
+        "object_description": "",
+        "coarse_object_class": "",
+        "bounding_box": []
+    },
+    {
+        "painting_id": 3344,
+        "object_name": "the ivy",
+        "linguistic_expression": "",
+        "description_spans": [
+            ""
+        ],
+        "object_description": "",
+        "coarse_object_class": "",
+        "bounding_box": []
+    },
+    {
+        "painting_id": 3344,
+        "object_name": "rocks",
+        "linguistic_expression": "",
+        "description_spans": [
+            "the layered, agglomerated, crumbling rocks"
+        ],
+        "object_description": "",
+        "coarse_object_class": "",
+        "bounding_box": []
+    },
+    {
+        "painting_id": 3344,
+        "object_name": "",
+        "linguistic_expression": "",
+        "description_spans": [
+            ""
         ],
         "object_description": "",
         "coarse_object_class": "",
@@ -508,6 +585,17 @@
         "linguistic_expression": "",
         "description_spans": [
             "spheres, the soul"
+        ],
+        "object_description": "",
+        "coarse_object_class": "",
+        "bounding_box": []
+    },
+    {
+        "painting_id": 2484,
+        "object_name": "spheres",
+        "linguistic_expression": "",
+        "description_spans": [
+            "mirror"
         ],
         "object_description": "",
         "coarse_object_class": "",
