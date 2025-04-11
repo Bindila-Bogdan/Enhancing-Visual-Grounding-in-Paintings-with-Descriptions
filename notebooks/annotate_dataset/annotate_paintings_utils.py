@@ -1,0 +1,136 @@
+import json
+
+import polars as pl
+from PIL import Image
+from nltk.corpus import stopwords
+
+RAW_DATA_PATH = "../../data/raw/"
+RESULTS_PATH = "../../experiments/prompting/"
+ANNOTATIONS_PATH = "../../data/annotations/"
+INTERMEDIATE_DATA_PATH = "../../data/intermediate/filtered_paintings/"
+
+STOP_WORDS = stopwords.words("english")
+FEW_SHOT_EXAMPLES_IDS = [2156, 2484, 11819, 256, 10748, 3344, 10676]
+
+
+def load_image(painting_id):
+    return Image.open(f"{RAW_DATA_PATH}filtered_paintings/{painting_id}.png")
+
+
+def load_data():
+    paintings_data = pl.read_json(f"{INTERMEDIATE_DATA_PATH}filtered_paintings_enhanced_data.json")
+    annotations = pl.read_json(ANNOTATIONS_PATH + "manual_annotations.json").with_columns(
+        pl.col("object_name").str.replace_all(",", "", literal=True).alias("object_name")
+    )
+
+    few_shots_descriptions = (
+        paintings_data.filter(pl.col("id").is_in(FEW_SHOT_EXAMPLES_IDS))
+        .select("id", "description")
+        .rename({"id": "painting_id"})
+    )
+    few_shot_examples = (
+        (
+            annotations.filter(pl.col("painting_id").is_in(FEW_SHOT_EXAMPLES_IDS))
+            .group_by("painting_id")
+            .agg(pl.col("*"))
+            .select("painting_id", "object_name", "description_spans")
+        ).join(few_shots_descriptions, on="painting_id")
+    ).to_dicts()
+
+    test_descriptions = (
+        paintings_data.filter(~pl.col("id").is_in(FEW_SHOT_EXAMPLES_IDS))
+        .select("id", "description")
+        .rename({"id": "painting_id"})
+    )
+    test_paintings = (
+        (
+            annotations.filter(~pl.col("painting_id").is_in(FEW_SHOT_EXAMPLES_IDS))
+            .group_by("painting_id")
+            .agg(pl.col("*"))
+            .select("painting_id", "object_name", "description_spans")
+        ).join(test_descriptions, on="painting_id")
+    ).to_dicts()
+
+    return paintings_data, annotations, few_shot_examples, test_paintings
+
+
+def get_bbox_annotations():
+    with open(f"{ANNOTATIONS_PATH}bounding_boxes_annotations.json", "r") as file:
+        bounding_boxes_annotations = json.load(file)
+
+    ids_to_labels = {
+        label["id"]: label["name"] for label in bounding_boxes_annotations["categories"]
+    }
+    labels_to_ids = {
+        clean_object_name(label["name"]): label["id"]
+        for label in bounding_boxes_annotations["categories"]
+    }
+
+    painting_id_mapping = {
+        painting_info["id"]: painting_info["file_name"].split("-")[-1].split(".")[0]
+        for painting_info in bounding_boxes_annotations["images"]
+    }
+    processed_bounding_box_annotations = []
+
+    for bounding_box_annotation in bounding_boxes_annotations["annotations"]:
+        x1, y1, x2, y2 = bounding_box_annotation["bbox"]
+
+        x2 += x1
+        y2 += y1
+
+        bbox = [x1, y1, x2, y2]
+
+        processed_bounding_box_annotations.append(
+            {
+                "image_id": int(painting_id_mapping[bounding_box_annotation["image_id"]]),
+                "label": ids_to_labels[bounding_box_annotation["category_id"]],
+                "bbox": bbox,
+            }
+        )
+
+    return processed_bounding_box_annotations, labels_to_ids
+
+
+def clean_object_name(object_name):
+    input_words = object_name.lower().split(" ")
+    cleaned_object_name = " ".join(
+        [word.replace("\n", "") for word in input_words if word.replace("\n", "") not in STOP_WORDS]
+    )
+
+    return cleaned_object_name
+
+
+def clean_labels(predicted_objects, ground_truth_objects):
+    cleaned_predicted_objects = sorted(
+        [clean_object_name(object_name) for object_name in predicted_objects.split(", ")]
+    )
+    cleaned_ground_truth_objects = sorted(
+        [clean_object_name(object_name) for object_name in ground_truth_objects]
+    )
+
+    return cleaned_predicted_objects, cleaned_ground_truth_objects
+
+
+def store_results(micro_f1, results_values, prompt_type, observations):
+    results_file_name = f"{RESULTS_PATH}prompting_results.json"
+
+    try:
+        with open(results_file_name, "r") as file:
+            all_results = json.load(file)
+    except:
+        all_results = None
+
+    results = {
+        "prompt_type": prompt_type,
+        "observations": observations,
+        "micro_f1": micro_f1,
+        "results": results_values,
+    }
+
+    if all_results is None:
+        all_results = [results]
+    else:
+        all_results.append(results)
+
+    with open(results_file_name, "w") as file:
+        json.dump(all_results, file, indent=4)
