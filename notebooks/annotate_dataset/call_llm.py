@@ -1,9 +1,11 @@
 import io
 import os
+import copy
 import json
 import time
 
 from google import genai
+from pydantic import BaseModel
 from google.genai import types
 
 from annotate_paintings_utils import load_image
@@ -42,11 +44,17 @@ def image_to_bytes(image):
 def get_prompt(examples, image, description, prompt_type):
     if prompt_type == "basic":
         return get_basic_prompt(examples, image, description)
+
+    elif prompt_type == "basic_with_spans":
+        return get_basic_with_spans_prompt(examples, image, description)
     else:
         raise "Unknown prompt type"
 
 
 def get_basic_prompt(examples, image, description):
+    class Annotation(BaseModel):
+        object_name: str
+
     prompt_parts = []
     prompt_parts.append(
         types.Content(role="user", parts=[types.Part.from_text(text="\nHere are some examples:")])
@@ -55,7 +63,6 @@ def get_basic_prompt(examples, image, description):
     for example in examples:
         example_painting_id = example["painting_id"]
         example_description = example["description"]
-        example_detected_objects = ", ".join(example["object_name"])
         example_image = load_image(example_painting_id)
 
         prompt_parts.append(
@@ -69,10 +76,18 @@ def get_basic_prompt(examples, image, description):
                 ],
             )
         )
+
+        example_detected_objects = json.dumps(
+            [
+                Annotation(object_name=object_name).__dict__
+                for object_name in example["object_name"]
+            ],
+        )
+
         prompt_parts.append(
             types.Content(
                 role="model",
-                parts=[types.Part.from_text(text=f"Detected objects: {example_detected_objects}")],
+                parts=[types.Part.from_text(text=f"{example_detected_objects}")],
             )
         )
         prompt_parts.append(types.Content(role="user", parts=[types.Part.from_text(text="---")]))
@@ -83,26 +98,94 @@ def get_basic_prompt(examples, image, description):
             parts=[
                 types.Part.from_bytes(mime_type="image/png", data=image_to_bytes(image)),
                 types.Part.from_text(
-                    text=f'Description: """{description}"""\n\nList separated by comma of **ONLY** the objects (lowercased) described in the given painting that also appear in the textual description.'
+                    text=f'Description: """{description}"""\n\n'
+                    + "Return **ONLY** the objects (lowercased) described in the given painting that also appear in the textual description."
                 ),
             ],
         )
     )
 
-    system_prompt_text = """You are an expert in art who can identify objects present in both a painting and its textual description."""
+    system_prompt_text = (
+        "You are an expert in art who can identify objects present in both a painting and its textual description."
+        + "After identifying them, you return the objects in a JSON format following the provided template."
+    )
 
-    return prompt_parts, system_prompt_text
+    return prompt_parts, system_prompt_text, Annotation
+
+
+def get_basic_with_spans_prompt(examples, image, description):
+    class Annotation(BaseModel):
+        object_name: str
+        description_spans: list[str]
+
+    prompt_parts = []
+    prompt_parts.append(
+        types.Content(role="user", parts=[types.Part.from_text(text="\nHere are some examples:")])
+    )
+
+    for example in examples:
+        example_painting_id = example["painting_id"]
+        example_description = example["description"]
+        example_image = load_image(example_painting_id)
+
+        prompt_parts.append(
+            types.Content(
+                role="user",
+                parts=[
+                    types.Part.from_bytes(
+                        mime_type="image/png", data=image_to_bytes(example_image)
+                    ),
+                    types.Part.from_text(text=f'Description: """{example_description}"""'),
+                ],
+            )
+        )
+
+        example_detected_objects = json.dumps(
+            [
+                Annotation(object_name=object_name, description_spans=description_spans).__dict__
+                for object_name, description_spans in zip(
+                    example["object_name"], example["description_spans"]
+                )
+            ],
+        )
+
+        prompt_parts.append(
+            types.Content(
+                role="model",
+                parts=[types.Part.from_text(text=f"{example_detected_objects}")],
+            )
+        )
+        prompt_parts.append(types.Content(role="user", parts=[types.Part.from_text(text="---")]))
+
+    prompt_parts.append(
+        types.Content(
+            role="user",
+            parts=[
+                types.Part.from_bytes(mime_type="image/png", data=image_to_bytes(image)),
+                types.Part.from_text(
+                    text=f'Description: """{description}"""\n\nReturn **ONLY** the objects (lowercased) described in the given painting that also appear in the textual description.'
+                ),
+            ],
+        )
+    )
+
+    system_prompt_text = """You are an expert in art who can identify objects present in both a painting and its textual description. After identifying them, you return the objects in a JSON format following the provided template."""
+
+    return prompt_parts, system_prompt_text, Annotation
 
 
 def generate(client, examples, image, description, prompt_type, model_name, verbose):
-    prompt_parts, system_prompt_text = get_prompt(examples, image, description, prompt_type)
+    prompt_parts, system_prompt_text, format_class = get_prompt(
+        examples, image, copy.deepcopy(description), prompt_type
+    )
 
     generate_content_config = types.GenerateContentConfig(
         temperature=0.0,
-        response_mime_type="text/plain",
+        response_mime_type="application/json",
         system_instruction=[
             types.Part.from_text(text=system_prompt_text),
         ],
+        response_schema=list[format_class],
     )
 
     called = False
@@ -119,7 +202,7 @@ def generate(client, examples, image, description, prompt_type, model_name, verb
             print("Try again...")
             time.sleep(5)
 
-    output = response.text
+    output = response.parsed
     prompt_tokens_count = response.usage_metadata.prompt_token_count
     output_tokens_count = response.usage_metadata.candidates_token_count
     total_token_count = prompt_tokens_count + output_tokens_count

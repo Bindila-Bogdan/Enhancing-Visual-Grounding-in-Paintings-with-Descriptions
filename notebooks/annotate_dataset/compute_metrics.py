@@ -1,3 +1,5 @@
+import sys
+import copy
 from pprint import pprint
 from difflib import SequenceMatcher
 
@@ -12,17 +14,20 @@ from annotate_paintings_utils import clean_object_name
 
 # compute the detection quality of described objects
 def compute_f1(predictions, ground_truth, tp_fp_fn):
-    for prediction in predictions:
-        if prediction in ground_truth:
+    predictions_copy = copy.deepcopy(predictions)
+    ground_truth_copy = copy.deepcopy(ground_truth)
+
+    for prediction in predictions_copy:
+        if prediction in ground_truth_copy:
             tp_fp_fn[0] += 1
-            ground_truth.remove(prediction)
+            ground_truth_copy.remove(prediction)
         else:
             tp_fp_fn[1] += 1
 
-    tp_fp_fn[2] = len(ground_truth)
+    tp_fp_fn[2] = len(ground_truth_copy)
 
 
-def compute_micro_f1(tp_fp_fn, verbose):
+def compute_micro_f1(tp_fp_fn, name, verbose):
     if tp_fp_fn[0] + tp_fp_fn[1] == 0:
         precision = 0
     else:
@@ -41,7 +46,7 @@ def compute_micro_f1(tp_fp_fn, verbose):
     micro_f1 = round(micro_f1, 2)
 
     if verbose:
-        print(f"Micro F1: {micro_f1}")
+        print(f"Micro F1 for extracting {name}: {micro_f1}")
 
     return micro_f1
 
@@ -93,11 +98,15 @@ def assess_span_extraction_quality(ground_truth_span, extracted_span):
     return deletion_pecentage, false_positive_percentage, coverage_percentage
 
 
+def compute_levenshtein_distance(ground_truth_span, extracted_span):
+    return Levenshtein.distance(ground_truth_span, extracted_span)
+
+
 def compare_spans(ground_truth_span, extracted_span, model, verbose):
     similarity = float(
         model.similarity(model.encode([ground_truth_span]), model.encode([extracted_span]))[0][0]
     )
-    levenshtein_distance = Levenshtein.distance(ground_truth_span, extracted_span)
+    levenshtein_distance = compute_levenshtein_distance(ground_truth_span, extracted_span)
     deletion_pecentage, false_positive_percentage, coverage_percentage = (
         assess_span_extraction_quality(ground_truth_span, extracted_span)
     )
@@ -116,9 +125,49 @@ def compare_spans(ground_truth_span, extracted_span, model, verbose):
     return span_extraction_metrics
 
 
+def compute_spans_quality(
+    ground_truth_spans, predicted_spans, span_similarity_metrics, sentence_similarity_model, verbose
+):
+    for object_name in predicted_spans.keys():
+        if object_name in ground_truth_spans.keys():
+            ground_truth_object_spans = sorted(ground_truth_spans[object_name])
+            extracted_object_spans = sorted(predicted_spans[object_name])
+
+            for extracted_object_span in extracted_object_spans:
+
+                min_levenshtein_dist = sys.maxsize
+                most_similar_ground_truth_span = None
+
+                for ground_truth_object_span in ground_truth_object_spans:
+
+                    levenshtein_dist = compute_levenshtein_distance(
+                        ground_truth_object_span, extracted_object_span
+                    )
+
+                    if min_levenshtein_dist > levenshtein_dist:
+                        min_levenshtein_dist = levenshtein_dist
+                        most_similar_ground_truth_span = ground_truth_object_span
+
+                similarity_metrics = compare_spans(
+                    most_similar_ground_truth_span,
+                    extracted_object_span,
+                    sentence_similarity_model,
+                    verbose,
+                )
+
+                for metric, value in similarity_metrics.items():
+                    span_similarity_metrics[metric].append(value)
+
+
 # compute the grounding quality of the linguistic expressions or nouns
 def get_bounding_boxes(
-    labels_scores_boxes, labels_to_ids, ground_truth_bboxes, painting_id, device
+    labels_scores_boxes,
+    labels_to_ids,
+    ground_truth_bboxes,
+    painting_id,
+    all_predicted_bboxes,
+    all_ground_truth_bboxes,
+    device,
 ):
     # treat the case when the predicted class is unknown
     predicted_bboxes = {
@@ -161,7 +210,8 @@ def get_bounding_boxes(
             "labels": torch.empty((0,), dtype=torch.int64).to(device),
         }
 
-    return predicted_bboxes, target_bboxes
+    all_predicted_bboxes.append(predicted_bboxes)
+    all_ground_truth_bboxes.append(target_bboxes)
 
 
 def compute_mean_average_precision(predictions, targets, device, verbose):
@@ -170,8 +220,8 @@ def compute_mean_average_precision(predictions, targets, device, verbose):
     metric.update(predictions, targets)
     metrics = metric.compute()
 
-    map_50 = metrics["map_50"]
-    map_50_95 = metrics["map"]
+    map_50 = float(metrics["map_50"])
+    map_50_95 = float(metrics["map"])
 
     if verbose:
         print(f"mAP@50: {map_50}")

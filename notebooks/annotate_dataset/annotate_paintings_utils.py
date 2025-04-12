@@ -1,3 +1,4 @@
+import copy
 import json
 
 import polars as pl
@@ -100,15 +101,52 @@ def clean_object_name(object_name):
     return cleaned_object_name
 
 
-def clean_labels(predicted_objects, ground_truth_objects):
-    cleaned_predicted_objects = sorted(
-        [clean_object_name(object_name) for object_name in predicted_objects.split(", ")]
+def process_objects(llm_output, painting, all_predicted_objects, all_ground_truth_objects, verbose):
+    predicted_objects = sorted(
+        [
+            clean_object_name(object_name)
+            for object_name in [annotation.object_name for annotation in llm_output]
+        ]
     )
-    cleaned_ground_truth_objects = sorted(
-        [clean_object_name(object_name) for object_name in ground_truth_objects]
+    all_predicted_objects.append(predicted_objects)
+
+    ground_truth_objects = sorted(
+        [clean_object_name(object_name) for object_name in copy.deepcopy(painting["object_name"])]
+    )
+    all_ground_truth_objects.append(ground_truth_objects)
+
+    if verbose:
+        print(predicted_objects, ground_truth_objects)
+
+    return predicted_objects, ground_truth_objects
+
+
+def process_spans(llm_output, painting):
+    predicted_spans_per_object = {
+        clean_object_name(annotation.object_name): annotation.description_spans
+        for annotation in llm_output
+    }
+    ground_truth_spans_per_object = dict(
+        zip(
+            [clean_object_name(object_name) for object_name in painting["object_name"]],
+            painting["description_spans"],
+        )
     )
 
-    return cleaned_predicted_objects, cleaned_ground_truth_objects
+    predicted_spans = []
+    for annotation in llm_output:
+        predicted_spans.extend(annotation.description_spans)
+
+    ground_truth_spans = []
+    for spans in painting["description_spans"]:
+        ground_truth_spans.extend(spans)
+
+    return (
+        predicted_spans_per_object,
+        ground_truth_spans_per_object,
+        predicted_spans,
+        ground_truth_spans,
+    )
 
 
 def store_results(micro_f1, results_values, prompt_type, observations):

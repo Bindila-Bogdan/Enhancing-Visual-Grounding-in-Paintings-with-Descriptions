@@ -75,6 +75,6 @@ def detect_objects(
         for label, score, coords in labels_scores_boxes:
             print(label, float(score), [float(coord) for coord in coords])
 
-    display_annotated_image(image, labels_scores_boxes)
+        display_annotated_image(image, labels_scores_boxes)
 
     return labels_scores_boxes, results
