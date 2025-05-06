@@ -34,7 +34,7 @@ def load_data():
             annotations.filter(pl.col("painting_id").is_in(FEW_SHOT_EXAMPLES_IDS))
             .group_by("painting_id")
             .agg(pl.col("*"))
-            .select("painting_id", "object_name", "description_spans")
+            .select("painting_id", "object_name", "description_spans", "object_description")
         ).join(few_shots_descriptions, on="painting_id")
     ).to_dicts()
 

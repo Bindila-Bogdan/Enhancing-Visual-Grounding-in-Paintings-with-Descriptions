@@ -47,6 +47,10 @@ def get_prompt(examples, image, description, prompt_type):
 
     elif prompt_type == "basic_with_spans":
         return get_basic_with_spans_prompt(examples, image, description)
+
+    elif prompt_type == "basic_complete":
+        return get_basic_complete(examples, image, description)
+
     else:
         raise "Unknown prompt type"
 
@@ -162,14 +166,91 @@ def get_basic_with_spans_prompt(examples, image, description):
             role="user",
             parts=[
                 types.Part.from_bytes(mime_type="image/png", data=image_to_bytes(image)),
-                types.Part.from_text(
-                    text=f'Description: """{description}"""\n\nReturn **ONLY** the objects (lowercased) described in the given painting that also appear in the textual description.'
-                ),
+                types.Part.from_text(text=f'Description: """{description}"""'),
             ],
         )
     )
 
-    system_prompt_text = """You are an expert in art who can identify objects present in both a painting and its textual description. After identifying them, you return the objects in a JSON format following the provided template."""
+    system_prompt_text = (
+        "You are an expert in art who can identify objects present in both a painting and its textual description."
+        + "After identifying them, you return the objects together with their description spans extracted from the painting description in a JSON format following the provided template."
+    )
+
+    return prompt_parts, system_prompt_text, Annotation
+
+
+def get_basic_complete(examples, image, description):
+    class Annotation(BaseModel):
+        object_name: str
+        description_spans: list[str]
+        object_description: str
+
+    prompt_parts = []
+    prompt_parts.append(
+        types.Content(role="user", parts=[types.Part.from_text(text="\nHere are some examples:")])
+    )
+
+    for example in examples:
+        example_painting_id = example["painting_id"]
+        example_description = example["description"]
+        example_image = load_image(example_painting_id)
+
+        prompt_parts.append(
+            types.Content(
+                role="user",
+                parts=[
+                    types.Part.from_bytes(
+                        mime_type="image/png", data=image_to_bytes(example_image)
+                    ),
+                    types.Part.from_text(text=f'Description: """{example_description}"""'),
+                ],
+            )
+        )
+
+        example_detected_objects = json.dumps(
+            [
+                Annotation(
+                    object_name=object_name,
+                    description_spans=description_spans,
+                    object_description=object_description,
+                ).__dict__
+                for object_name, description_spans, object_description in zip(
+                    example["object_name"],
+                    example["description_spans"],
+                    example["object_description"],
+                )
+            ],
+        )
+
+        prompt_parts.append(
+            types.Content(
+                role="model",
+                parts=[types.Part.from_text(text=f"{example_detected_objects}")],
+            )
+        )
+        prompt_parts.append(types.Content(role="user", parts=[types.Part.from_text(text="---")]))
+
+    prompt_parts.append(
+        types.Content(
+            role="user",
+            parts=[
+                types.Part.from_bytes(mime_type="image/png", data=image_to_bytes(image)),
+                types.Part.from_text(text=f'Description: """{description}"""'),
+            ],
+        )
+    )
+
+    system_prompt_text = (
+        "You are an expert in art who can identify objects present in both a painting and its textual description."
+        + "After identifying them, extact for each object the description spans from the painting descriptions. "
+        + "Finally, create a single, coherent description paragraph that starts with the object name of the object based solely on the provided information."
+        + "In this description, you have to included all the provided details from the description spans"
+        + """**Constraints:**
+Do not add any details about the object that are not explicitly mentioned in the provided description spans.
+Do not infer the object's material, purpose, or origin unless it is directly stated in the text.
+Focus on combining and rephrasing the given information, not on creating new information.
+Do not assume anything about the object's cultural significance or symbolism unless the provided spans mention it."""
+    )
 
     return prompt_parts, system_prompt_text, Annotation
 

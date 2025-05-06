@@ -62,7 +62,7 @@
         "description_spans": [
             "Dante is wearing a red cloak and red cap above a white bonnet"
         ],
-        "object_description": "",
+        "object_description": "The red cloak is worn by Dante, who also has a red cap above a white bonnet.",
         "coarse_object_class": "",
         "bounding_box": []
     },
@@ -95,7 +95,7 @@
         "description_spans": [
             "the first to show the poet with a laurel wreath on his head."
         ],
-        "object_description": "",
+        "object_description": "The laurel wreath is the first to show the poet with a laurel wreath on his head.",
         "coarse_object_class": "",
         "bounding_box": []
     },
@@ -106,7 +106,7 @@
         "description_spans": [
             "playful puppy may well have portrayed actual animals owned by the patron"
         ],
-        "object_description": "",
+        "object_description": "The playful puppy may well have portrayed actual animals owned by the patron.",
         "coarse_object_class": "",
         "bounding_box": []
     },
@@ -117,7 +117,7 @@
         "description_spans": [
             "glass ewer with aloja, an aromatic drink popular at the time"
         ],
-        "object_description": "",
+        "object_description": "The glass ewer is presented with aloja, an aromatic drink popular at the time.",
         "coarse_object_class": "",
         "bounding_box": []
     },
@@ -131,7 +131,7 @@
             "They doubtlessly evoke real arrangements of flowers that formed a part of the rich decor of Soire's house",
             "these were not painted from life and are artificial images in representing blooms in such perfect condition and in bringing together flowers that bloom at different times of the year."
         ],
-        "object_description": "",
+        "object_description": "The glass vases with floral arrangements represent a type of luxury decorative object that suited the status of Van der Hamen’s patron. The flowers they contain stand out for the copiousness and variety of their blooms. They doubtlessly evoke real arrangements of flowers that formed a part of the rich decor of Soire's house. However, these were not painted from life and are artificial images in representing blooms in such perfect condition and in bringing together flowers that bloom at different times of the year.",
         "coarse_object_class": "",
         "bounding_box": []
     },
@@ -164,7 +164,7 @@
         "description_spans": [
             "separate the figure from the landscape, attributing them thus to different hands (Bellini and Basaiti, Bellini and workshop), to that of a different interpretation of the date or to the later completition of the painting most of which was executed a long time before."
         ],
-        "object_description": "",
+        "object_description": "The figure is separated from the landscape, which is attributed to different hands (Bellini and Basaiti, Bellini and workshop), to a different interpretation of the date, or to the later completion of the painting, most of which was executed a long time before.",
         "coarse_object_class": "",
         "bounding_box": []
     },
@@ -176,7 +176,7 @@
             "The landscape is laden with the usual symbols and religious metaphores which Bellini was very careful about (the fig-tree, the withered tree, the ivy, the layered, agglomerated, crumbling rocks, etc.)",
             "very clear landscape view all these elements, affectionately and lyrically portrayed one by one, have not yet found the sublime harmony that was typical of the backgrounds which Bellini"
         ],
-        "object_description": "",
+        "object_description": "The landscape is laden with the usual symbols and religious metaphores which Bellini was very careful about (the fig-tree, the withered tree, the ivy, the layered, agglomerated, crumbling rocks, etc.). It is a very clear landscape view where all these elements, affectionately and lyrically portrayed one by one, have not yet found the sublime harmony that was typical of the backgrounds which Bellini.",
         "coarse_object_class": "",
         "bounding_box": []
     },
@@ -220,18 +220,7 @@
         "description_spans": [
             "the layered, agglomerated, crumbling rocks"
         ],
-        "object_description": "",
-        "coarse_object_class": "",
-        "bounding_box": []
-    },
-    {
-        "painting_id": 3344,
-        "object_name": "",
-        "linguistic_expression": "",
-        "description_spans": [
-            ""
-        ],
-        "object_description": "",
+        "object_description": "Rocks, the layered, agglomerated, crumbling rocks.",
         "coarse_object_class": "",
         "bounding_box": []
     },
@@ -322,7 +311,7 @@
             "Paris chose Venus and embarked for Sparta to abduct Helen and bring her to Troy, thus instigating the Trojan War.",
             "Paris as a hunter"
         ],
-        "object_description": "",
+        "object_description": "Paris, dressed in a contemporary suit of armor, is also depicted as a hunter. Paris chose Venus and embarked for Sparta to abduct Helen and bring her to Troy, thus instigating the Trojan War.",
         "coarse_object_class": "",
         "bounding_box": []
     },
@@ -339,7 +328,7 @@
             "the vita contemplativa, represented by Minerva, the vita activa, represented by Juno, or the vita voluptaria, represented by Venus.",
             "A challenge to the humanist interpretation was offered by Hinz (1994), who argued that for such an interpretation to be valid, the goddesses would have to be clearly identifiable in order to link them with the alternative ways of life. Instead, he regarded the similarity of the goddeses as an attempt to \"provoke a play of ideas and meanings\"—and perhaps to introduce an element of ambiguity—which has little to do with the rigorous humanism found in images by contemporary artists"
         ],
-        "object_description": "",
+        "object_description": "The three goddesses, Minerva, Venus, and Juno, all claimed ownership of the prize, and Jupiter decreed that their dispute could be settled only by Paris, son of the king of Troy. After Mercury brought the goddesses to the Trojan prince, each offered him a bribe: Juno, power; Minerva, all human knowledge; and Venus, the love of Helen of Troy, wife of the Spartan king, Menelaus, and the world's most beautiful woman. The goddesses present themselves naked, and the figures depicted here are only slightly differentiated, perhaps to emphasize the difficulty of Paris's decision, though their faces appear too generalized for such an assertion. They represent the vita contemplativa, represented by Minerva, the vita activa, represented by Juno, or the vita voluptaria, represented by Venus. Hinz (1994) offered a challenge to the humanist interpretation, arguing that for such an interpretation to be valid, the goddesses would have to be clearly identifiable in order to link them with the alternative ways of life. Instead, he regarded the similarity of the goddeses as an attempt to \"provoke a play of ideas and meanings\"—and perhaps to introduce an element of ambiguity—which has little to do with the rigorous humanism found in images by contemporary artists.",
         "coarse_object_class": "",
         "bounding_box": []
     },
@@ -350,7 +339,7 @@
         "description_spans": [
             "Cupid aims his arrow at Venus, signaling Paris’s decision in favor of the goddess of love"
         ],
-        "object_description": "",
+        "object_description": "Cupid aims his arrow at Venus, signaling Paris’s decision in favor of the goddess of love.",
         "coarse_object_class": "",
         "bounding_box": []
     },
@@ -361,7 +350,7 @@
         "description_spans": [
             "Which is Juno and which is Minerva is unclear, but the central figure must be Venus. It is she who is the most suggestively alluring, and it is also she who points to Cupid, who in turn prepares to shoot his arrow at her."
         ],
-        "object_description": "",
+        "object_description": "Venus is the central figure, and it is she who is the most suggestively alluring. It is also she who points to Cupid, who in turn prepares to shoot his arrow at her. Which is Juno and which is Minerva is unclear.",
         "coarse_object_class": "",
         "bounding_box": []
     },
@@ -372,7 +361,7 @@
         "description_spans": [
             "Mercury stands nearby holding the coveted prize—a golden apple (here transformed into a glass orb)"
         ],
-        "object_description": "",
+        "object_description": "Mercury stands nearby holding the coveted prize—a golden apple (here transformed into a glass orb).",
         "coarse_object_class": "",
         "bounding_box": []
     },
@@ -561,7 +550,7 @@
         "description_spans": [
             "his friend, Claude-Émile Schuffenecker (1851-1934), a painter, art teacher and art collector. He painted here the family of his friend"
         ],
-        "object_description": "",
+        "object_description": "Family of his friend, Claude-Émile Schuffenecker (1851-1934), a painter, art teacher and art collector, who painted here the family of his friend.",
         "coarse_object_class": "",
         "bounding_box": []
     },
@@ -575,7 +564,7 @@
             "just as the bird \"watches itself in a glass, waiting for the image to move so as to know which is really alive, itself or the image\"",
             "painted the bird from an Egyptian carving. Thus the \"real\" hawk is immobile and the flying hawk in the mirror is an illusion. The carving from which the hawk was painted now adorns the artist's grave."
         ],
-        "object_description": "",
+        "object_description": "The hawk contemplating itself in a mirror, represents the material world, just as the bird \"watches itself in a glass, waiting for the image to move so as to know which is really alive, itself or the image\". The artist painted the bird from an Egyptian carving, thus the \"real\" hawk is immobile and the flying hawk in the mirror is an illusion. The carving from which the hawk was painted now adorns the artist's grave.",
         "coarse_object_class": "",
         "bounding_box": []
     },
@@ -586,16 +575,16 @@
         "description_spans": [
             "spheres, the soul"
         ],
-        "object_description": "",
+        "object_description": "Spheres, the soul.",
         "coarse_object_class": "",
         "bounding_box": []
     },
     {
         "painting_id": 2484,
-        "object_name": "spheres",
+        "object_name": "mirror",
         "linguistic_expression": "",
         "description_spans": [
-            "mirror"
+            ""
         ],
         "object_description": "",
         "coarse_object_class": "",

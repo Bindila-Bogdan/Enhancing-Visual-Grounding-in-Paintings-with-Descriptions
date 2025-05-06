@@ -173,7 +173,13 @@ config/keys.json
 
 data/annotations/*.png
 data/raw/filtered_paintings/*.png
+data/raw/filtered_paintings/*.csv
 data/raw/met_paintings/*.png
+data/raw/met_paintings/*.csv
 data/raw/wga_paintings/*.png
+data/raw/wga_paintings/*.csv
+data/raw/wga_paintings/*.xlsx
+data/raw/wikiart_paintings/*.png
+data/raw/wikiart_paintings/*.csv
 data/raw/wikiart_paintings/*.png
 data/raw/wikiart_paintings/wikiart_data/*.json
