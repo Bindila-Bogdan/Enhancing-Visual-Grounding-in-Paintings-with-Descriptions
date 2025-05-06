@@ -149,7 +149,16 @@ def process_spans(llm_output, painting):
     )
 
 
-def store_results(micro_f1, results_values, prompt_type, observations):
+def get_object_descriptions(llm_output, all_predicted_object_descriptions):
+    predicted_object_descriptions = []
+
+    for object_data in llm_output:
+        predicted_object_descriptions.append(object_data.__dict__["object_description"])
+
+    all_predicted_object_descriptions.append(predicted_object_descriptions)
+
+
+def store_results(prompt_type, observations, results_values, metrics):
     results_file_name = f"{RESULTS_PATH}prompting_results.json"
 
     try:
@@ -161,7 +170,14 @@ def store_results(micro_f1, results_values, prompt_type, observations):
     results = {
         "prompt_type": prompt_type,
         "observations": observations,
-        "micro_f1": micro_f1,
+        "total_token_count": metrics["total_token_count"],
+        "unprocessed_painting_ids": metrics["unprocessed_painting_ids"],
+        "micro_f1_objects": metrics["micro_f1_objects"],
+        "micro_f1_spans": metrics["micro_f1_spans"],
+        "span_similarity_metrics": metrics["span_similarity_metrics"],
+        "object_description_metrics": metrics["object_description_metrics"],
+        "map_50": metrics["map_50"],
+        "map_50_95": metrics["map_50_95"],
         "results": results_values,
     }
 

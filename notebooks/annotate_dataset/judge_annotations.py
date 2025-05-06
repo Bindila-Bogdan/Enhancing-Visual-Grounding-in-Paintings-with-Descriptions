@@ -67,24 +67,24 @@ Your task is to evaluate the generated description based on the following criter
         raise Exception("Error while judging the object description")
 
 
-def judge_objects_descriptions(client, model_name, llm_output):
-    judge_outputs = []
-
+def judge_objects_descriptions(client, model_name, llm_output, object_desc_metrics):
     for object_data in llm_output:
         description_spans = object_data.__dict__["description_spans"]
 
         if len(description_spans) == 0:
-            judge_outputs.append({})
             continue
 
         object_name = object_data.__dict__["object_name"]
         formatted_description_spans = "- " + "\n- ".join(description_spans)
         object_description = object_data.__dict__["object_description"]
 
-        judge_outputs.append(
-            judge_object_description(
-                client, model_name, object_name, formatted_description_spans, object_description
-            )
+        desc_judgements = judge_object_description(
+            client, model_name, object_name, formatted_description_spans, object_description
         )
 
-    return judge_outputs
+        object_desc_metrics["factual_accuracy"].append(desc_judgements["factual_accuracy"])
+        object_desc_metrics["coherence"].append(desc_judgements["coherence"])
+        object_desc_metrics["grounding_potential"].append(desc_judgements["grounding_potential"])
+        object_desc_metrics["completeness"].append(desc_judgements["completeness"])
+
+    return object_desc_metrics

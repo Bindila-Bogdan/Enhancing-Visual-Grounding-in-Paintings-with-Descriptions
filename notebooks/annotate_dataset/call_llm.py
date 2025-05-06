@@ -278,12 +278,12 @@ def generate(client, examples, image, description, prompt_type, model_name, verb
                 contents=prompt_parts,
                 config=generate_content_config,
             )
+            output = response.parsed
             called = True
         except:
             print("Try again...")
             time.sleep(5)
 
-    output = response.parsed
     prompt_tokens_count = response.usage_metadata.prompt_token_count
     output_tokens_count = response.usage_metadata.candidates_token_count
     total_token_count = prompt_tokens_count + output_tokens_count
