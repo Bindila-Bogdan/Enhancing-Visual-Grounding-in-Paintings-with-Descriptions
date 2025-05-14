@@ -1,0 +1,443 @@
+[
+    {
+        "prompt_type": "basic",
+        "observations": "first trial with few-shot learning",
+        "micro_f1": 0.49,
+        "results": [
+            [
+                91,
+                [
+                    "breton costumes"
+                ],
+                [
+                    "breton costumes"
+                ]
+            ],
+            [
+                517,
+                [
+                    "mirror",
+                    "self-portraits"
+                ],
+                [
+                    ""
+                ]
+            ],
+            [
+                518,
+                [
+                    "shoes"
+                ],
+                [
+                    "red-tile floor",
+                    "shoes"
+                ]
+            ],
+            [
+                549,
+                [
+                    "alc\u00e1ntara bridge",
+                    "alc\u00e1zar",
+                    "castle san servando",
+                    "cathedral",
+                    "monastery",
+                    "tagus river",
+                    "toledo"
+                ],
+                [
+                    "cathedral",
+                    "city",
+                    "meadows"
+                ]
+            ],
+            [
+                723,
+                [
+                    "coin",
+                    "doll",
+                    "letter"
+                ],
+                [
+                    "man enters",
+                    "pretty girl dressed pink white",
+                    "reclining mannequin\u2019s head table",
+                    "young girl"
+                ]
+            ],
+            [
+                1006,
+                [
+                    "alexander great",
+                    "aristotle",
+                    "bust",
+                    "gold chain",
+                    "gold medallion",
+                    "homer"
+                ],
+                [
+                    "aristotle",
+                    "bust homer",
+                    "gold medallion"
+                ]
+            ],
+            [
+                1056,
+                [
+                    "basket",
+                    "child",
+                    "cotto floor",
+                    "grapes",
+                    "holy family",
+                    "peaches",
+                    "pillow",
+                    "rose",
+                    "saint catherine",
+                    "saint joseph",
+                    "virgin"
+                ],
+                [
+                    "basket pillow",
+                    "child knees",
+                    "holy family right painting",
+                    "kneeling young woman",
+                    "old woman",
+                    "saint joseph standing",
+                    "virgin sitting next"
+                ]
+            ],
+            [
+                1466,
+                [
+                    "angels",
+                    "book",
+                    "crucifix",
+                    "skull"
+                ],
+                [
+                    "angels",
+                    "book",
+                    "crucifix",
+                    "mary magdalen",
+                    "skull"
+                ]
+            ],
+            [
+                1667,
+                [
+                    "hat"
+                ],
+                [
+                    "model"
+                ]
+            ],
+            [
+                1722,
+                [
+                    "girl",
+                    "wave"
+                ],
+                [
+                    "girl drowning"
+                ]
+            ],
+            [
+                1753,
+                [
+                    "cornwall"
+                ],
+                [
+                    "boat"
+                ]
+            ],
+            [
+                1799,
+                [
+                    "ruins"
+                ],
+                [
+                    "ruins"
+                ]
+            ],
+            [
+                1823,
+                [
+                    "french firing squad",
+                    "man"
+                ],
+                [
+                    "firing squad",
+                    "man illuminated white",
+                    "slain companions"
+                ]
+            ],
+            [
+                1966,
+                [
+                    "buildings",
+                    "water"
+                ],
+                [
+                    "buildings",
+                    "water"
+                ]
+            ],
+            [
+                2024,
+                [
+                    "churches",
+                    "cities",
+                    "mosques"
+                ],
+                [
+                    "mosques churches"
+                ]
+            ],
+            [
+                2225,
+                [
+                    "madonna"
+                ],
+                [
+                    "sexually mature woman"
+                ]
+            ],
+            [
+                2441,
+                [
+                    "skyline",
+                    "taxi cab"
+                ],
+                [
+                    "marshes",
+                    "skyline",
+                    "taxi cab"
+                ]
+            ],
+            [
+                2461,
+                [
+                    "camels",
+                    "well"
+                ],
+                [
+                    "girl",
+                    "old camel-driver",
+                    "two camels"
+                ]
+            ],
+            [
+                2549,
+                [
+                    "coins",
+                    "jewelry",
+                    "money",
+                    "perfume"
+                ],
+                [
+                    "dominant figure white",
+                    "jewelry placed directly underneath preece\u2019s dress",
+                    "male figures",
+                    "numerous gifts"
+                ]
+            ],
+            [
+                2613,
+                [
+                    "lutes"
+                ],
+                [
+                    "lutes"
+                ]
+            ],
+            [
+                2628,
+                [
+                    "ball gown",
+                    "dress",
+                    "floral patterns",
+                    "flowers",
+                    "necklace"
+                ],
+                [
+                    "dense vegetation",
+                    "subject"
+                ]
+            ],
+            [
+                2657,
+                [
+                    "mud"
+                ],
+                [
+                    "acrylic",
+                    "individual figure",
+                    "mud"
+                ]
+            ],
+            [
+                2702,
+                [
+                    "bread",
+                    "hands",
+                    "ticker tape machine"
+                ],
+                [
+                    "women dance",
+                    "worried stockbroker"
+                ]
+            ],
+            [
+                2737,
+                [
+                    "jesus",
+                    "lamb",
+                    "st anne",
+                    "virgin mary"
+                ],
+                [
+                    "infant",
+                    "lamb",
+                    "mountainous landscape",
+                    "st anne",
+                    "virgin mary"
+                ]
+            ],
+            [
+                3687,
+                [
+                    "book",
+                    "infant",
+                    "joseph",
+                    "reading glasses",
+                    "virgin"
+                ],
+                [
+                    "book",
+                    "glasses",
+                    "half-naked infant",
+                    "joseph",
+                    "virgin"
+                ]
+            ],
+            [
+                4416,
+                [
+                    "archers",
+                    "armour",
+                    "flags",
+                    "horses"
+                ],
+                [
+                    "archers seen upper right",
+                    "king"
+                ]
+            ],
+            [
+                5551,
+                [
+                    "bonnet",
+                    "dress",
+                    "shawl"
+                ],
+                [
+                    "black dress",
+                    "eldest son",
+                    "sitter",
+                    "white bonnet",
+                    "white lace shawl"
+                ]
+            ],
+            [
+                6660,
+                [
+                    "dining hall"
+                ],
+                [
+                    "dining hall",
+                    "old people"
+                ]
+            ],
+            [
+                8197,
+                [
+                    "satin dresses"
+                ],
+                [
+                    "hair",
+                    "powdery skin",
+                    "satin dresses",
+                    "shepherdess"
+                ]
+            ],
+            [
+                8316,
+                [
+                    "mirror venus"
+                ],
+                [
+                    "oneiric figures",
+                    "venus"
+                ]
+            ],
+            [
+                8344,
+                [
+                    "detected objects: flower paintings"
+                ],
+                [
+                    "charming flower"
+                ]
+            ],
+            [
+                9053,
+                [
+                    "amphitrite",
+                    "dolphins",
+                    "neptune",
+                    "nereids",
+                    "tritons"
+                ],
+                [
+                    "arch drapery",
+                    "dolphins",
+                    "neptune",
+                    "nereids",
+                    "tritons"
+                ]
+            ],
+            [
+                9821,
+                [
+                    "flag"
+                ],
+                [
+                    "flag"
+                ]
+            ],
+            [
+                11422,
+                [
+                    "landscape"
+                ],
+                [
+                    "landscape"
+                ]
+            ],
+            [
+                11593,
+                [
+                    "calypso",
+                    "island",
+                    "mentor",
+                    "telemachus",
+                    "white dress"
+                ],
+                [
+                    "mentor",
+                    "nymph calypso",
+                    "telemachus"
+                ]
+            ]
+        ]
+    }
+]
