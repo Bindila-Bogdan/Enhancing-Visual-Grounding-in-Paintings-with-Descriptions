@@ -8,7 +8,7 @@ import Levenshtein
 from sentence_transformers import SentenceTransformer
 from torchmetrics.detection import MeanAveragePrecision
 
-
+from config import *
 from annotate_paintings_utils import clean_object_name
 
 
@@ -27,7 +27,7 @@ def count_tp_fp_fn(predictions, ground_truth, tp_fp_fn):
     tp_fp_fn[2] = len(ground_truth_copy)
 
 
-def compute_micro_f1(tp_fp_fn, name, verbose):
+def compute_micro_f1(tp_fp_fn, name):
     if tp_fp_fn[0] + tp_fp_fn[1] == 0:
         precision = 0
     else:
@@ -45,15 +45,15 @@ def compute_micro_f1(tp_fp_fn, name, verbose):
 
     micro_f1 = round(micro_f1, 2)
 
-    if verbose:
+    if VERBOSE:
         print(f"Micro F1 for extracting {name}: {micro_f1}")
 
     return micro_f1
 
 
 # compute the description span extraction quality
-def get_sentence_similarity_model(model_name):
-    return SentenceTransformer(model_name)
+def get_sentence_similarity_model():
+    return SentenceTransformer(SENTENCE_SIMILARITY_MODEL)
 
 
 def assess_span_extraction_quality(ground_truth_span, extracted_span):
@@ -103,7 +103,7 @@ def compute_levenshtein_distance(ground_truth_span, extracted_span):
     return Levenshtein.distance(ground_truth_span, extracted_span)
 
 
-def compare_spans(ground_truth_span, extracted_span, model, verbose):
+def compare_spans(ground_truth_span, extracted_span, model):
     similarity = float(
         model.similarity(model.encode([ground_truth_span]), model.encode([extracted_span]))[0][0]
     )
@@ -120,14 +120,14 @@ def compare_spans(ground_truth_span, extracted_span, model, verbose):
         "coverage percentage": round(coverage_percentage, 4),
     }
 
-    if verbose:
+    if VERBOSE:
         pprint(span_extraction_metrics)
 
     return span_extraction_metrics
 
 
 def compute_spans_quality(
-    ground_truth_spans, predicted_spans, span_similarity_metrics, sentence_similarity_model, verbose
+    ground_truth_spans, predicted_spans, span_similarity_metrics, sentence_similarity_model
 ):
     for object_name in predicted_spans.keys():
         if object_name in ground_truth_spans.keys():
@@ -153,7 +153,6 @@ def compute_spans_quality(
                     most_similar_ground_truth_span,
                     extracted_object_span,
                     sentence_similarity_model,
-                    verbose,
                 )
 
                 for metric, value in similarity_metrics.items():
@@ -215,7 +214,7 @@ def get_bounding_boxes(
     all_ground_truth_bboxes.append(target_bboxes)
 
 
-def compute_mean_average_precision(predictions, targets, device, verbose):
+def compute_mean_average_precision(predictions, targets, device):
     metric = MeanAveragePrecision(box_format="xyxy", iou_type="bbox", class_metrics=True).to(device)
 
     metric.update(predictions, targets)
@@ -224,7 +223,7 @@ def compute_mean_average_precision(predictions, targets, device, verbose):
     map_50 = float(metrics["map_50"])
     map_50_95 = float(metrics["map"])
 
-    if verbose:
+    if VERBOSE:
         print(f"mAP@50: {map_50}")
         print(f"mAP@50-95: {map_50_95}")
 

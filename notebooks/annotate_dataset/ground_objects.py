@@ -7,12 +7,14 @@ from IPython.display import display
 from PIL import ImageDraw, ImageFont
 from transformers import AutoProcessor, AutoModelForZeroShotObjectDetection
 
+from config import *
+
 
 def get_device():
     return "cuda" if torch.cuda.is_available() else "cpu"
 
 
-def get_grounding_model(grounding_model_id, device, seed=42):
+def get_grounding_model(device, seed=42):
     # make Grounding DINO deterministic
     random.seed(seed)
     np.random.seed(seed)
@@ -24,8 +26,8 @@ def get_grounding_model(grounding_model_id, device, seed=42):
     torch.use_deterministic_algorithms(True, warn_only=True)
     os.environ["CUBLAS_WORKSPACE_CONFIG"] = ":16:8"
 
-    processor = AutoProcessor.from_pretrained(grounding_model_id)
-    model = AutoModelForZeroShotObjectDetection.from_pretrained(grounding_model_id).to(device)
+    processor = AutoProcessor.from_pretrained(GROUNDING_MODEL_ID)
+    model = AutoModelForZeroShotObjectDetection.from_pretrained(GROUNDING_MODEL_ID).to(device)
 
     return processor, model
 
@@ -45,7 +47,7 @@ def display_annotated_image(image, labels_scores_boxes):
 
 
 def detect_objects(
-    image, objects, processor, model, device, verbose, object_threshold=0.3, text_threshold=0.3
+    image, objects, processor, model, device, object_threshold=0.3, text_threshold=0.3
 ):
 
     text = ". ".join(objects) + "."
@@ -71,7 +73,7 @@ def detect_objects(
     box_coordinates = [list(coords) for coords in results[0]["boxes"].cpu().numpy()]
     labels_scores_boxes = sorted(list(zip(labels, scores, box_coordinates)), key=lambda x: x[1])
 
-    if verbose:
+    if VERBOSE:
         for label, score, coords in labels_scores_boxes:
             print(label, float(score), [float(coord) for coord in coords])
 

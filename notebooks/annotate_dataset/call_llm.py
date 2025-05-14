@@ -7,6 +7,7 @@ from google import genai
 from pydantic import BaseModel
 from google.genai import types
 
+from config import *
 from annotate_paintings_utils import load_image, image_to_bytes
 
 
@@ -180,18 +181,14 @@ def generate(
     description,
     additional_data,
     prompt_type,
-    model_name,
     feedback,
-    verbose,
 ):
 
-    print("input description")
     prompt_parts, system_prompt_text, format_class = get_prompt(
         examples, image, copy.deepcopy(description), additional_data, prompt_type
     )
 
     if feedback:
-        print("adding feedback")
         prompt_parts = feedback[0]
         prompt_parts.append(
             types.Content(
@@ -224,7 +221,7 @@ def generate(
     while not called or trials != 0:
         try:
             response = client.models.generate_content(
-                model=model_name,
+                model=GEMINI_MODEL,
                 contents=prompt_parts,
                 config=generate_content_config,
             )
@@ -235,7 +232,8 @@ def generate(
             total_token_count += prompt_tokens_count + output_tokens_count
 
             if output is None:
-                print("Output is None, try again...")
+                if VERBOSE:
+                    print("Output is None, try again...")
                 trials -= 1
             else:
                 break
@@ -243,15 +241,14 @@ def generate(
             called = True
 
         except:
-            print("Model is not available, try again...")
+            if VERBOSE:
+                print("Model is not available, try again...")
             time.sleep(5)
 
-    if verbose:
+    if VERBOSE:
         print(
             f"Prompt tokens count: {prompt_tokens_count}\nOutput tokens count: {output_tokens_count}"
         )
         print(f"Response:\n{output}\n")
-
-    print("generated response !!!", response.text)
 
     return output, total_token_count, prompt_parts, response.text

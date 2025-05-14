@@ -7,9 +7,8 @@ from pydantic import BaseModel
 
 from annotate_paintings_utils import *
 
-OBJECTS_RECALL_THRESHOLD = 0.2
-SPANS_RECALL_THRESHOLD = 0.2
-DESCRIPTION_METRIC_THRESHOLD = 1
+
+from config import *
 
 
 def get_judge_llm_client():
@@ -19,9 +18,9 @@ def get_judge_llm_client():
     return OpenAI(api_key=os.environ.get("OPENAI_API_KEY"))
 
 
-def call_judge(client, model_name, system_prompt, user_message, response_format, verbose):
+def call_judge(client, system_prompt, user_message, response_format):
     response = client.beta.chat.completions.parse(
-        model=model_name,
+        model=OPEN_AI_MODEL,
         seed=0,
         temperature=0,
         messages=[{"role": "system", "content": system_prompt}, user_message],
@@ -39,7 +38,7 @@ def call_judge(client, model_name, system_prompt, user_message, response_format,
     output_tokens_count = response.usage.completion_tokens
     total_token_count = prompt_tokens_count + output_tokens_count
 
-    if verbose:
+    if VERBOSE:
         print(
             f"Judge prompt tokens count: {prompt_tokens_count}\nJudge output tokens count: {output_tokens_count}"
         )
@@ -78,7 +77,7 @@ def get_object_extraction_fp_fn(extraction_evaluation, description, error_type):
     return spans, objects_with_spans
 
 
-def compute_metrics_judge_object_extraction(output, object_and_spans, description, verbose):
+def compute_metrics_judge_object_extraction(output, object_and_spans, description):
     fn_objects_no = len([obj for obj in output["false_negative_objects"] if obj in description])
     tp_objects_no = len(
         set(object_and_spans["object_names"]).difference(set(output["false_positive_objects"]))
@@ -116,7 +115,7 @@ def compute_metrics_judge_object_extraction(output, object_and_spans, descriptio
         "fp_spans_no": fp_spans_no,
     }
 
-    if verbose:
+    if VERBOSE:
         pprint(judge_object_extraction_metrics)
 
     return judge_object_extraction_metrics
@@ -132,24 +131,20 @@ def get_object_extraction_suggestions(description, output, metrics):
         )
 
         if len(fp_spans) > 0:
-            print("fp_spans", fp_spans)
             major_issues_found = True
             judge_suggestions += f"False positives spans (spans that were extracted but should have not been extracted, although the extracted object is correct):\n{fp_spans}\n"
 
         if len(fp_objects_with_spans) > 0:
-            print("fp_objects_with_spans", fp_objects_with_spans)
             major_issues_found = True
             judge_suggestions += f"False positives objects (objects and all their spans that were extracted but should have not been extracted):\n{fp_objects_with_spans}\n"
 
     fn_spans, fn_objects_with_spans = get_object_extraction_fp_fn(output, description, "negative")
 
     if metrics["objects_recall"] < OBJECTS_RECALL_THRESHOLD and len(fn_objects_with_spans) > 0:
-        print("fn_objects_with_spans", fn_objects_with_spans)
         major_issues_found = True
         judge_suggestions += f"False negative objects (objects together with their spans that were not extracted but should be considered):\n{fn_objects_with_spans}\n"
 
     if metrics["spans_recall"] < SPANS_RECALL_THRESHOLD and len(fn_spans) > 0:
-        print("fn_spans", fn_spans)
         major_issues_found = True
         judge_suggestions += f"False negative spans (spans that were not extracted, but should have been extracted):\n{fn_spans}\n"
 
@@ -165,9 +160,7 @@ def get_object_extraction_suggestions(description, output, metrics):
         return ""
 
 
-def judge_objects_extractions(
-    client, model_name, image, description, object_and_spans, verbose=False
-):
+def judge_objects_extractions(client, image, description, object_and_spans):
     class DescriptionObjectIssues(BaseModel):
         object_name: str
         explanation: str
@@ -232,19 +225,17 @@ def judge_objects_extractions(
     }
 
     output, total_token_count = call_judge(
-        client, model_name, system_prompt, user_message, ExtractionEvaluation, verbose
+        client, system_prompt, user_message, ExtractionEvaluation
     )
 
-    metrics = compute_metrics_judge_object_extraction(
-        output, object_and_spans, description, verbose
-    )
+    metrics = compute_metrics_judge_object_extraction(output, object_and_spans, description)
     judge_suggestions = get_object_extraction_suggestions(description, output, metrics)
 
     return judge_suggestions, metrics, total_token_count
 
 
 # judge object description
-def judge_object_description(client, model_name, object_and_spans, verbose):
+def judge_object_description(client, object_and_spans):
     class ScoreExplanation(BaseModel):
         score: int
         explanation: str
@@ -282,9 +273,7 @@ Your task is to evaluate each triplet by checking the generated description base
         user_prompt += f"""Object Name: {object_and_spans["object_names"][index]}\nOriginal Description Spans:\n{object_and_spans["descriptions_spans"][index]}\nGenerated Description: {object_and_spans["objects_description"][index]}"\n\n"""
 
     user_message = {"role": "user", "content": user_prompt}
-    output, total_token_count = call_judge(
-        client, model_name, system_prompt, user_message, DescriptionScore, verbose
-    )
+    output, total_token_count = call_judge(client, system_prompt, user_message, DescriptionScore)
 
     return output, total_token_count
 
@@ -303,24 +292,11 @@ Here are the findings and the things you have to improve:\n"""
 
     any_issues_found = False
 
-    print(object_and_spans_filtered["object_names"])
-    print(object_and_spans_filtered["descriptions_spans"])
-    print(object_and_spans_filtered["objects_description"])
-
     for index, _ in enumerate(desc_judgements["factual_accuracy"]):
         factual_accuracy = desc_judgements["factual_accuracy"][index]
         coherence = desc_judgements["coherence"][index]
         grounding_potential = desc_judgements["grounding_potential"][index]
         completeness = desc_judgements["completeness"][index]
-
-        print(
-            "...",
-            DESCRIPTION_METRIC_THRESHOLD,
-            factual_accuracy,
-            coherence,
-            grounding_potential,
-            completeness,
-        )
 
         issues_found = False
         current_judge_suggestions = ""
@@ -333,9 +309,9 @@ Here are the findings and the things you have to improve:\n"""
             issues_found = True
             current_judge_suggestions += f" {coherence}/5 regarding coherence"
 
-        if grounding_potential < DESCRIPTION_METRIC_THRESHOLD:
-            issues_found = True
-            current_judge_suggestions += f" {grounding_potential}/5 regarding grounding_potential"
+        # if grounding_potential < DESCRIPTION_METRIC_THRESHOLD:
+        #     issues_found = True
+        #     current_judge_suggestions += f" {grounding_potential}/5 regarding grounding_potential"
 
         if completeness < DESCRIPTION_METRIC_THRESHOLD:
             issues_found = True
@@ -359,7 +335,7 @@ Here are the findings and the things you have to improve:\n"""
         return ""
 
 
-def judge_objects_descriptions(client, model_name, object_and_spans, object_desc_metrics, verbose):
+def judge_objects_descriptions(client, object_and_spans, object_desc_metrics):
     object_and_spans_filtered = {
         "object_names": [],
         "descriptions_spans": [],
@@ -380,12 +356,7 @@ def judge_objects_descriptions(client, model_name, object_and_spans, object_desc
             object_and_spans["objects_description"][index]
         )
 
-    desc_judgements, total_token_count = judge_object_description(
-        client, model_name, object_and_spans_filtered, verbose
-    )
-
-    print("judge input", object_and_spans_filtered)
-    print("judge output", desc_judgements)
+    desc_judgements, total_token_count = judge_object_description(client, object_and_spans_filtered)
 
     object_desc_metrics["factual_accuracy"].extend(desc_judgements["factual_accuracy"])
     object_desc_metrics["coherence"].extend(desc_judgements["coherence"])

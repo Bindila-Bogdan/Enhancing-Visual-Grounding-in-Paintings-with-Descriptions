@@ -7,6 +7,8 @@ import polars as pl
 from PIL import Image
 from nltk.corpus import stopwords
 
+from config import *
+
 RAW_DATA_PATH = "../../data/raw/"
 RESULTS_PATH = "../../experiments/prompting/"
 ANNOTATIONS_PATH = "../../data/annotations/"
@@ -139,15 +141,13 @@ def sort_and_clean_output(llm_output, painting):
         for span in spans:
             if span in painting["description"]:
                 kept_spans.append(span)
-            else:
-                print("not there")
 
         llm_output_copy[index].description_spans = kept_spans
 
     return llm_output_copy
 
 
-def process_objects(llm_output, painting, all_predicted_objects, all_ground_truth_objects, verbose):
+def process_objects(llm_output, painting, all_predicted_objects, all_ground_truth_objects):
     predicted_objects = sorted(
         [
             clean_object_name(object_name)
@@ -161,7 +161,7 @@ def process_objects(llm_output, painting, all_predicted_objects, all_ground_trut
     )
     all_ground_truth_objects.append(ground_truth_objects)
 
-    if verbose:
+    if VERBOSE:
         print(predicted_objects, ground_truth_objects)
 
     return predicted_objects, ground_truth_objects
@@ -178,8 +178,6 @@ def process_spans(llm_output, painting):
             painting["description_spans"],
         )
     )
-
-    print("ground truth spans per object", ground_truth_spans_per_object)
 
     predicted_spans = []
     for annotation in llm_output:
