@@ -1,5 +1,7 @@
+import io
 import copy
 import json
+import base64
 
 import polars as pl
 from PIL import Image
@@ -16,6 +18,26 @@ FEW_SHOT_EXAMPLES_IDS = [2156, 2484, 11819, 256, 10748, 3344, 10676]
 
 def load_image(painting_id):
     return Image.open(f"{RAW_DATA_PATH}filtered_paintings/{painting_id}.png")
+
+
+def image_to_bytes(image):
+    # define an in-memory byte stream
+    img_byte_array = io.BytesIO()
+
+    # convert the image to a byte representation and store it in the in-memory byte stream
+    image.save(img_byte_array, format="PNG")
+
+    # get the byte representation of the image
+    img_bytes = img_byte_array.getvalue()
+
+    return img_bytes
+
+
+def image_to_url(image_bytes):
+    image_base64 = base64.b64encode(image_bytes).decode("utf-8")
+    image_url = f"data:image/png;base64,{image_base64}"
+
+    return image_url
 
 
 def load_data():
@@ -101,6 +123,30 @@ def clean_object_name(object_name):
     return cleaned_object_name
 
 
+def sort_and_clean_output(llm_output, painting):
+    sorted(llm_output, key=lambda x: x.object_name)
+
+    llm_output_copy = copy.deepcopy(llm_output)
+
+    for index in range(len(llm_output)):
+        if llm_output_copy[index].object_name not in painting["description"]:
+            del llm_output_copy[index]
+            continue
+
+        spans = llm_output_copy[index].description_spans
+        kept_spans = []
+
+        for span in spans:
+            if span in painting["description"]:
+                kept_spans.append(span)
+            else:
+                print("not there")
+
+        llm_output_copy[index].description_spans = kept_spans
+
+    return llm_output_copy
+
+
 def process_objects(llm_output, painting, all_predicted_objects, all_ground_truth_objects, verbose):
     predicted_objects = sorted(
         [
@@ -132,6 +178,8 @@ def process_spans(llm_output, painting):
             painting["description_spans"],
         )
     )
+
+    print("ground truth spans per object", ground_truth_spans_per_object)
 
     predicted_spans = []
     for annotation in llm_output:
@@ -171,6 +219,7 @@ def store_results(prompt_type, observations, results_values, metrics):
         "prompt_type": prompt_type,
         "observations": observations,
         "total_token_count": metrics["total_token_count"],
+        "total_token_count_judge": metrics["total_token_count_judge"],
         "unprocessed_painting_ids": metrics["unprocessed_painting_ids"],
         "micro_f1_objects": metrics["micro_f1_objects"],
         "micro_f1_spans": metrics["micro_f1_spans"],

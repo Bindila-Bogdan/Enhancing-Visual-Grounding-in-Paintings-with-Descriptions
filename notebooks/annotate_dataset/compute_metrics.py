@@ -13,7 +13,7 @@ from annotate_paintings_utils import clean_object_name
 
 
 # compute the detection quality of described objects
-def compute_f1(predictions, ground_truth, tp_fp_fn):
+def count_tp_fp_fn(predictions, ground_truth, tp_fp_fn):
     predictions_copy = copy.deepcopy(predictions)
     ground_truth_copy = copy.deepcopy(ground_truth)
 
@@ -57,6 +57,7 @@ def get_sentence_similarity_model(model_name):
 
 
 def assess_span_extraction_quality(ground_truth_span, extracted_span):
+    # these metrics are computed at the word level
     ground_truth_words = "".join(
         char for char in ground_truth_span.lower() if char.isalnum() or char.isspace()
     ).split()
@@ -226,7 +227,12 @@ def compute_mean_average_precision(predictions, targets, device, verbose):
     if verbose:
         print(f"mAP@50: {map_50}")
         print(f"mAP@50-95: {map_50_95}")
-        print(f"mAP per class: {metrics['map_per_class']}")
-        print(f"classes: {metrics['classes']}")
+
+        # if performance per class is available, show it
+        try:
+            print(f"mAP per class: {metrics['map_per_class']}")
+            print(f"classes: {metrics['classes']}")
+        except:
+            pass
 
     return map_50, map_50_95

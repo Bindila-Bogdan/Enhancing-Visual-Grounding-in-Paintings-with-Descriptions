@@ -48,7 +48,7 @@ def detect_objects(
     image, objects, processor, model, device, verbose, object_threshold=0.3, text_threshold=0.3
 ):
 
-    text = ", ".join(objects) + "."
+    text = ". ".join(objects) + "."
     inputs = processor(images=image, text=text, return_tensors="pt").to(device)
 
     with torch.no_grad():
