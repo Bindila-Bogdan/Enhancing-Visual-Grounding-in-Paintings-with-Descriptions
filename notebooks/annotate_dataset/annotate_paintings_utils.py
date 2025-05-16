@@ -19,7 +19,7 @@ FEW_SHOT_EXAMPLES_IDS = [2156, 2484, 11819, 256, 10748, 3344, 10676]
 
 
 def load_image(painting_id):
-    return Image.open(f"{RAW_DATA_PATH}filtered_paintings/{painting_id}.png")
+    return Image.open(f"{RAW_DATA_PATH}filtered_paintings/{painting_id}.png").resize((340, 340))
 
 
 def image_to_bytes(image):
@@ -162,7 +162,8 @@ def process_objects(llm_output, painting, all_predicted_objects, all_ground_trut
     all_ground_truth_objects.append(ground_truth_objects)
 
     if VERBOSE:
-        print(predicted_objects, ground_truth_objects)
+        print("\nPREDICTED OBJECTS AND GROUND TRUTH OBJECTS")
+        print(predicted_objects, "\n", ground_truth_objects)
 
     return predicted_objects, ground_truth_objects
 
@@ -219,6 +220,7 @@ def store_results(prompt_type, observations, results_values, metrics):
         "total_token_count": metrics["total_token_count"],
         "total_token_count_judge": metrics["total_token_count_judge"],
         "unprocessed_painting_ids": metrics["unprocessed_painting_ids"],
+        "paintings_ids_tp_check": metrics["paintings_ids_tp_check"],
         "micro_f1_objects": metrics["micro_f1_objects"],
         "micro_f1_spans": metrics["micro_f1_spans"],
         "span_similarity_metrics": metrics["span_similarity_metrics"],

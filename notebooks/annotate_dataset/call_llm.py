@@ -2,6 +2,7 @@ import os
 import copy
 import json
 import time
+from pprint import pprint
 
 from google import genai
 from pydantic import BaseModel
@@ -46,7 +47,9 @@ def get_basic_object_extraction(examples, image, description):
 
     prompt_parts = []
     prompt_parts.append(
-        types.Content(role="user", parts=[types.Part.from_text(text="\nHere are some examples:")])
+        types.Content(
+            role="user", parts=[types.Part.from_text(text="\n**Here are some examples:**\n")]
+        )
     )
 
     for example in examples:
@@ -77,10 +80,20 @@ def get_basic_object_extraction(examples, image, description):
         prompt_parts.append(
             types.Content(
                 role="model",
-                parts=[types.Part.from_text(text=f"{example_detected_objects}")],
+                parts=[types.Part.from_text(text=example_detected_objects)],
             )
         )
-        prompt_parts.append(types.Content(role="user", parts=[types.Part.from_text(text="---")]))
+
+    prompt_parts.append(
+        types.Content(
+            role="user",
+            parts=[
+                types.Part.from_text(
+                    text="\n---\n**End of examples**\n\nNow process in a similar way the following data:\n"
+                )
+            ],
+        )
+    )
 
     prompt_parts.append(
         types.Content(
@@ -94,7 +107,8 @@ def get_basic_object_extraction(examples, image, description):
 
     system_prompt_text = (
         "You are an expert in art who can identify objects present in both a painting and its textual description."
-        + "After identifying them, you return the objects together with their description spans extracted from the painting description in a JSON format following the provided template."
+        + " After identifying them, you return the objects together with their description spans extracted from the painting description in a JSON format following the provided template."
+        + " If one object does not have descriptions spans that bring any new information, instead of a description span return an empty string."
     )
 
     return prompt_parts, system_prompt_text, Annotation
@@ -109,7 +123,9 @@ def get_basic_object_description(examples, additional_data):
 
     prompt_parts = []
     prompt_parts.append(
-        types.Content(role="user", parts=[types.Part.from_text(text="\nHere are some examples:\n")])
+        types.Content(
+            role="user", parts=[types.Part.from_text(text="\n**Here are some examples:**\n")]
+        )
     )
 
     for example_painting in examples:
@@ -145,7 +161,17 @@ def get_basic_object_description(examples, additional_data):
                 parts=[types.Part.from_text(text=json.dumps(formatted_output_example))],
             )
         )
-        prompt_parts.append(types.Content(role="user", parts=[types.Part.from_text(text="---")]))
+
+    prompt_parts.append(
+        types.Content(
+            role="user",
+            parts=[
+                types.Part.from_text(
+                    text="\n---\n**End of examples**\n\nNow process in a similar way the following data:\n"
+                )
+            ],
+        )
+    )
 
     input_text = ""
     for object_name, description_spans in zip(object_names, descriptions_spans):
@@ -164,6 +190,7 @@ def get_basic_object_description(examples, additional_data):
         "You are given the name of objects and several short description spans about each of them. "
         + "Your task is to combine these spans into one coherent description paragraph per object that starts with the object name and which is based solely on the provided information. "
         + "In each description, you have to included all the provided details from the associated description spans and nothing more. "
+        + "If an object doesn't have description spans, you have to return an empty string as the object description. "
         + """\n**Constraints:\n**
 Do not add any details about the object that are not explicitly mentioned in the provided description spans.
 Do not infer the object's material, purpose, or origin unless it is directly stated in the text.
@@ -189,6 +216,9 @@ def generate(
     )
 
     if feedback:
+        if VERBOSE:
+            print("ADDING FEEDBACK")
+
         prompt_parts = feedback[0]
         prompt_parts.append(
             types.Content(
@@ -247,8 +277,8 @@ def generate(
 
     if VERBOSE:
         print(
-            f"Prompt tokens count: {prompt_tokens_count}\nOutput tokens count: {output_tokens_count}"
+            f"\nANNOTATOR OUTPUT:\nPrompt tokens count: {prompt_tokens_count} Output tokens count: {output_tokens_count}"
         )
-        print(f"Response:\n{output}\n")
+        pprint(output)
 
     return output, total_token_count, prompt_parts, response.text

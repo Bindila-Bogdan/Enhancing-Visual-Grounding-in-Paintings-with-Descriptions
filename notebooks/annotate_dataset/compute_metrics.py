@@ -120,9 +120,6 @@ def compare_spans(ground_truth_span, extracted_span, model):
         "coverage percentage": round(coverage_percentage, 4),
     }
 
-    if VERBOSE:
-        pprint(span_extraction_metrics)
-
     return span_extraction_metrics
 
 

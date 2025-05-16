@@ -40,7 +40,7 @@ def call_judge(client, system_prompt, user_message, response_format):
 
     if VERBOSE:
         print(
-            f"Judge prompt tokens count: {prompt_tokens_count}\nJudge output tokens count: {output_tokens_count}"
+            f"\nJUDGE OUTPUT:\nPrompt tokens count: {prompt_tokens_count} Output tokens count: {output_tokens_count}"
         )
 
     return output, total_token_count
@@ -48,37 +48,52 @@ def call_judge(client, system_prompt, user_message, response_format):
 
 # judge object extraction
 def get_object_extraction_fp_fn(extraction_evaluation, description, error_type):
-    objects_with_wrong_spans = set(
-        [entry.object_name for entry in extraction_evaluation[f"false_{error_type}_spans"]]
-    ).difference(set(extraction_evaluation[f"false_{error_type}_objects"]))
+    objects_with_wrong_spans = list(
+        set(
+            [entry.object_name for entry in extraction_evaluation[f"false_{error_type}_spans"]]
+        ).difference(set(extraction_evaluation[f"false_{error_type}_objects"]))
+    )
 
     spans = ""
     objects_with_spans = ""
 
-    for object_name in objects_with_wrong_spans:
-        if object_name not in description:
+    for entry in extraction_evaluation[f"false_{error_type}_spans"]:
+        if entry.object_name not in description:
             continue
 
-        for entry in extraction_evaluation[f"false_{error_type}_spans"]:
-            spans_with_issue = []
+        spans_with_issue = []
 
-            for span in entry.spans_with_issue:
-                if span in description:
-                    spans_with_issue.append(span)
+        for span in entry.spans_with_issue:
+            if span in description and span != "":
+                spans_with_issue.append(span)
 
+        if entry.object_name in objects_with_wrong_spans and len(spans_with_issue) != 0:
+            spans += f"- only spans ['{"', '".join(spans_with_issue)}'] for object '{entry.object_name}'\n"
+        else:
             if len(spans_with_issue) == 0:
-                continue
-
-            if entry.object_name == object_name:
-                spans += f"- only spans ['{"', '".join(spans_with_issue)}'] for object '{entry.object_name}'\n"
+                objects_with_spans += f"- object '{entry.object_name}'\n"
             else:
-                objects_with_spans += f"- object '{entry.object_name}' together with all its spans spans ['{"', '".join(spans_with_issue)}']\n"
+                objects_with_spans += f"- object '{entry.object_name}' together with all its spans ['{"', '".join(spans_with_issue)}']\n"
+
+    objects_null_spans = list(
+        set(extraction_evaluation[f"false_{error_type}_objects"]).difference(
+            set([entry.object_name for entry in extraction_evaluation[f"false_{error_type}_spans"]])
+        )
+    )
+
+    for object_null_spans in objects_null_spans:
+        if object_null_spans not in description:
+            continue
+
+        objects_with_spans += f"- object '{object_null_spans}'\n and its empty description span"
 
     return spans, objects_with_spans
 
 
 def compute_metrics_judge_object_extraction(output, object_and_spans, description):
-    fn_objects_no = len([obj for obj in output["false_negative_objects"] if obj in description])
+    fn_objects_no = len(
+        set([obj for obj in output["false_negative_objects"] if obj in description])
+    )
     tp_objects_no = len(
         set(object_and_spans["object_names"]).difference(set(output["false_positive_objects"]))
     )
@@ -86,7 +101,13 @@ def compute_metrics_judge_object_extraction(output, object_and_spans, descriptio
 
     fn_spans_no = sum(
         [
-            len([span for span in false_negative_spans.spans_with_issue if span in description])
+            len(
+                [
+                    span
+                    for span in false_negative_spans.spans_with_issue
+                    if span in description and span != ""
+                ]
+            )
             for false_negative_spans in output["false_negative_spans"]
         ]
     )
@@ -95,7 +116,9 @@ def compute_metrics_judge_object_extraction(output, object_and_spans, descriptio
     tp_spans = []
 
     for fp_entry in output["false_positive_spans"]:
-        fp_spans.extend([span for span in fp_entry.spans_with_issue if span in description])
+        fp_spans.extend(
+            [span for span in fp_entry.spans_with_issue if span in description and span != ""]
+        )
 
     for spans in object_and_spans["descriptions_spans"]:
         tp_spans.extend([span for span in spans if span in description])
@@ -131,20 +154,24 @@ def get_object_extraction_suggestions(description, output, metrics):
         )
 
         if len(fp_spans) > 0:
+            print("fp_spans\n", fp_spans)
             major_issues_found = True
             judge_suggestions += f"False positives spans (spans that were extracted but should have not been extracted, although the extracted object is correct):\n{fp_spans}\n"
 
         if len(fp_objects_with_spans) > 0:
+            print("fp_objects_with_spans\n", fp_objects_with_spans)
             major_issues_found = True
             judge_suggestions += f"False positives objects (objects and all their spans that were extracted but should have not been extracted):\n{fp_objects_with_spans}\n"
 
     fn_spans, fn_objects_with_spans = get_object_extraction_fp_fn(output, description, "negative")
 
     if metrics["objects_recall"] < OBJECTS_RECALL_THRESHOLD and len(fn_objects_with_spans) > 0:
+        print("fn_objects_with_spans\n", fn_objects_with_spans)
         major_issues_found = True
         judge_suggestions += f"False negative objects (objects together with their spans that were not extracted but should be considered):\n{fn_objects_with_spans}\n"
 
     if metrics["spans_recall"] < SPANS_RECALL_THRESHOLD and len(fn_spans) > 0:
+        print("fn_spans\n", fn_spans)
         major_issues_found = True
         judge_suggestions += f"False negative spans (spans that were not extracted, but should have been extracted):\n{fn_spans}\n"
 
@@ -191,16 +218,17 @@ def judge_objects_extractions(client, image, description, object_and_spans):
 
     system_prompt = """You are an expert art analyst tasked with evaluating the accuracy of object extraction from paintings and their corresponding textual description spans. You will be given the following:
 
-    **Input Format**
-    1. A painting image
-    2. The original textual description of the painting
-    3. The AI system's output listing:
-        - Objects detected in both the painting and description
-        - Corresponding description spans for each object (if available, as an object can be only present in the description without being described)
+**Input Format**
+1. A painting image
+2. The original textual description of the painting
+3. The AI system's output listing:
+    - Objects detected in both the painting and description
+    - Corresponding description spans for each object (if available, as an object can be only present in the description without being described)
 
-    **Task**
-    Your task is to evaluate each object extracted by the first LLM and check if it is mentioned in the description and appears in the painting. If it is not present in both, add it to the list of false positive. If the object appears in painting and description, but it was not extracted by the first LLM, add it to the list of false negatives. 
-    After that, analyze for each object extracted by the first LLM the extracted description spans. They have to be extracted 100% accurately from the initial description. If a description span is not 100% from the description or does not describe the associated object, add it to the list of false positives. If a span describes the associated object, but is not extracted, please add it to the list of false negatives."""
+**Task**
+Your task is to evaluate each object extracted by the first LLM and check if it is mentioned in the description and appears in the painting. If it is not present in both, add it to the list of false positive. If the object appears in painting and description, but it was not extracted by the first LLM, add it to the list of false negatives. 
+After that, analyze for each object extracted by the first LLM the extracted description spans. They have to be extracted 100% accurately from the initial description. If a description span is not 100% from the description or does not describe the associated object, add it to the list of false positives. If a span describes the associated object, but is not extracted, please add it to the list of false negatives.
+It is very important to remember than an object can have an empty description span attached and still be correct."""
 
     object_and_spans_text = "- " + "\n- ".join(
         [
@@ -210,6 +238,8 @@ def judge_objects_extractions(client, image, description, object_and_spans):
             )
         ]
     )
+
+    print(object_and_spans_text)
 
     user_prompt = f"""Painting description:\n{description}\n\nExtracted objects together with their description spans:\n{object_and_spans_text}"""
 
@@ -227,6 +257,8 @@ def judge_objects_extractions(client, image, description, object_and_spans):
     output, total_token_count = call_judge(
         client, system_prompt, user_message, ExtractionEvaluation
     )
+
+    pprint(output)
 
     metrics = compute_metrics_judge_object_extraction(output, object_and_spans, description)
     judge_suggestions = get_object_extraction_suggestions(description, output, metrics)
@@ -278,7 +310,7 @@ Your task is to evaluate each triplet by checking the generated description base
     return output, total_token_count
 
 
-def get_object_description_suggestions(object_and_spans_filtered, desc_judgements):
+def get_object_description_suggestions(object_and_spans, desc_judgements):
     judge_suggestions = """An LLM-as-a-Judge has evaluated your previous output, and there are some issues related to the object descriptions you generated based on the description spans. The evaluation criteria were:
            
 - **Factual Accuracy (1-5):**  Does the generated description accurately reflect the information provided in the original description spans? Does it avoid hallucination or the addition of information not present in the spans? (1 = Completely inaccurate, 5 = Perfectly accurate)
@@ -319,13 +351,14 @@ Here are the findings and the things you have to improve:\n"""
 
         if issues_found:
             any_issues_found = True
-            object_description = object_and_spans_filtered["descriptions_spans"][index]
-            object_name = object_and_spans_filtered["object_names"][index]
-            judge_suggestions += (
+            object_description = object_and_spans["object_names"][index]
+            object_name = object_and_spans["objects_description"][index]
+            current_judge_suggestions_complete = (
                 f"- description '{object_description}' of object '{object_name}' received the scores:"
                 + current_judge_suggestions
                 + "\n"
             )
+            judge_suggestions += current_judge_suggestions_complete
 
     judge_suggestions += "\nBased on these instructions and observations, please return the descriptions for all objects only from the previous example (do not return description for the examples that were given) by keeping the descriptions for the object that weren't mentioned above and improving accrodingly for the objects and description that were mentioned."
 
@@ -344,19 +377,34 @@ def judge_objects_descriptions(client, object_and_spans, object_desc_metrics):
 
     for index, _ in enumerate(object_and_spans["objects_description"]):
         description_spans = object_and_spans["descriptions_spans"][index]
+        object_description = object_and_spans["objects_description"][index]
 
-        if len(description_spans) == 0:
+        if len(description_spans) == 0 or len(object_description) == 0:
             continue
 
         object_and_spans_filtered["object_names"].append(object_and_spans["object_names"][index])
         object_and_spans_filtered["descriptions_spans"].append(
             "- " + "\n- ".join(description_spans)
         )
-        object_and_spans_filtered["objects_description"].append(
-            object_and_spans["objects_description"][index]
-        )
+        object_and_spans_filtered["objects_description"].append(object_description)
+
+    if len(object_and_spans_filtered["object_names"]) == 0:
+        return "", 0, False
 
     desc_judgements, total_token_count = judge_object_description(client, object_and_spans_filtered)
+
+    print(desc_judgements)
+
+    if not (
+        len(desc_judgements["factual_accuracy"])
+        == len(desc_judgements["coherence"])
+        == len(desc_judgements["grounding_potential"])
+        == len(desc_judgements["completeness"])
+        == len(object_and_spans_filtered["objects_description"])
+    ):
+        print("The judge didn't provide all description scores.")
+
+        return "", total_token_count, True
 
     object_desc_metrics["factual_accuracy"].extend(desc_judgements["factual_accuracy"])
     object_desc_metrics["coherence"].extend(desc_judgements["coherence"])
@@ -367,4 +415,4 @@ def judge_objects_descriptions(client, object_and_spans, object_desc_metrics):
         object_and_spans_filtered, desc_judgements
     )
 
-    return judge_suggestions, total_token_count
+    return judge_suggestions, total_token_count, False

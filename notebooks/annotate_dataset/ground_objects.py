@@ -74,6 +74,7 @@ def detect_objects(
     labels_scores_boxes = sorted(list(zip(labels, scores, box_coordinates)), key=lambda x: x[1])
 
     if VERBOSE:
+        print("\nGROUNDED OBJECTS")
         for label, score, coords in labels_scores_boxes:
             print(label, float(score), [float(coord) for coord in coords])
 
