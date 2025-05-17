@@ -9,14 +9,19 @@ from pydantic import BaseModel
 from google.genai import types
 
 from config import *
-from annotate_paintings_utils import load_image, image_to_bytes
+from annotate_paintings_utils import load_image, image_to_bytes, encode_to_base64
 
 
 def get_llm_client():
-    with open("../../config/keys.json", "r") as file:
-        os.environ["GEMINI_API_KEY"] = json.load(file)["gemini_api_key"]
+    if USE_VERTEX:
+        return genai.Client(
+            project="enhancing-visual-grounding", vertexai=True, location="europe-west9"
+        )
+    else:
+        with open("../../config/keys.json", "r") as file:
+            os.environ["GEMINI_API_KEY"] = json.load(file)["gemini_api_key"]
 
-    return genai.Client(api_key=os.environ.get("GEMINI_API_KEY"))
+        return genai.Client(api_key=os.environ.get("GEMINI_API_KEY"))
 
 
 def show_available_models(client):
@@ -61,7 +66,7 @@ def get_basic_object_extraction(examples, image, description):
                 role="user",
                 parts=[
                     types.Part.from_bytes(
-                        mime_type="image/png", data=image_to_bytes(example_image)
+                        mime_type="image/png", data=encode_to_base64(image_to_bytes(example_image))
                     ),
                     types.Part.from_text(text=f'Description: """{example_description}"""'),
                 ],
@@ -99,7 +104,9 @@ def get_basic_object_extraction(examples, image, description):
         types.Content(
             role="user",
             parts=[
-                types.Part.from_bytes(mime_type="image/png", data=image_to_bytes(image)),
+                types.Part.from_bytes(
+                    mime_type="image/png", data=encode_to_base64(image_to_bytes(image))
+                ),
                 types.Part.from_text(text=f'Description: """{description}"""'),
             ],
         )

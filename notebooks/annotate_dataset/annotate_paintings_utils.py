@@ -19,7 +19,19 @@ FEW_SHOT_EXAMPLES_IDS = [2156, 2484, 11819, 256, 10748, 3344, 10676]
 
 
 def load_image(painting_id):
-    return Image.open(f"{RAW_DATA_PATH}filtered_paintings/{painting_id}.png").resize((340, 340))
+    image = Image.open(f"{RAW_DATA_PATH}filtered_paintings/{painting_id}.png")
+    width = image.size[0]
+    height = image.size[1]
+
+    if width < height:
+        height = int(height / (width / MIN_IMG_SIZE))
+        width = MIN_IMG_SIZE
+
+    else:
+        width = int(width / (height / MIN_IMG_SIZE))
+        height = MIN_IMG_SIZE
+
+    return image.resize((width, height))
 
 
 def image_to_bytes(image):
@@ -35,8 +47,12 @@ def image_to_bytes(image):
     return img_bytes
 
 
+def encode_to_base64(image_bytes):
+    return base64.b64encode(image_bytes).decode("utf-8")
+
+
 def image_to_url(image_bytes):
-    image_base64 = base64.b64encode(image_bytes).decode("utf-8")
+    image_base64 = encode_to_base64(image_bytes)
     image_url = f"data:image/png;base64,{image_base64}"
 
     return image_url
@@ -76,7 +92,23 @@ def load_data():
         ).join(test_descriptions, on="painting_id")
     ).to_dicts()
 
-    return paintings_data, annotations, few_shot_examples, test_paintings
+    mini_sets_ids = [painting["painting_id"] for painting in test_paintings]
+    mini_train_ids = set(
+        paintings_data.filter(pl.col("id").is_in(mini_sets_ids))
+        .group_by("coarse_type", "source")
+        .first()["id"]
+        .to_list()
+        + [1722, 1753, 1966, 2024, 2441]
+    )
+
+    mini_train_set = [
+        painting for painting in test_paintings if painting["painting_id"] in mini_train_ids
+    ]
+    mini_val_set = [
+        painting for painting in test_paintings if painting["painting_id"] not in mini_train_ids
+    ]
+
+    return paintings_data, annotations, few_shot_examples, mini_train_set, mini_val_set
 
 
 def get_bbox_annotations():
@@ -205,22 +237,16 @@ def get_object_descriptions(llm_output, all_predicted_object_descriptions):
     all_predicted_object_descriptions.append(predicted_object_descriptions)
 
 
-def store_results(prompt_type, observations, results_values, metrics):
-    results_file_name = f"{RESULTS_PATH}prompting_results.json"
-
-    try:
-        with open(results_file_name, "r") as file:
-            all_results = json.load(file)
-    except:
-        all_results = None
+def store_results(prompt_type, name, observations, results_values, metrics):
+    results_file_name = f"{RESULTS_PATH}prompting_results_{name}.json"
 
     results = {
         "prompt_type": prompt_type,
         "observations": observations,
-        "total_token_count": metrics["total_token_count"],
+        "total_token_count_annotator": metrics["total_token_count_annotator"],
         "total_token_count_judge": metrics["total_token_count_judge"],
         "unprocessed_painting_ids": metrics["unprocessed_painting_ids"],
-        "paintings_ids_tp_check": metrics["paintings_ids_tp_check"],
+        "paintings_ids_to_check": metrics["paintings_ids_to_check"],
         "micro_f1_objects": metrics["micro_f1_objects"],
         "micro_f1_spans": metrics["micro_f1_spans"],
         "span_similarity_metrics": metrics["span_similarity_metrics"],
@@ -230,10 +256,5 @@ def store_results(prompt_type, observations, results_values, metrics):
         "results": results_values,
     }
 
-    if all_results is None:
-        all_results = [results]
-    else:
-        all_results.append(results)
-
     with open(results_file_name, "w") as file:
-        json.dump(all_results, file, indent=4)
+        json.dump(results, file, indent=4)

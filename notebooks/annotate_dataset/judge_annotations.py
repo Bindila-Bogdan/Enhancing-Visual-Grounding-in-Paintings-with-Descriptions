@@ -85,7 +85,7 @@ def get_object_extraction_fp_fn(extraction_evaluation, description, error_type):
         if object_null_spans not in description:
             continue
 
-        objects_with_spans += f"- object '{object_null_spans}'\n and its empty description span"
+        objects_with_spans += f"- object '{object_null_spans}' and its empty description span\n"
 
     return spans, objects_with_spans
 
@@ -97,7 +97,11 @@ def compute_metrics_judge_object_extraction(output, object_and_spans, descriptio
     tp_objects_no = len(
         set(object_and_spans["object_names"]).difference(set(output["false_positive_objects"]))
     )
-    objects_recall = tp_objects_no / (tp_objects_no + fn_objects_no)
+
+    if tp_objects_no + fn_objects_no == 0:
+        objects_recall = 1
+    else:
+        objects_recall = tp_objects_no / (tp_objects_no + fn_objects_no)
 
     fn_spans_no = sum(
         [
@@ -124,7 +128,11 @@ def compute_metrics_judge_object_extraction(output, object_and_spans, descriptio
         tp_spans.extend([span for span in spans if span in description])
 
     tp_spans_no = len(set(tp_spans).difference(set(fp_spans)))
-    spans_recall = tp_spans_no / (tp_spans_no + fn_spans_no)
+
+    if tp_spans_no + fn_spans_no == 0:
+        spans_recall = 1
+    else:
+        spans_recall = tp_spans_no / (tp_spans_no + fn_spans_no)
 
     fp_objects_no = len(
         set(output["false_positive_objects"]).intersection(set(object_and_spans["object_names"]))
@@ -238,8 +246,6 @@ It is very important to remember than an object can have an empty description sp
             )
         ]
     )
-
-    print(object_and_spans_text)
 
     user_prompt = f"""Painting description:\n{description}\n\nExtracted objects together with their description spans:\n{object_and_spans_text}"""
 
