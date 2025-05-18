@@ -31,7 +31,9 @@ def load_image(painting_id):
         width = int(width / (height / MIN_IMG_SIZE))
         height = MIN_IMG_SIZE
 
-    return image.resize((width, height))
+    resized_image = image.resize((width, height))
+
+    return resized_image, image
 
 
 def image_to_bytes(image):
@@ -47,12 +49,8 @@ def image_to_bytes(image):
     return img_bytes
 
 
-def encode_to_base64(image_bytes):
-    return base64.b64encode(image_bytes).decode("utf-8")
-
-
 def image_to_url(image_bytes):
-    image_base64 = encode_to_base64(image_bytes)
+    image_base64 = base64.b64encode(image_bytes).decode("utf-8")
     image_url = f"data:image/png;base64,{image_base64}"
 
     return image_url

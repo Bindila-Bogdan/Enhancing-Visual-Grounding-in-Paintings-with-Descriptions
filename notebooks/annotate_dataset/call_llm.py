@@ -9,7 +9,7 @@ from pydantic import BaseModel
 from google.genai import types
 
 from config import *
-from annotate_paintings_utils import load_image, image_to_bytes, encode_to_base64
+from annotate_paintings_utils import load_image, image_to_bytes
 
 
 def get_llm_client():
@@ -59,14 +59,14 @@ def get_basic_object_extraction(examples, image, description):
 
     for example in examples:
         example_description = example["description"]
-        example_image = load_image(example["painting_id"])
+        example_image, _ = load_image(example["painting_id"])
 
         prompt_parts.append(
             types.Content(
                 role="user",
                 parts=[
                     types.Part.from_bytes(
-                        mime_type="image/png", data=encode_to_base64(image_to_bytes(example_image))
+                        mime_type="image/png", data=image_to_bytes(example_image)
                     ),
                     types.Part.from_text(text=f'Description: """{example_description}"""'),
                 ],
@@ -104,9 +104,7 @@ def get_basic_object_extraction(examples, image, description):
         types.Content(
             role="user",
             parts=[
-                types.Part.from_bytes(
-                    mime_type="image/png", data=encode_to_base64(image_to_bytes(image))
-                ),
+                types.Part.from_bytes(mime_type="image/png", data=image_to_bytes(image)),
                 types.Part.from_text(text=f'Description: """{description}"""'),
             ],
         )
@@ -194,10 +192,10 @@ def get_basic_object_description(examples, additional_data):
     )
 
     system_prompt_text = (
-        "You are given the name of objects and several short description spans about each of them. "
-        + "Your task is to combine these spans into one coherent description paragraph per object that starts with the object name and which is based solely on the provided information. "
-        + "In each description, you have to included all the provided details from the associated description spans and nothing more. "
-        + "If an object doesn't have description spans, you have to return an empty string as the object description. "
+        "You are given the name of objects and several short description spans about each of them."
+        + " Your task is to combine these spans into one coherent description paragraph per object that starts with the object name and which is based solely on the provided information."
+        + " In each description, you have to included all the provided details from the associated description spans with that object and nothing more."
+        + " If an object doesn't have description spans, you have to return an empty string as the object description."
         + """\n**Constraints:\n**
 Do not add any details about the object that are not explicitly mentioned in the provided description spans.
 Do not infer the object's material, purpose, or origin unless it is directly stated in the text.
@@ -271,6 +269,7 @@ def generate(
             if output is None:
                 if VERBOSE:
                     print("Output is None, try again...")
+                    pprint(response)
                 trials -= 1
             else:
                 break
