@@ -161,20 +161,32 @@ def sort_and_clean_output(llm_output, painting):
     sorted(llm_output, key=lambda x: x.object_name)
 
     llm_output_copy = copy.deepcopy(llm_output)
+    indices_to_remove = []
 
     for index in range(len(llm_output)):
-        if llm_output_copy[index].object_name not in painting["description"]:
-            del llm_output_copy[index]
+        if llm_output[index].object_name not in painting["description"]:
+            indices_to_remove.append(index)
             continue
 
-        spans = llm_output_copy[index].description_spans
+        spans = llm_output[index].description_spans
         kept_spans = []
 
         for span in spans:
-            if span in painting["description"]:
+            object_name_length = len(llm_output[index].object_name.split(" "))
+            span_length = len(span.split(" "))
+
+            if span in painting["description"] and (
+                span_length > object_name_length + 2 or span_length <= 1
+            ):
                 kept_spans.append(span)
 
-        llm_output_copy[index].description_spans = kept_spans
+        if len(kept_spans) == 0:
+            llm_output_copy[index].description_spans = [""]
+        else:
+            llm_output_copy[index].description_spans = kept_spans
+
+    for index in sorted(indices_to_remove, reverse=True):
+        del llm_output_copy[index]
 
     return llm_output_copy
 
@@ -252,6 +264,7 @@ def store_results(prompt_type, name, observations, results_values, metrics):
         "micro_f1_spans": metrics["micro_f1_spans"],
         "span_similarity_metrics": metrics["span_similarity_metrics"],
         "object_description_metrics": metrics["object_description_metrics"],
+        "object_extraction_metrics": metrics["object_extraction_metrics"],
         "map_50": metrics["map_50"],
         "map_50_95": metrics["map_50_95"],
         "results": results_values,

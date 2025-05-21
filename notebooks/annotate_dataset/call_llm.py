@@ -53,7 +53,7 @@ def get_basic_object_extraction(examples, image, description):
     prompt_parts = []
     prompt_parts.append(
         types.Content(
-            role="user", parts=[types.Part.from_text(text="\n**Here are some examples:**\n")]
+            role="user", parts=[types.Part.from_text(text="\n### Here are some examples ###\n")]
         )
     )
 
@@ -94,7 +94,7 @@ def get_basic_object_extraction(examples, image, description):
             role="user",
             parts=[
                 types.Part.from_text(
-                    text="\n---\n**End of examples**\n\nNow process in a similar way the following data:\n"
+                    text="\n---\n### End of examples ###\n\nNow process in a similar way the following data:\n"
                 )
             ],
         )
@@ -110,13 +110,7 @@ def get_basic_object_extraction(examples, image, description):
         )
     )
 
-    system_prompt_text = (
-        "You are an expert in art who can identify objects present in both a painting and its textual description."
-        + " After identifying them, you return the objects together with their description spans extracted from the painting description in a JSON format following the provided template."
-        + " If one object does not have descriptions spans that bring any new information, instead of a description span return an empty string."
-    )
-
-    return prompt_parts, system_prompt_text, Annotation
+    return prompt_parts, OBJECT_EXTRACTION_ENHANCED_SYSTEM_PROMPT, Annotation
 
 
 def get_basic_object_description(examples, additional_data):
@@ -129,7 +123,7 @@ def get_basic_object_description(examples, additional_data):
     prompt_parts = []
     prompt_parts.append(
         types.Content(
-            role="user", parts=[types.Part.from_text(text="\n**Here are some examples:**\n")]
+            role="user", parts=[types.Part.from_text(text="\n### Here are some examples ###\n")]
         )
     )
 
@@ -172,7 +166,7 @@ def get_basic_object_description(examples, additional_data):
             role="user",
             parts=[
                 types.Part.from_text(
-                    text="\n---\n**End of examples**\n\nNow process in a similar way the following data:\n"
+                    text="\n---\n### End of examples ###\n\nNow process in a similar way the following data:\n"
                 )
             ],
         )
@@ -191,19 +185,7 @@ def get_basic_object_description(examples, additional_data):
         )
     )
 
-    system_prompt_text = (
-        "You are given the name of objects and several short description spans about each of them."
-        + " Your task is to combine these spans into one coherent description paragraph per object that starts with the object name and which is based solely on the provided information."
-        + " In each description, you have to included all the provided details from the associated description spans with that object and nothing more."
-        + " If an object doesn't have description spans, you have to return an empty string as the object description."
-        + """\n**Constraints:\n**
-Do not add any details about the object that are not explicitly mentioned in the provided description spans.
-Do not infer the object's material, purpose, or origin unless it is directly stated in the text.
-Focus on combining and rephrasing the given information, not on creating new information.
-Do not assume anything about the object's cultural significance or symbolism unless the provided spans mention it."""
-    )
-
-    return prompt_parts, system_prompt_text, Annotation
+    return prompt_parts, OBJECT_DESCRIPTION_ENHANCED_SYSTEM_PROMPT, Annotation
 
 
 def generate(
@@ -286,6 +268,5 @@ def generate(
         print(
             f"\nANNOTATOR OUTPUT:\nPrompt tokens count: {prompt_tokens_count} Output tokens count: {output_tokens_count}"
         )
-        pprint(output)
 
     return output, total_token_count, prompt_parts, response.text
