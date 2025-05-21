@@ -12,6 +12,21 @@ from config import *
 from annotate_paintings_utils import clean_object_name
 
 
+def match_fuzzy(prediction, ground_truth_objects):
+    matched_gt = None
+    fuzzy_match_index = -1
+
+    for gt_index, ground_truth in enumerate(ground_truth_objects):
+        if set(ground_truth.split(" ")).issubset(set(prediction.split(" "))) or set(
+            prediction.split(" ")
+        ).issubset(set(ground_truth.split(" "))):
+            matched_gt = ground_truth
+            fuzzy_match_index = gt_index
+            break
+
+    return matched_gt, fuzzy_match_index
+
+
 # compute the detection quality of described objects
 def count_tp_fp_fn(predictions, ground_truth, tp_fp_fn):
     predictions_copy = copy.deepcopy(predictions)
@@ -21,6 +36,22 @@ def count_tp_fp_fn(predictions, ground_truth, tp_fp_fn):
         if prediction in ground_truth_copy:
             tp_fp_fn[0] += 1
             ground_truth_copy.remove(prediction)
+        else:
+            tp_fp_fn[1] += 1
+
+    tp_fp_fn[2] = len(ground_truth_copy)
+
+
+def count_tp_fp_fn_fuzzy(predictions, ground_truth, tp_fp_fn):
+    predictions_copy = copy.deepcopy(predictions)
+    ground_truth_copy = copy.deepcopy(ground_truth)
+
+    for prediction in predictions_copy:
+        matched_gt, fuzzy_match_index = match_fuzzy(prediction, ground_truth_copy)
+
+        if fuzzy_match_index != -1:
+            tp_fp_fn[0] += 1
+            ground_truth_copy.remove(matched_gt)
         else:
             tp_fp_fn[1] += 1
 
@@ -127,8 +158,10 @@ def compute_spans_quality(
     ground_truth_spans, predicted_spans, span_similarity_metrics, sentence_similarity_model
 ):
     for object_name in predicted_spans.keys():
-        if object_name in ground_truth_spans.keys():
-            ground_truth_object_spans = sorted(ground_truth_spans[object_name])
+        matched_gt, _ = match_fuzzy(object_name, list(ground_truth_spans.keys()))
+
+        if matched_gt is not None:
+            ground_truth_object_spans = sorted(ground_truth_spans[matched_gt])
             extracted_object_spans = sorted(predicted_spans[object_name])
 
             for extracted_object_span in extracted_object_spans:
@@ -173,8 +206,8 @@ def get_bounding_boxes(
         "labels": torch.tensor(
             [
                 (
-                    labels_to_ids[detection[0]]
-                    if detection[0] in labels_to_ids.keys()
+                    labels_to_ids[match_fuzzy(detection[0], labels_to_ids.keys())[0]]
+                    if match_fuzzy(detection[0], labels_to_ids.keys())[0] is not None
                     else max(labels_to_ids.values()) + 1
                 )
                 for detection in labels_scores_boxes

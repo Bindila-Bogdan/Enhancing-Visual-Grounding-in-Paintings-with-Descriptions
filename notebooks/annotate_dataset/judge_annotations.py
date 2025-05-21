@@ -137,13 +137,24 @@ def compute_metrics_judge_object_extraction(output, object_and_spans, descriptio
     fp_objects_no = len(
         set(output["false_positive_objects"]).intersection(set(object_and_spans["object_names"]))
     )
+
+    if tp_objects_no + fp_objects_no == 0:
+        objects_precision = 1
+    else:
+        objects_precision = tp_objects_no / (tp_objects_no + fp_objects_no)
+
     fp_spans_no = len(fp_spans)
+
+    if tp_spans_no + fp_spans_no == 0:
+        spans_precision = 1
+    else:
+        spans_precision = tp_spans_no / (tp_spans_no + fp_spans_no)
 
     judge_object_extraction_metrics = {
         "objects_recall": objects_recall,
         "spans_recall": spans_recall,
-        "fp_objects_no": fp_objects_no,
-        "fp_spans_no": fp_spans_no,
+        "objects_precision": objects_precision,
+        "spans_precision": spans_precision,
     }
 
     if VERBOSE:
@@ -156,29 +167,26 @@ def get_object_extraction_suggestions(description, output, metrics):
     major_issues_found = False
     judge_suggestions = """An LLM-as-a-Judge has evaluated your previous output, and there are some issues with your object detection and span extraction. Here are the findings:\n\n"""
 
-    if metrics["fp_objects_no"] > 0 or metrics["fp_spans_no"] > 0:
-        fp_spans, fp_objects_with_spans = get_object_extraction_fp_fn(
-            output, description, "positive"
-        )
+    fp_spans, fp_objects_with_spans = get_object_extraction_fp_fn(output, description, "positive")
 
-        if len(fp_spans) > 0:
-            print("fp_spans\n", fp_spans)
-            major_issues_found = True
-            judge_suggestions += f"False positives spans (spans that were extracted but should have not been extracted, although the extracted object is correct):\n{fp_spans}\n"
+    if metrics["spans_precision"] < PRECISION_RECALL_THRESHOLD and len(fp_spans) > 0:
+        print("fp_spans\n", fp_spans)
+        major_issues_found = True
+        judge_suggestions += f"False positives spans (spans that were extracted but should have not been extracted, although the extracted object is correct):\n{fp_spans}\n"
 
-        if len(fp_objects_with_spans) > 0:
-            print("fp_objects_with_spans\n", fp_objects_with_spans)
-            major_issues_found = True
-            judge_suggestions += f"False positives objects (objects and all their spans that were extracted but should have not been extracted):\n{fp_objects_with_spans}\n"
+    if metrics["objects_precision"] < PRECISION_RECALL_THRESHOLD and len(fp_objects_with_spans) > 0:
+        print("fp_objects_with_spans\n", fp_objects_with_spans)
+        major_issues_found = True
+        judge_suggestions += f"False positives objects (objects and all their spans that were extracted but should have not been extracted):\n{fp_objects_with_spans}\n"
 
     fn_spans, fn_objects_with_spans = get_object_extraction_fp_fn(output, description, "negative")
 
-    if metrics["objects_recall"] < OBJECTS_RECALL_THRESHOLD and len(fn_objects_with_spans) > 0:
+    if metrics["objects_recall"] < PRECISION_RECALL_THRESHOLD and len(fn_objects_with_spans) > 0:
         print("fn_objects_with_spans\n", fn_objects_with_spans)
         major_issues_found = True
         judge_suggestions += f"False negative objects (objects together with their spans that were not extracted but should be considered):\n{fn_objects_with_spans}\n"
 
-    if metrics["spans_recall"] < SPANS_RECALL_THRESHOLD and len(fn_spans) > 0:
+    if metrics["spans_recall"] < PRECISION_RECALL_THRESHOLD and len(fn_spans) > 0:
         print("fn_spans\n", fn_spans)
         major_issues_found = True
         judge_suggestions += f"False negative spans (spans that were not extracted, but should have been extracted):\n{fn_spans}\n"

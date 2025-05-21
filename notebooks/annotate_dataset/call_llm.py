@@ -244,11 +244,12 @@ def generate(
         system_instruction=[
             types.Part.from_text(text=system_prompt_text),
         ],
+        max_output_tokens=3072,
         response_schema=list[format_class],
     )
 
     called = False
-    trials = 3
+    trials = 2
     prompt_tokens_count = 0
     output_tokens_count = 0
     total_token_count = 0

@@ -57,7 +57,9 @@ def image_to_url(image_bytes):
 
 
 def load_data():
-    paintings_data = pl.read_json(f"{INTERMEDIATE_DATA_PATH}filtered_paintings_enhanced_data.json")
+    paintings_data = pl.read_json(
+        f"{INTERMEDIATE_DATA_PATH}filtered_paintings_enhanced_data.json"
+    ).with_columns((pl.col("title") + " : " + pl.col("description")).alias("description"))
     annotations = pl.read_json(ANNOTATIONS_PATH + "manual_annotations.json").with_columns(
         pl.col("object_name").str.replace_all(",", "", literal=True).alias("object_name")
     )
@@ -91,7 +93,7 @@ def load_data():
     ).to_dicts()
 
     mini_sets_ids = [painting["painting_id"] for painting in test_paintings]
-    mini_train_ids = set(
+    mini_val_ids = set(
         paintings_data.filter(pl.col("id").is_in(mini_sets_ids))
         .group_by("coarse_type", "source")
         .first()["id"]
@@ -99,14 +101,14 @@ def load_data():
         + [1722, 1753, 1966, 2024, 2441]
     )
 
-    mini_train_set = [
-        painting for painting in test_paintings if painting["painting_id"] in mini_train_ids
-    ]
     mini_val_set = [
-        painting for painting in test_paintings if painting["painting_id"] not in mini_train_ids
+        painting for painting in test_paintings if painting["painting_id"] in mini_val_ids
+    ]
+    mini_test_set = [
+        painting for painting in test_paintings if painting["painting_id"] not in mini_val_ids
     ]
 
-    return paintings_data, annotations, few_shot_examples, mini_train_set, mini_val_set
+    return paintings_data, annotations, few_shot_examples, mini_val_set, mini_test_set
 
 
 def get_bbox_annotations():
@@ -236,7 +238,7 @@ def get_object_descriptions(llm_output, all_predicted_object_descriptions):
 
 
 def store_results(prompt_type, name, observations, results_values, metrics):
-    results_file_name = f"{RESULTS_PATH}prompting_results_{name}.json"
+    results_file_name = f"{RESULTS_PATH}prompting_results_{name}_{observations}.json"
 
     results = {
         "prompt_type": prompt_type,
@@ -245,6 +247,7 @@ def store_results(prompt_type, name, observations, results_values, metrics):
         "total_token_count_judge": metrics["total_token_count_judge"],
         "unprocessed_painting_ids": metrics["unprocessed_painting_ids"],
         "paintings_ids_to_check": metrics["paintings_ids_to_check"],
+        "paintings_ids_wo_objects": metrics["paintings_ids_wo_objects"],
         "micro_f1_objects": metrics["micro_f1_objects"],
         "micro_f1_spans": metrics["micro_f1_spans"],
         "span_similarity_metrics": metrics["span_similarity_metrics"],
