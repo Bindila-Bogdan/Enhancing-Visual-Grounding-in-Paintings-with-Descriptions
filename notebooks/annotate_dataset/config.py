@@ -13,7 +13,6 @@ PROMPT_TYPE = "basic"
 
 # judge feedback thresholds
 PRECISION_RECALL_THRESHOLD = 0.5
-SPANS_RECALL_THRESHOLD = 0.5
 DESCRIPTION_METRIC_THRESHOLD = 3
 
 # baseline prompts
