@@ -24,6 +24,28 @@
     },
     {
         "painting_id": 549,
+        "object_name": "Alcántara bridge",
+        "linguistic_expression": "",
+        "description_spans": [
+            ""
+        ],
+        "object_description": "",
+        "coarse_object_class": "",
+        "bounding_box": []
+    },
+    {
+        "painting_id": 549,
+        "object_name": "Tagus river",
+        "linguistic_expression": "",
+        "description_spans": [
+            ""
+        ],
+        "object_description": "",
+        "coarse_object_class": "",
+        "bounding_box": []
+    },
+    {
+        "painting_id": 549,
         "object_name": "meadows",
         "linguistic_expression": "",
         "description_spans": [
@@ -400,6 +422,28 @@
         "bounding_box": []
     },
     {
+        "painting_id": 256,
+        "object_name": "Minerva",
+        "linguistic_expression": "",
+        "description_spans": [
+            "the vita contemplativa, represented by Minerva"
+        ],
+        "object_description": "Minerva represents the vita contemplativa.",
+        "coarse_object_class": "",
+        "bounding_box": []
+    },
+    {
+        "painting_id": 256,
+        "object_name": "Juno",
+        "linguistic_expression": "",
+        "description_spans": [
+            "the vita activa, represented by Juno"
+        ],
+        "object_description": "Juno represents the vita activa.",
+        "coarse_object_class": "",
+        "bounding_box": []
+    },
+    {
         "painting_id": 1799,
         "object_name": "ruins",
         "linguistic_expression": "",
@@ -593,7 +637,7 @@
     },
     {
         "painting_id": 1056,
-        "object_name": "The Holy Family is on the right of the painting",
+        "object_name": "Holy Family",
         "linguistic_expression": "",
         "description_spans": [
             ""
@@ -604,7 +648,7 @@
     },
     {
         "painting_id": 1056,
-        "object_name": "Saint Joseph standing",
+        "object_name": "Saint Joseph",
         "linguistic_expression": "",
         "description_spans": [
             ""
@@ -615,7 +659,7 @@
     },
     {
         "painting_id": 1056,
-        "object_name": "the Virgin sitting next to him",
+        "object_name": "the Virgin",
         "linguistic_expression": "",
         "description_spans": [
             ""
@@ -626,7 +670,7 @@
     },
     {
         "painting_id": 1056,
-        "object_name": "the Child on her knees",
+        "object_name": "the Child",
         "linguistic_expression": "",
         "description_spans": [
             ""
@@ -659,7 +703,18 @@
     },
     {
         "painting_id": 1056,
-        "object_name": "a basket with a pillow",
+        "object_name": "basket",
+        "linguistic_expression": "",
+        "description_spans": [
+            "a basket with a pillow used for embroidery"
+        ],
+        "object_description": "",
+        "coarse_object_class": "",
+        "bounding_box": []
+    },
+    {
+        "painting_id": 1056,
+        "object_name": "pillow",
         "linguistic_expression": "",
         "description_spans": [
             "a basket with a pillow used for embroidery"
@@ -881,7 +936,7 @@
     },
     {
         "painting_id": 2549,
-        "object_name": "jewelry placed directly underneath Preece’s dress",
+        "object_name": "jewelry placed directly underneath Preece's dress",
         "linguistic_expression": "",
         "description_spans": [
             "jewelry placed directly underneath Preece’s dress highlights the transactional nature of the relationship: the man bows down powerless, buying gifts in return for the woman’s favor."
@@ -926,7 +981,7 @@
     },
     {
         "painting_id": 723,
-        "object_name": "reclining mannequin’s head on the table",
+        "object_name": "mannequin’s head",
         "linguistic_expression": "",
         "description_spans": [
             "reclining mannequin’s head on the table foreshadows the result of their transaction"
@@ -1028,7 +1083,7 @@
     },
     {
         "painting_id": 4416,
-        "object_name": "archers seen in the upper right",
+        "object_name": "archers",
         "linguistic_expression": "",
         "description_spans": [
             "the Battle of Crécy itself, was dependent upon the skill of the English archers seen in the upper right of the composition."
@@ -1184,7 +1239,7 @@
     },
     {
         "painting_id": 8197,
-        "object_name": "the satin dresses",
+        "object_name": "satin dresses",
         "linguistic_expression": "",
         "description_spans": [
             ""

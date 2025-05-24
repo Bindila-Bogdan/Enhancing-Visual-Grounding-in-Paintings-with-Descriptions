@@ -1,0 +1,653 @@
+{
+    "prompt_type": "basic",
+    "observations": "enhanced_1",
+    "total_token_count_annotator": 412998,
+    "total_token_count_judge": 101210,
+    "unprocessed_painting_ids": [
+        1056,
+        1722,
+        2737
+    ],
+    "paintings_ids_to_check": [
+        91,
+        549,
+        1006,
+        1006,
+        2225,
+        3687,
+        4416,
+        6660,
+        8316
+    ],
+    "paintings_ids_wo_objects": [
+        1667,
+        2024,
+        8344,
+        11422
+    ],
+    "micro_f1_objects": 0.67,
+    "micro_f1_spans": 0.19,
+    "span_similarity_metrics": {
+        "cosine similarity": 0.5737714285714285,
+        "Levenshtein distance": 94.02857142857142,
+        "delete percentage": 29.871582857142858,
+        "false positive percentage": 38.889654285714286,
+        "coverage percentage": 44.41413142857143
+    },
+    "object_description_metrics": {
+        "factual_accuracy": 4.129032258064516,
+        "coherence": 3.903225806451613,
+        "grounding_potential": 3.5806451612903225,
+        "completeness": 4.387096774193548
+    },
+    "object_extraction_metrics": {
+        "objects_recall": 0.6017231134878193,
+        "spans_recall": 0.41721791280614806,
+        "objects_precision": 0.567203548085901,
+        "spans_precision": 0.43174019607843134
+    },
+    "map_50": 0.33318331837654114,
+    "map_50_95": 0.2884376049041748,
+    "results": [
+        [
+            91,
+            {
+                "young models": [
+                    [
+                        "posed in traditional Breton costumes",
+                        "epitomize the ideal of virtuous and attractive peasants living a simple life in close contact with nature."
+                    ],
+                    "The young models, posed in traditional Breton costumes, epitomize the ideal of virtuous and attractive peasants living a simple life in close contact with nature."
+                ]
+            },
+            {
+                "breton costumes": [
+                    "traditional Breton costumes, epitomize the ideal of virtuous and attractive peasants living a simple life in close contact with nature"
+                ]
+            }
+        ],
+        [
+            517,
+            {
+                "straw hat": [
+                    [
+                        ""
+                    ],
+                    ""
+                ],
+                "mirror": [
+                    [
+                        "I purposely bought a good enough mirror to work from myself, for want of a model.\""
+                    ],
+                    "I purposely bought a good enough mirror to work from myself, for want of a model.\""
+                ]
+            },
+            {
+                "": [
+                    ""
+                ]
+            }
+        ],
+        [
+            518,
+            {
+                "shoes": [
+                    [
+                        "Van Gogh painted several still lifes of shoes or boots during his Paris period.",
+                        "Van Gogh has placed the shoes within a specific spatial context: namely, the red-tile floor of the Yellow House.",
+                        "this \"still life of old peasants' shoes\" may have been those of Patience Escalier, whose portrait Van Gogh executed around the same time, late summer 1888."
+                    ],
+                    "Van Gogh painted several still lifes of shoes or boots during his Paris period. Van Gogh has placed the shoes within a specific spatial context: namely, the red-tile floor of the Yellow House. This 'still life of old peasants' shoes' may have been those of Patience Escalier, whose portrait Van Gogh executed around the same time, late summer 1888."
+                ]
+            },
+            {
+                "shoes": [
+                    "\"still life of old peasants' shoes\" may have been those of Patience Escalier, whose portrait Van Gogh executed around the same time, late summer 1888.",
+                    "evinces a unique return to the earlier motif"
+                ],
+                "red-tile floor": [
+                    "the red-tile floor of the Yellow House"
+                ]
+            }
+        ],
+        [
+            549,
+            {
+                "toledo": [
+                    [
+                        "it portrays Toledo, the city where he lived and worked for most of his life",
+                        "a \"Toledo\" and \"two landscapes of Toledo\"",
+                        "Un lienzo de T[oled]o de dos baras de largo y bara iquarta de alto"
+                    ],
+                    "It portrays Toledo, the city where he lived and worked for most of his life, and is a 'Toledo' and 'two landscapes of Toledo', or 'Un lienzo de T[oled]o de dos baras de largo y bara iquarta de alto'"
+                ],
+                "cathedral": [
+                    [
+                        "most notably, the cathedral has been moved",
+                        "rises in haste towards its cathedral"
+                    ],
+                    "The cathedral has been moved, and most notably, rises in haste towards its cathedral"
+                ],
+                "alc\u00e1zar": [
+                    [
+                        "the dominant Alc\u00e1zar or royal palace"
+                    ],
+                    "The Alc\u00e1zar is the dominant Alc\u00e1zar or royal palace"
+                ],
+                "roman alc\u00e1ntara bridge": [
+                    [
+                        "descends a steep hill to the Roman Alc\u00e1ntara bridge"
+                    ],
+                    "The Roman Alc\u00e1ntara bridge descends a steep hill to the Roman Alc\r\n\t\t\t\t\t\t\t\tara bridge"
+                ],
+                "castle san servando": [
+                    [
+                        "on the other side of the Tagus is the castle of San Servando"
+                    ],
+                    "On the other side of the Tagus is the castle of San Servando"
+                ],
+                "buildings": [
+                    [
+                        "Another cluster of buildings appears on a cloud-like form below the castle"
+                    ],
+                    "Another cluster of buildings appears on a cloud-like form below the castle"
+                ],
+                "tagus river": [
+                    [
+                        "the other side of the Tagus is the castle of San Servando"
+                    ],
+                    "The Tagus river has the castle of San Servando on the other side."
+                ]
+            },
+            {
+                "city": [
+                    "it seeks to portray the essence of the city rather than to record its actual appearance",
+                    "included only the easternmost portion, above the Tagus river"
+                ],
+                "cathedral": [
+                    "cathedral, which he therefore imaginatively moved to the left of the dominant Alc\u00e1zar or royal palace"
+                ],
+                "alc\u00e1ntara bridge": [
+                    ""
+                ],
+                "tagus river": [
+                    ""
+                ],
+                "meadows": [
+                    "pale green meadows behind the trees, standing like insomniacs"
+                ]
+            }
+        ],
+        [
+            723,
+            {
+                "mannequin\u2019s head": [
+                    [
+                        "The reclining mannequin\u2019s head on the table foreshadows the result of their transaction."
+                    ],
+                    "The reclining mannequin\ns head on the table foreshadows the result of their transaction."
+                ],
+                "coin": [
+                    [
+                        "Holding out a coin, he negotiates with an older woman for the services of the pretty milliner who pauses her work to read his letter.",
+                        "He is offering a coin to the old woman, probably a procuress, who is acting as a business-like intermediary between man and girl."
+                    ],
+                    "Holding out a coin, he negotiates with an older woman for the services of the pretty milliner who pauses her work to read his letter. He is offering a coin to the old woman, probably a procuress, who is acting as a business-like intermediary between man and girl."
+                ],
+                "doll": [
+                    [
+                        "in the foreground a young girl appraises her doll, paralleling the older woman\u2019s actions.",
+                        "A young girl is innocently playing with her doll as this transaction takes place around her."
+                    ],
+                    "In the foreground, a young girl appraises her doll, paralleling the older woman\ns actions. A young girl is innocently playing with her doll as this transaction takes place around her."
+                ],
+                "love letter": [
+                    [
+                        "A pretty girl, dressed in pink and white, is intent in reading a love letter, presumably written by the older gentleman who enters the room from the right."
+                    ],
+                    "A pretty girl, dressed in pink and white, is intent in reading a love letter, presumably written by the older gentleman who enters the room from the right."
+                ]
+            },
+            {
+                "man enters": [
+                    "a man enters a milliner\u2019s shop not to buy a hat but to elicit sex work from women whose class status has left them vulnerable to wealthier men. Holding out a coin, he negotiates with an older woman for the services of the pretty milliner who pauses her work to read his letter."
+                ],
+                "pretty girl dressed pink white": [
+                    "pretty milliner who pauses her work to read his letter",
+                    "A pretty girl, dressed in pink and white, is intent in reading a love letter, presumably written by the older gentleman who enters the room from the right"
+                ],
+                "mannequin\u2019s head": [
+                    "reclining mannequin\u2019s head on the table foreshadows the result of their transaction"
+                ],
+                "young girl": [
+                    "young girl appraises her doll, paralleling the older woman\u2019s actions",
+                    "A young girl is innocently playing with her doll as this transaction takes place around her."
+                ]
+            }
+        ],
+        [
+            1006,
+            {
+                "greek philosopher aristotle": [
+                    [
+                        "Aristotle wears a gold medallion with a portrait of his powerful pupil, Alexander the Great\u2014perhaps the philosopher is weighing his own worldly success against Homer\u2019s timeless achievement."
+                    ],
+                    "The Greek philosopher Aristotle wears a gold medallion with a portrait of his powerful pupil, Alexander the Great\tperhaps the philosopher is weighing his own worldly success against Homer\t timeless achievement."
+                ],
+                "bust homer": [
+                    [
+                        "rests his hand pensively on a bust of Homer, the epic poet who had attained literary immortality with his Iliad and Odyssey centuries before."
+                    ],
+                    "The bust of Homer is where Aristotle rests his hand pensively, the epic poet who had attained literary immortality with his Iliad and Odyssey centuries before."
+                ],
+                "gold medallion": [
+                    [
+                        "Aristotle wears a gold medallion with a portrait of his powerful pupil, Alexander the Great\u2014perhaps the philosopher is weighing his own worldly success against Homer\u2019s timeless achievement."
+                    ],
+                    "The gold medallion is worn by Aristotle with a portrait of his powerful pupil, Alexander the Great\tperhaps the philosopher is weighing his own worldly success against Homer\t timeless achievement."
+                ]
+            },
+            {
+                "aristotle": [
+                    "The richly clad Greek philosopher Aristotle (384\u2013322 BCE) rests his hand pensively on a bust of Homer"
+                ],
+                "bust homer": [
+                    "the epic poet who had attained literary immortality with his Iliad and Odyssey centuries before."
+                ],
+                "gold medallion": [
+                    " ristotle wears a gold medallion with a portrait of his powerful pupil, Alexander the Great\u2014perhaps the philosopher is weighing his own worldly success against Homer\u2019s timeless achievement."
+                ]
+            }
+        ],
+        [
+            1753,
+            {
+                "boat": [
+                    [
+                        ""
+                    ],
+                    ""
+                ]
+            },
+            {
+                "boat": [
+                    ""
+                ]
+            }
+        ],
+        [
+            1799,
+            {
+                "bridge": [
+                    [
+                        ""
+                    ],
+                    ""
+                ]
+            },
+            {
+                "ruins": [
+                    "the great Roman ruins"
+                ]
+            }
+        ],
+        [
+            1823,
+            {
+                "french firing squad": [
+                    [
+                        ""
+                    ],
+                    ""
+                ],
+                "man": [
+                    [
+                        "one man, illuminated in white light in the middle of the painting, arms held out to the sides"
+                    ],
+                    "One man, illuminated in white light in the middle of the painting, has his arms held out to the sides. "
+                ],
+                "slain companions": [
+                    [
+                        "His slain companions litter the ground."
+                    ],
+                    "His slain companions litter the ground."
+                ]
+            },
+            {
+                "man illuminated white": [
+                    "one man, illuminated in white light in the middle of the painting, arms held out to the sides"
+                ],
+                "firing squad": [
+                    "French firing squad"
+                ],
+                "slain companions": [
+                    "His slain companions litter the ground."
+                ]
+            }
+        ],
+        [
+            1966,
+            {
+                "village": [
+                    [
+                        "reflection of the village in its harbour"
+                    ],
+                    "The reflection of the village is visible in its harbour."
+                ],
+                "water": [
+                    [
+                        "shimmer of the moving water"
+                    ],
+                    "The shimmer of the moving water is present."
+                ],
+                "buildings": [
+                    [
+                        "geometrical shapes of the buildings"
+                    ],
+                    "The buildings have geometrical shapes."
+                ]
+            },
+            {
+                "water": [
+                    "reflection of the village in its harbour",
+                    "the shimmer of the moving water"
+                ],
+                "buildings": [
+                    ""
+                ]
+            }
+        ],
+        [
+            2225,
+            {
+                "fully developed, sexually mature woman": [
+                    [
+                        "this piece portrays her as a fully developed, sexually mature woman."
+                    ],
+                    "This piece portrays her as a fully developed, sexually mature woman."
+                ]
+            },
+            {
+                "sexually mature woman": [
+                    "Mary, Mother of Jesus. Unlike the typical depiction of Mary as a fully clothed, chaste woman, this piece portrays her as a fully developed, sexually mature woman"
+                ]
+            }
+        ],
+        [
+            2441,
+            {
+                "taxi cab": [
+                    [
+                        "an abandoned Taxi Cab, its trunk popped open in the marshes against the backdrop of the New York City skyline at daybreak."
+                    ],
+                    "An abandoned Taxi Cab, its trunk popped open in the marshes against the backdrop of the New York City skyline at daybreak."
+                ],
+                "new york city skyline": [
+                    [
+                        "against the backdrop of the New York City skyline at daybreak."
+                    ],
+                    "The New York City skyline serves as the backdrop at daybreak."
+                ]
+            },
+            {
+                "taxi cab": [
+                    "an abandoned Taxi Cab, its trunk popped open in the marshes"
+                ],
+                "marshes": [
+                    ""
+                ],
+                "skyline": [
+                    "the backdrop of the New York City skyline at daybreak"
+                ]
+            }
+        ],
+        [
+            2628,
+            {
+                "ball gown": [
+                    [
+                        "Berthe Morisot's painting of an unidentified young woman in a ball gown displays her versatility as an artist"
+                    ],
+                    "Berthe Morisot's painting of an unidentified young woman in a ball gown displays her versatility as an artist"
+                ],
+                "floral patterns": [
+                    [
+                        ""
+                    ],
+                    ""
+                ],
+                "vegetation": [
+                    [
+                        "the dense vegetation serves as a protective shield, shutting out the external world and safeguarding the young woman's innocence and beauty."
+                    ],
+                    "The dense vegetation serves as a protective shield, shutting out the external world and safeguarding the young woman's innocence and beauty."
+                ],
+                "pearl necklace": [
+                    [
+                        "Mary Cassatt's Woman with a Pearl Necklace in a Loge, painted in the same year, which features a similarly attired woman seated in an upper-level box at the Paris Opera."
+                    ],
+                    ""
+                ]
+            },
+            {
+                "dense vegetation": [
+                    "the dense vegetation serves as a protective shield, shutting out the external world and safeguarding the young woman's innocence and beauty"
+                ],
+                "subject": [
+                    "subject appears apprehensive and distracted, as if she is waiting for someone before leaving the unknown event"
+                ]
+            }
+        ],
+        [
+            3687,
+            {
+                "virgin": [
+                    [
+                        "The Virgin is seated broadly and holds the half-naked infant on her lap"
+                    ],
+                    "The Virgin is seated broadly and holds the half-naked infant on her lap."
+                ],
+                "infant": [
+                    [
+                        "holds the half-naked infant on her lap"
+                    ],
+                    "The infant is held on her lap by the half-naked Virgin."
+                ],
+                "joseph": [
+                    [
+                        "Joseph on the left is eclipsed by the two protagonists",
+                        "He sits at an angle facing them, on a seat lower than the Virgin's",
+                        "He looks up and focuses on a point somewhere outside the picture, as if reflecting on the words he has just read in the open book on his lap",
+                        "He holds his reading glasses absent-mindedly and is clearly lost in thought",
+                        "The portrayal of Joseph as a young and vigorous man, in contrast to the traditional elderly figure, is in line with the dictates of Counter-Reformationist principles"
+                    ],
+                    "Joseph on the left is eclipsed by the two protagonists. He sits at an angle facing them, on a seat lower than the Virgin's. He looks up and focuses on a point somewhere outside the picture, as if reflecting on the words he has just read in the open book on his lap. He holds his reading glasses absent-mindedly and is clearly lost in thought. The portrayal of Joseph as a young and vigorous man, in contrast to the traditional elderly figure, is in line with the dictates of Counter-Reformationist principles."
+                ],
+                "open book": [
+                    [
+                        ""
+                    ],
+                    ""
+                ]
+            },
+            {
+                "virgin": [
+                    "seated broadly and holds the half-naked infant on her lap"
+                ],
+                "half-naked infant": [
+                    ""
+                ],
+                "joseph": [
+                    "Joseph on the left is eclipsed by the two protagonists. He sits at an angle facing them, on a seat lower than the Virgin's. He looks up and focuses on a point  somewhere outside the picture, as if reflecting on the words he has just read in the open book on his lap. He holds his reading glasses absent-mindedly and is clearly lost in thought. The portrayal of Joseph as a young and vigorous man, in contrast to the traditional elderly figure, is in line with the dictates of Counter-Reformationist principles."
+                ],
+                "glasses": [
+                    ""
+                ],
+                "book": [
+                    ""
+                ]
+            }
+        ],
+        [
+            4416,
+            {
+                "edward iii": [
+                    [
+                        "Edward III crossing the Somme is the first in the sequence and shows an incident preceding the Battle of Cr\u00e9cy, when the king was trying to cross the River Somme at Blanche Tache, near Abbeville, in order to escape the French army.",
+                        "The king is on horseback just to the right of centre and the figures accompanying him can be identified with the aid of a key provided by the artist for George III."
+                    ],
+                    "Edward III crossing the Somme is the first in the sequence and shows an incident preceding the Battle of Cr\\[eacute]cy, when the king was trying to cross the River Somme at Blanche Tache, near Abbeville, in order to escape the French army. The king is on horseback just to the right of centre and the figures accompanying him can be identified with the aid of a key provided by the artist for George III."
+                ],
+                "english archers": [
+                    [
+                        "dependent upon the skill of the English archers seen in the upper right of the composition."
+                    ],
+                    "The crossing was dependent upon the skill of the English archers seen in the upper right of the composition."
+                ],
+                "horseback": [
+                    [
+                        "on horseback just to the right of centre"
+                    ],
+                    "He is on horseback just to the right of centre"
+                ],
+                "river somme": [
+                    [
+                        "trying to cross the River Somme at Blanche Tache, near Abbeville"
+                    ],
+                    "They were trying to cross the River Somme at Blanche Tache, near Abbeville"
+                ],
+                "french force": [
+                    [
+                        "a part of the French force under Godemar de Faye"
+                    ],
+                    "a part of the French force under Godemar de Faye"
+                ],
+                "figures accompanying": [
+                    [
+                        "the figures accompanying him can be identified with the aid of a key provided by the artist for George III."
+                    ],
+                    "The figures accompanying him can be identified with the aid of a key provided by the artist for George III."
+                ],
+                "arms": [
+                    [
+                        "details of the arms"
+                    ],
+                    "details of the arms"
+                ],
+                "armour": [
+                    [
+                        "details of the arms, armour"
+                    ],
+                    "details of the arms, armour"
+                ],
+                "dress": [
+                    [
+                        "details of the arms, armour, and dress"
+                    ],
+                    "details of the arms, armour, and dress"
+                ]
+            },
+            {
+                "king": [
+                    "king was trying to cross the River Somme at Blanche Tache, near Abbeville, in order to escape the French army",
+                    "Edward III encountered and engaged a part of the French force under Godemar de Faye, the outcome of which, like the Battle of Cr\u00e9cy itself",
+                    "The king is on horseback just to the right of centre"
+                ],
+                "archers": [
+                    "the Battle of Cr\u00e9cy itself, was dependent upon the skill of the English archers seen in the upper right of the composition."
+                ]
+            }
+        ],
+        [
+            5551,
+            {
+                "black dress": [
+                    [
+                        "wearing a black dress and a white lace shawl"
+                    ],
+                    "Wearing a black dress and a white lace shawl with a white bonnet"
+                ],
+                "white lace shawl": [
+                    [
+                        "wearing a black dress and a white lace shawl"
+                    ],
+                    "Wearing a black dress and a white lace shawl"
+                ],
+                "white bonnet": [
+                    [
+                        "wearing a black dress and a white lace shawl with a white bonnet"
+                    ],
+                    "Wearing a black dress and a white lace shawl with a white bonnet"
+                ],
+                "mrs. anne carwardine": [
+                    [
+                        "Mrs. Anne Carwardine (1752-1817) was the wife of Thomas Carwardine, a close friend of Romney"
+                    ],
+                    "Mrs. Anne Carwardine (1752-1817) was the wife of Thomas Carwardine, a close friend of Romney"
+                ],
+                "eldest son thomas": [
+                    [
+                        "holding her eldest son Thomas (1772-1822) in her arms"
+                    ],
+                    "Her eldest son Thomas (1772-1822) is being held in her arms."
+                ]
+            },
+            {
+                "eldest son": [
+                    "holding her eldest son Thomas (1772-1822) in her arms."
+                ],
+                "sitter": [
+                    "The sitter of this portrait, Mrs. Anne heritage, in particular the work of Raphael. Carwardine (1752-1817) was the wife of Thomas Carwardine, a close friend of Romney. She is shown half-length, seated, wearing a black dress and a white lace shawl with a white bonnet"
+                ],
+                "black dress": [
+                    ""
+                ],
+                "white lace shawl": [
+                    ""
+                ],
+                "white bonnet": [
+                    ""
+                ]
+            }
+        ],
+        [
+            6660,
+            {
+                "old people": [
+                    [
+                        "frequently depicting the old people at the Pio Albergo Trivulzio, a retirement home in Milan founded in 1771 that housed more than eight hundred men and women by 1900."
+                    ],
+                    "The painting frequently depicts the old people at the Pio Albergo Trivulzio, a retirement home in Milan founded in 1771 that housed more than eight hundred men and women by 1900."
+                ]
+            },
+            {
+                "dining hall": [
+                    "The modest but clean setting of the women's dining hall serves as the backdrop for a touching human story that is revealed to us through the work's narrative title.",
+                    "at the Pio Albergo Trivulzio, a retirement home in Milan founded in 1771 that housed more than eight hundred men and women by 1900."
+                ],
+                "old people": [
+                    "old people"
+                ]
+            }
+        ],
+        [
+            8316,
+            {
+                "pseudo-classical clothing": [
+                    [
+                        "clad in pseudo-classical clothing in the manner of a Greek-inspired frieze"
+                    ],
+                    "The figures are clad in pseudo-classical clothing in the manner of a Greek-inspired frieze."
+                ]
+            },
+            {
+                "oneiric figures": [
+                    "oneiric figures clad in pseudo-classical clothing in the manner of a Greek-inspired frieze."
+                ],
+                "venus": [
+                    "Venus can be seen as an exaltation of ideal beauty"
+                ]
+            }
+        ]
+    ]
+}

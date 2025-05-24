@@ -1,0 +1,267 @@
+{
+    "prompt_type": "basic",
+    "observations": "enhanced_0",
+    "total_token_count_annotator": 212266,
+    "total_token_count_judge": 43744,
+    "unprocessed_painting_ids": [
+        1466,
+        2549,
+        2613
+    ],
+    "paintings_ids_to_check": [
+        2461,
+        8197,
+        9821,
+        11593
+    ],
+    "paintings_ids_wo_objects": [
+        2657
+    ],
+    "micro_f1_objects": 0.82,
+    "micro_f1_spans": 0.19,
+    "span_similarity_metrics": {
+        "cosine similarity": 0.5072842105263158,
+        "Levenshtein distance": 85.94736842105263,
+        "delete percentage": 32.522436842105265,
+        "false positive percentage": 68.11013684210526,
+        "coverage percentage": 51.68808947368421
+    },
+    "object_description_metrics": {
+        "factual_accuracy": 4.433333333333334,
+        "coherence": 4.166666666666667,
+        "grounding_potential": 3.1666666666666665,
+        "completeness": 4.566666666666666
+    },
+    "object_extraction_metrics": {
+        "objects_recall": 0.7416666666666666,
+        "spans_recall": 0.40773809523809523,
+        "objects_precision": 0.8452380952380951,
+        "spans_precision": 0.3256802721088436
+    },
+    "map_50": 0.1944444477558136,
+    "map_50_95": 0.16251374781131744,
+    "results": [
+        [
+            2461,
+            {
+                "camels": [
+                    [
+                        "Two camels have been led up to the well to drink by a young Moorish girl in her native costume, while the old camel-driver kneels and draws up the water"
+                    ],
+                    "Two camels have been led up to the well to drink by a young Moorish girl in her native costume, while the old camel-driver kneels and draws up the water."
+                ],
+                "moorish girl": [
+                    [
+                        "Two camels have been led up to the well to drink by a young Moorish girl in her native costume, while the old camel-driver kneels and draws up the water"
+                    ],
+                    "A young Moorish girl in her native costume has led two camels up to the well to drink, while the old camel-driver kneels and draws up the water."
+                ],
+                "camel-driver": [
+                    [
+                        "Two camels have been led up to the well to drink by a young Moorish girl in her native costume, while the old camel-driver kneels and draws up the water"
+                    ],
+                    "The old camel-driver kneels and draws up the water, while a young Moorish girl in her native costume has led two camels up to the well to drink."
+                ],
+                "well": [
+                    [
+                        "Two camels have been led up to the well to drink by a young Moorish girl in her native costume, while the old camel-driver kneels and draws up the water"
+                    ],
+                    "Two camels have been led up to the well to drink by a young Moorish girl in her native costume, while the old camel-driver kneels and draws up the water."
+                ]
+            },
+            {
+                "two camels": [
+                    ""
+                ],
+                "girl": [
+                    "young Moorish girl in her native costume"
+                ],
+                "old camel-driver": [
+                    ""
+                ]
+            }
+        ],
+        [
+            2702,
+            {
+                "taxi dancers": [
+                    [
+                        "Benton paints \u201ctaxi dancers\u201d, women who dance with their male partners for ten cents a ticket."
+                    ],
+                    "Benton paints \ntaxi dancers\n, women who dance with their male partners for ten cents a ticket."
+                ],
+                "stockbroker": [
+                    [
+                        "there is a worried stockbroker that watches the market returns on a ticker tape machine."
+                    ],
+                    "There is a worried stockbroker that watches the market returns on a ticker tape machine."
+                ],
+                "ticker tape machine": [
+                    [
+                        "there is a worried stockbroker that watches the market returns on a ticker tape machine."
+                    ],
+                    "The ticker tape machine is watched by a worried stockbroker to see the market returns."
+                ]
+            },
+            {
+                "women dance": [
+                    "taxi dancers: women who dance with their male partners for ten cents a ticket"
+                ],
+                "worried stockbroker": [
+                    "a worried stockbroker that watches the market returns on a ticker tape machine. Benton painted the mural at a time of great economic despair and inequity of the Great Depression, that began in 1929."
+                ]
+            }
+        ],
+        [
+            8197,
+            {
+                "satin dresses": [
+                    [
+                        "lavished his brush on the women's satin dresses"
+                    ],
+                    "The artist lavished his brush on the satin dresses."
+                ],
+                "women": [
+                    [
+                        "lavished his brush on the women's satin dresses"
+                    ],
+                    "The women's satin dresses are rendered with lavish brushstrokes."
+                ],
+                "hair": [
+                    [
+                        "the casual perfection at their hair"
+                    ],
+                    "The casual perfection is at their hair."
+                ]
+            },
+            {
+                "satin dresses": [
+                    ""
+                ],
+                "powdery skin": [
+                    ""
+                ],
+                "hair": [
+                    "the casual perfection at their hair"
+                ],
+                "shepherdess": [
+                    "the shepherdess type as an idealized protagonist for his decorative pictures"
+                ]
+            }
+        ],
+        [
+            9053,
+            {
+                "neptune": [
+                    [
+                        "Amphitrite fled from Neptune's wooing, but he sent dolphins after her which succeeded in persuading her to return to become his bride."
+                    ],
+                    "Neptune sent dolphins after Amphitrite, who fled from his wooing, which succeeded in persuading her to return to become his bride. "
+                ],
+                "amphitrite": [
+                    [
+                        "She rides beside his chariot on a dolphin's back, an arch of drapery billows over her head, a common feature of sea-goddesses from antiquity."
+                    ],
+                    "Amphitrite rides beside his chariot on a dolphin's back, and an arch of drapery billows over her head, a common feature of sea-goddesses from antiquity. "
+                ],
+                "dolphins": [
+                    [
+                        "he sent dolphins after her which succeeded in persuading her to return to become his bride."
+                    ],
+                    "Neptune sent dolphins after her which succeeded in persuading her to return to become his bride. "
+                ],
+                "chariot": [
+                    [
+                        ""
+                    ],
+                    ""
+                ],
+                "tritons": [
+                    [
+                        "They are surrounded by a retinue of Tritons (the name for mermen in general)"
+                    ],
+                    "They are surrounded by a retinue of Tritons (the name for mermen in general)."
+                ],
+                "nereids": [
+                    [
+                        "They are surrounded by a retinue of Tritons (the name for mermen in general) and Nereids (sea-nymphs, the daughters of Nereus, the 'old man of the sea' in Greek mythology)."
+                    ],
+                    "They are surrounded by a retinue of Tritons (the name for mermen in general) and Nereids (sea-nymphs, the daughters of Nereus, the 'old man of the sea' in Greek mythology)."
+                ]
+            },
+            {
+                "dolphins": [
+                    "Amphitrite fled from Neptune's wooing, but he sent dolphins after her which succeeded in persuading her to return to become his bride."
+                ],
+                "neptune": [
+                    "She rides beside his chariot on a dolphin's back"
+                ],
+                "arch drapery": [
+                    "an arch of drapery billows over her head, a common feature of sea-goddesses from antiquity"
+                ],
+                "tritons": [
+                    "(the name for mermen in general)"
+                ],
+                "nereids": [
+                    "(sea-nymphs, the daughters of Nereus, the 'old man of the sea' in Greek mythology)"
+                ]
+            }
+        ],
+        [
+            9821,
+            {
+                "flag": [
+                    [
+                        "the flag, for example, as depicted here was not introduced until six months after the event"
+                    ],
+                    "The flag, as depicted here, was not introduced until six months after the event."
+                ]
+            },
+            {
+                "flag": [
+                    "the flag, for example, as depicted here was not introduced until six months after the event"
+                ]
+            }
+        ],
+        [
+            11593,
+            {
+                "calypso": [
+                    [
+                        "Calypso is still mourning the loss of her beloved Odysseus",
+                        "Calypso is so impressed by the youth, she offers him a warm greeting and shows him the natural beauty of her island.",
+                        "Hamilton's painting is dominated by the statuesque figure of Calypso who looks a powerful and seductive temptress in her classically inspired white dress casually wrapped to reveal her figure."
+                    ],
+                    "Calypso is still mourning the loss of her beloved Odysseus, and is so impressed by the youth, she offers him a warm greeting and shows him the natural beauty of her island. Hamilton's painting is dominated by the statuesque figure of Calypso who looks a powerful and seductive temptress in her classically inspired white dress casually wrapped to reveal her figure."
+                ],
+                "telemachus": [
+                    [
+                        "Telemachus, Odysseus's son, and Mentor, Odysseus's long-time friend, go on a journey to find out news about Odysseus' whereabouts after he has been missing for twenty years.",
+                        "She immediately recognizes the similarity between Odysseus and Telemachus, and knows that he is the son of the hero.",
+                        "Telemachus tells her who his father is, and asks for her mercy.",
+                        "Telemachus regales her with stories of his adventures prior to his landing at her island."
+                    ],
+                    "Telemachus, Odysseus's son, and Mentor, Odysseus's long-time friend, go on a journey to find out news about Odysseus' whereabouts after he has been missing for twenty years. She immediately recognizes the similarity between Odysseus and Telemachus, and knows that he is the son of the hero. Telemachus tells her who his father is, and asks for her mercy, and regales her with stories of his adventures prior to his landing at her island."
+                ],
+                "mentor": [
+                    [
+                        "Telemachus, Odysseus's son, and Mentor, Odysseus's long-time friend, go on a journey to find out news about Odysseus' whereabouts after he has been missing for twenty years."
+                    ],
+                    "Telemachus, Odysseus's son, and Mentor, Odysseus's long-time friend, go on a journey to find out news about Odysseus' whereabouts after he has been missing for twenty years."
+                ]
+            },
+            {
+                "nymph calypso": [
+                    "figure of Calypso who looks a powerful and seductive temptress in her classically inspired white dress casually wrapped to reveal",
+                    "nymph"
+                ],
+                "telemachus": [
+                    "Odysseus's son"
+                ],
+                "mentor": [
+                    "Odysseus's long-time friend"
+                ]
+            }
+        ]
+    ]
+}

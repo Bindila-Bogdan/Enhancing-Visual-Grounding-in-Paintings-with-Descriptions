@@ -1,0 +1,633 @@
+{
+    "prompt_type": "basic",
+    "observations": "baseline_2",
+    "total_token_count_annotator": 385412,
+    "total_token_count_judge": 76397,
+    "unprocessed_painting_ids": [
+        723,
+        1006,
+        1056,
+        1722,
+        2737
+    ],
+    "paintings_ids_to_check": [
+        549,
+        549,
+        1753,
+        1799
+    ],
+    "paintings_ids_wo_objects": [
+        8344,
+        11422
+    ],
+    "micro_f1_objects": 0.68,
+    "micro_f1_spans": 0.15,
+    "span_similarity_metrics": {
+        "cosine similarity": 0.566490909090909,
+        "Levenshtein distance": 92.9090909090909,
+        "delete percentage": 21.910012121212116,
+        "false positive percentage": 44.84885757575757,
+        "coverage percentage": 50.8172606060606
+    },
+    "object_description_metrics": {
+        "factual_accuracy": 4.861538461538461,
+        "coherence": 4.569230769230769,
+        "grounding_potential": 3.0923076923076924,
+        "completeness": 4.369230769230769
+    },
+    "object_extraction_metrics": {
+        "objects_recall": 0.8156277056277055,
+        "spans_recall": 0.6811111111111111,
+        "objects_precision": 0.8666666666666667,
+        "spans_precision": 0.6812230362230363
+    },
+    "map_50": 0.3172830045223236,
+    "map_50_95": 0.2571483254432678,
+    "results": [
+        [
+            91,
+            {
+                "breton costumes": [
+                    [
+                        "posed in traditional Breton costumes"
+                    ],
+                    "Posed in traditional Breton costumes"
+                ],
+                "nature": [
+                    [
+                        "living a simple life in close contact with nature"
+                    ],
+                    "Living a simple life in close contact with nature"
+                ],
+                "peasants": [
+                    [
+                        "epitomize the ideal of virtuous and attractive peasants"
+                    ],
+                    "Epitomize the ideal of virtuous and attractive peasants"
+                ]
+            },
+            {
+                "breton costumes": [
+                    "traditional Breton costumes, epitomize the ideal of virtuous and attractive peasants living a simple life in close contact with nature"
+                ]
+            }
+        ],
+        [
+            517,
+            {
+                "straw hat": [
+                    [
+                        ""
+                    ],
+                    ""
+                ],
+                "mirror": [
+                    [
+                        "I purposely bought a good enough mirror to work from myself, for want of a model."
+                    ],
+                    "The mirror was purposely bought to work from myself, for want of a model."
+                ]
+            },
+            {
+                "": [
+                    ""
+                ]
+            }
+        ],
+        [
+            518,
+            {
+                "shoes": [
+                    [
+                        "Van Gogh painted several still lifes of shoes or boots during his Paris period.",
+                        "Van Gogh has placed the shoes within a specific spatial context: namely, the red-tile floor of the Yellow House.",
+                        "this \"still life of old peasants' shoes\" may have been those of Patience Escalier, whose portrait Van Gogh executed around the same time, late summer 1888."
+                    ],
+                    "Van Gogh painted several still lifes of shoes or boots during his Paris period. Van Gogh has placed the shoes within a specific spatial context: namely, the red-tile floor of the Yellow House. This \"still life of old peasants' shoes\" may have been those of Patience Escalier, whose portrait Van Gogh executed around the same time, late summer 1888."
+                ]
+            },
+            {
+                "shoes": [
+                    "\"still life of old peasants' shoes\" may have been those of Patience Escalier, whose portrait Van Gogh executed around the same time, late summer 1888.",
+                    "evinces a unique return to the earlier motif"
+                ],
+                "red-tile floor": [
+                    "the red-tile floor of the Yellow House"
+                ]
+            }
+        ],
+        [
+            549,
+            {
+                "toledo": [
+                    [
+                        "it portrays Toledo, the city where he lived and worked for most of his life",
+                        "The Met's painting belongs to a tradition of emblematic city views and derives its potency precisely from the representational license it takes",
+                        "As with El Greco's finest portraits, its approach is interpretive rather than documentary: it seeks to portray the essence of the city rather than to record its actual appearance"
+                    ],
+                    "Toledo is the city portrayed, where he lived and worked for most of his life. The Met's painting belongs to a tradition of emblematic city views and derives its potency precisely from the representational license it takes. As with El Greco's finest portraits, its approach is interpretive rather than documentary: it seeks to portray the essence of the city rather than to record its actual appearance"
+                ],
+                "cathedral": [
+                    [
+                        "the cathedral, which he therefore imaginatively moved to the left of the dominant Alc\u00e1zar or royal palace"
+                    ],
+                    "The cathedral was imaginatively moved to the left of the dominant Alc\u00e1zar, or royal palace."
+                ],
+                "alc\u00e1zar": [
+                    [
+                        "the cathedral, which he therefore imaginatively moved to the left of the dominant Alc\u00e1zar or royal palace"
+                    ],
+                    "The Alc\u00e1zar, or royal palace, is dominant, and the cathedral was imaginatively moved to its left"
+                ],
+                "tagus river": [
+                    [
+                        "above the Tagus river"
+                    ],
+                    "The Tagus river is located above."
+                ],
+                "alc\u00e1ntara bridge": [
+                    [
+                        "Roman Alc\u00e1ntara bridge"
+                    ],
+                    "The Alc\u00e1ntara bridge is a Roman bridge."
+                ]
+            },
+            {
+                "city": [
+                    "it seeks to portray the essence of the city rather than to record its actual appearance",
+                    "included only the easternmost portion, above the Tagus river"
+                ],
+                "cathedral": [
+                    "cathedral, which he therefore imaginatively moved to the left of the dominant Alc\u00e1zar or royal palace"
+                ],
+                "alc\u00e1ntara bridge": [
+                    ""
+                ],
+                "tagus river": [
+                    ""
+                ],
+                "meadows": [
+                    "pale green meadows behind the trees, standing like insomniacs"
+                ]
+            }
+        ],
+        [
+            1667,
+            {
+                "portrait": [
+                    [
+                        "The style of this portrait, with its simplified forms and flat color, blends aspects of Symbolism and Fauvism and is typical of Picabia's maturing style as he began to try his hand at different approaches."
+                    ],
+                    "The style of this Portrait, with its simplified forms and flat color, blends aspects of Symbolism and Fauvism and is typical of Picabia's maturing style as he began to try his hand at different approaches."
+                ],
+                "mistinguett": [
+                    [
+                        "The model for the picture, Mistinguett, was a successful actress and singer, and was one of Picabia's first famous friends from the entertainment industry (she was at one time the lover of Maurice Chevalier)."
+                    ],
+                    "The model for the picture, Mistinguett, was a successful actress and singer, and was one of Picabia's first famous friends from the entertainment industry (she was at one time the lover of Maurice Chevalier)."
+                ]
+            },
+            {
+                "model": [
+                    "The model for the picture, Mistinguett, was a successful actress and singer, and was one of Picabia's first famous friends from the entertainment industry (she was at one time the lover of Maurice Chevalier)."
+                ]
+            }
+        ],
+        [
+            1753,
+            {
+                "scene": [
+                    [
+                        "this scene is similar to many works painted by Wood in Cornwall"
+                    ],
+                    "This scene is similar to many works painted by Wood in Cornwall."
+                ]
+            },
+            {
+                "boat": [
+                    ""
+                ]
+            }
+        ],
+        [
+            1799,
+            {
+                "bridge": [
+                    [
+                        "The Bridge at Narni"
+                    ],
+                    "The Bridge at Narni is depicted."
+                ],
+                "roman ruins": [
+                    [
+                        "paint the great Roman ruins"
+                    ],
+                    "The great Roman ruins are painted."
+                ],
+                "italian countryside": [
+                    [
+                        "the bright sunlight of the Italian countryside"
+                    ],
+                    "The Italian countryside is depicted in bright sunlight."
+                ]
+            },
+            {
+                "ruins": [
+                    "the great Roman ruins"
+                ]
+            }
+        ],
+        [
+            1823,
+            {
+                "french firing squad": [
+                    [
+                        "facing a French firing squad"
+                    ],
+                    "Facing a French firing squad."
+                ],
+                "man": [
+                    [
+                        "painting focuses on one man, illuminated in white light in the middle of the painting, arms held out to the sides"
+                    ],
+                    "The painting focuses on one man, illuminated in white light in the middle of the painting, arms held out to the sides."
+                ],
+                "slain companions": [
+                    [
+                        "His slain companions litter the ground"
+                    ],
+                    "His slain companions litter the ground."
+                ]
+            },
+            {
+                "man illuminated white": [
+                    "one man, illuminated in white light in the middle of the painting, arms held out to the sides"
+                ],
+                "firing squad": [
+                    "French firing squad"
+                ],
+                "slain companions": [
+                    "His slain companions litter the ground."
+                ]
+            }
+        ],
+        [
+            1966,
+            {
+                "village": [
+                    [
+                        "reflection of the village in its harbour"
+                    ],
+                    "The village is shown as a reflection in its harbour."
+                ],
+                "water": [
+                    [
+                        "shimmer of the moving water"
+                    ],
+                    "The water has a shimmer from its movement."
+                ],
+                "buildings": [
+                    [
+                        "geometrical shapes of the buildings"
+                    ],
+                    "The buildings are depicted as geometrical shapes."
+                ]
+            },
+            {
+                "water": [
+                    "reflection of the village in its harbour",
+                    "the shimmer of the moving water"
+                ],
+                "buildings": [
+                    ""
+                ]
+            }
+        ],
+        [
+            2024,
+            {
+                "palestinian": [
+                    [
+                        "The Palestinian, upon the usurpation of his homeland, had to distinguish himself professionally and through his conduct in order for him to find his place in life.",
+                        "Life for the Palestinians did not stop at any place in spite of its harshness, limitations and the arbitrariness of the laws.",
+                        "Palestinian popular life persisted in the face of all kinds of oppression, whether in the areas which became under Israeli occupation within occupied Palestine (1948), or those areas occupied by Israel in 1967 (the West Bank & Gaza).",
+                        "Thus, Palestinian living became subject to the changes which imposed a new pattern for the behavior and life of Palestinians, in the social, cultural, economic and political senses.",
+                        "In effect, the Palestinian community remained cohesive and with a presence, maintaining its heritage and traditions.",
+                        "The life of the Palestinian communities continued with its happy and sad moments- through a wedding or a new-born, or through the return of someone abroad.",
+                        "The Palestinian toiled in all available arenas and in all professional specializations.",
+                        "a new pattern of Palestinian life began to prevail inside the camp and outside of it.",
+                        "aiding the Palestinian individual to re-evaluate what happened and, likewise, to ponder what could happen."
+                    ],
+                    "The Palestinian, upon the usurpation of his homeland, had to distinguish himself professionally and through his conduct in order for him to find his place in life. The Palestinian toiled in all available arenas and in all professional specializations. Life for the Palestinians did not stop at any place in spite of its harshness, limitations and the arbitrariness of the laws. Palestinian popular life persisted in the face of all kinds of oppression, whether in the areas which became under Israeli occupation within occupied Palestine (1948), or those areas occupied by Israel in 1967 (the West Bank & Gaza). Thus, Palestinian living became subject to the changes which imposed a new pattern for the behavior and life of Palestinians, in the social, cultural, economic and political senses. In effect, the Palestinian community remained cohesive and with a presence, maintaining its heritage and traditions. The life of the Palestinian communities continued with its happy and sad moments- through a wedding or a new-born, or through the return of someone abroad. A new pattern of Palestinian life began to prevail inside the camp and outside of it, aiding the Palestinian individual to re-evaluate what happened and, likewise, to ponder what could happen."
+                ],
+                "jerusalem": [
+                    [
+                        "where Jerusalem takes pride in the sanctity given to it by God, with its Mosques and Churches, grand by virtue of its history and heritage."
+                    ],
+                    "Jerusalem takes pride in the sanctity given to it by God, with its Mosques and Churches, grand by virtue of its history and heritage."
+                ]
+            },
+            {
+                "mosques churches": [
+                    "The symbols of the homeland remained lofty- where Jerusalem takes pride in the sanctity given to it by God, with its Mosques and Churches, grand by virtue of its history and heritage."
+                ]
+            }
+        ],
+        [
+            2225,
+            {
+                "madonna": [
+                    [
+                        "Madonna was another painting of which Munch made many reproductions.",
+                        "this painting depicts Mary, Mother of Jesus.",
+                        "this piece portrays her as a fully developed, sexually mature woman."
+                    ],
+                    "Madonna was another painting of which Munch made many reproductions. This painting depicts Mary, Mother of Jesus, and portrays her as a fully developed, sexually mature woman."
+                ]
+            },
+            {
+                "sexually mature woman": [
+                    "Mary, Mother of Jesus. Unlike the typical depiction of Mary as a fully clothed, chaste woman, this piece portrays her as a fully developed, sexually mature woman"
+                ]
+            }
+        ],
+        [
+            2441,
+            {
+                "taxi cab": [
+                    [
+                        "abandoned Taxi Cab, its trunk popped open in the marshes against the backdrop of the New York City skyline at daybreak"
+                    ],
+                    "The abandoned Taxi Cab has its trunk popped open in the ominous marshes against the backdrop of the New York City skyline at daybreak."
+                ],
+                "marshes": [
+                    [
+                        "ominous marshes of the New Jersey Meadowlands"
+                    ],
+                    "The ominous marshes of the New Jersey Meadowlands."
+                ],
+                "new york city skyline": [
+                    [
+                        "backdrop of the New York City skyline at daybreak"
+                    ],
+                    "The New York City skyline is in the backdrop at daybreak."
+                ]
+            },
+            {
+                "taxi cab": [
+                    "an abandoned Taxi Cab, its trunk popped open in the marshes"
+                ],
+                "marshes": [
+                    ""
+                ],
+                "skyline": [
+                    "the backdrop of the New York City skyline at daybreak"
+                ]
+            }
+        ],
+        [
+            2628,
+            {
+                "ball gown": [
+                    [
+                        "young woman in a ball gown displays her versatility as an artist"
+                    ],
+                    "A young woman in a ball gown displays her versatility as an artist."
+                ],
+                "floral patterns": [
+                    [
+                        "loosely defined floral patterns"
+                    ],
+                    "The painting contains loosely defined floral patterns."
+                ],
+                "vegetation": [
+                    [
+                        "the dense vegetation serves as a protective shield, shutting out the external world and safeguarding the young woman's innocence and beauty"
+                    ],
+                    "The dense vegetation serves as a protective shield, shutting out the external world and safeguarding the young woman's innocence and beauty."
+                ],
+                "pearl necklace": [
+                    [
+                        "Woman with a Pearl Necklace in a Loge, painted in the same year, which features a similarly attired woman seated in an upper-level box at the Paris Opera."
+                    ],
+                    "The painting is similar to Woman with a Pearl Necklace in a Loge, painted in the same year, which features a similarly attired woman seated in an upper-level box at the Paris Opera."
+                ]
+            },
+            {
+                "dense vegetation": [
+                    "the dense vegetation serves as a protective shield, shutting out the external world and safeguarding the young woman's innocence and beauty"
+                ],
+                "subject": [
+                    "subject appears apprehensive and distracted, as if she is waiting for someone before leaving the unknown event"
+                ]
+            }
+        ],
+        [
+            3687,
+            {
+                "virgin": [
+                    [
+                        "The Virgin is seated broadly and holds the half-naked infant on her lap."
+                    ],
+                    "The Virgin is seated broadly and holds the half-naked infant on her lap."
+                ],
+                "infant": [
+                    [
+                        "holds the half-naked infant on her lap."
+                    ],
+                    "The infant is held half-naked on the Virgin's lap."
+                ],
+                "joseph": [
+                    [
+                        "Joseph on the left is eclipsed by the two protagonists.",
+                        "He sits at an angle facing them, on a seat lower than the Virgin's.",
+                        "He looks up and focuses on a point somewhere outside the picture, as if reflecting on the words he has just read in the open book on his lap.",
+                        "He holds his reading glasses absent-mindedly and is clearly lost in thought.",
+                        "The portrayal of Joseph as a young and vigorous man, in contrast to the traditional elderly figure, is in line with the dictates of Counter-Reformationist principles."
+                    ],
+                    "Joseph on the left is eclipsed by the two protagonists. He sits at an angle facing them, on a seat lower than the Virgin's. He looks up and focuses on a point somewhere outside the picture, as if reflecting on the words he has just read in the open book on his lap. He holds his reading glasses absent-mindedly and is clearly lost in thought. The portrayal of Joseph as a young and vigorous man, in contrast to the traditional elderly figure, is in line with the dictates of Counter-Reformationist principles."
+                ],
+                "reading glasses": [
+                    [
+                        "He holds his reading glasses absent-mindedly and is clearly lost in thought."
+                    ],
+                    "He holds his reading glasses absent-mindedly and is clearly lost in thought."
+                ]
+            },
+            {
+                "virgin": [
+                    "seated broadly and holds the half-naked infant on her lap"
+                ],
+                "half-naked infant": [
+                    ""
+                ],
+                "joseph": [
+                    "Joseph on the left is eclipsed by the two protagonists. He sits at an angle facing them, on a seat lower than the Virgin's. He looks up and focuses on a point  somewhere outside the picture, as if reflecting on the words he has just read in the open book on his lap. He holds his reading glasses absent-mindedly and is clearly lost in thought. The portrayal of Joseph as a young and vigorous man, in contrast to the traditional elderly figure, is in line with the dictates of Counter-Reformationist principles."
+                ],
+                "glasses": [
+                    ""
+                ],
+                "book": [
+                    ""
+                ]
+            }
+        ],
+        [
+            4416,
+            {
+                "edward iii": [
+                    [
+                        "Edward III crossing the Somme is the first in the sequence and shows an incident preceding the Battle of Cr\u00e9cy, when the king was trying to cross the River Somme at Blanche Tache, near Abbeville, in order to escape the French army",
+                        "The king is on horseback just to the right of centre"
+                    ],
+                    "Edward III crossing the Somme is the first in the sequence and shows an incident preceding the Battle of Cr\u00e9cy, when the king was trying to cross the River Somme at Blanche Tache, near Abbeville, in order to escape the French army. The king is on horseback just to the right of centre."
+                ],
+                "english archers": [
+                    [
+                        "dependent upon the skill of the English archers seen in the upper right of the composition"
+                    ],
+                    "The scene is dependent upon the skill of the English archers seen in the upper right of the composition."
+                ],
+                "horse": [
+                    [
+                        "The king is on horseback just to the right of centre"
+                    ],
+                    "The king is on horseback just to the right of centre."
+                ],
+                "french force": [
+                    [
+                        "Edward III encountered and engaged a part of the French force under Godemar de Faye"
+                    ],
+                    "Edward III encountered and engaged a part of the French force under Godemar de Faye."
+                ],
+                "river somme": [
+                    [
+                        "when the king was trying to cross the River Somme at Blanche Tache, near Abbeville, in order to escape the French army"
+                    ],
+                    "The king was trying to cross the River Somme at Blanche Tache, near Abbeville, in order to escape the French army."
+                ],
+                "armour": [
+                    [
+                        "to whose works the artist clearly referred for details of the arms, armour, and dress"
+                    ],
+                    "The artist clearly referred to other works for details of the arms, armour, and dress."
+                ]
+            },
+            {
+                "king": [
+                    "king was trying to cross the River Somme at Blanche Tache, near Abbeville, in order to escape the French army",
+                    "Edward III encountered and engaged a part of the French force under Godemar de Faye, the outcome of which, like the Battle of Cr\u00e9cy itself",
+                    "The king is on horseback just to the right of centre"
+                ],
+                "archers": [
+                    "the Battle of Cr\u00e9cy itself, was dependent upon the skill of the English archers seen in the upper right of the composition."
+                ]
+            }
+        ],
+        [
+            5551,
+            {
+                "mrs. anne carwardine": [
+                    [
+                        "She is shown half-length, seated",
+                        "Mrs. Anne Carwardine (1752-1817) was the wife of Thomas Carwardine, a close friend of Romney",
+                        "wearing a black dress and a white lace shawl with a white bonnet"
+                    ],
+                    "Mrs. Anne Carwardine (1752-1817) was the wife of Thomas Carwardine, a close friend of Romney. She is shown half-length, seated, wearing a black dress and a white lace shawl with a white bonnet."
+                ],
+                "thomas": [
+                    [
+                        "holding her eldest son Thomas (1772-1822) in her arms"
+                    ],
+                    "Thomas is her eldest son (1772-1822) and is being held in her arms."
+                ],
+                "black dress": [
+                    [
+                        "wearing a black dress"
+                    ],
+                    "She is wearing a black dress."
+                ],
+                "white lace shawl": [
+                    [
+                        "a white lace shawl"
+                    ],
+                    "She is wearing a white lace shawl."
+                ],
+                "white bonnet": [
+                    [
+                        "a white bonnet"
+                    ],
+                    "She is wearing a white bonnet."
+                ]
+            },
+            {
+                "eldest son": [
+                    "holding her eldest son Thomas (1772-1822) in her arms."
+                ],
+                "sitter": [
+                    "The sitter of this portrait, Mrs. Anne heritage, in particular the work of Raphael. Carwardine (1752-1817) was the wife of Thomas Carwardine, a close friend of Romney. She is shown half-length, seated, wearing a black dress and a white lace shawl with a white bonnet"
+                ],
+                "black dress": [
+                    ""
+                ],
+                "white lace shawl": [
+                    ""
+                ],
+                "white bonnet": [
+                    ""
+                ]
+            }
+        ],
+        [
+            6660,
+            {
+                "old people": [
+                    [
+                        "frequently depicting the old people at the Pio Albergo Trivulzio, a retirement home in Milan founded in 1771 that housed more than eight hundred men and women by 1900."
+                    ],
+                    "The old people are frequently depicted at the Pio Albergo Trivulzio, a retirement home in Milan founded in 1771 that housed more than eight hundred men and women by 1900."
+                ],
+                "women's dining hall": [
+                    [
+                        "The modest but clean setting of the women's dining hall serves as the backdrop for a touching human story that is revealed to us through the work's narrative title."
+                    ],
+                    "The modest but clean setting of the women's dining hall serves as the backdrop for a touching human story that is revealed to us through the work's narrative title."
+                ]
+            },
+            {
+                "dining hall": [
+                    "The modest but clean setting of the women's dining hall serves as the backdrop for a touching human story that is revealed to us through the work's narrative title.",
+                    "at the Pio Albergo Trivulzio, a retirement home in Milan founded in 1771 that housed more than eight hundred men and women by 1900."
+                ],
+                "old people": [
+                    "old people"
+                ]
+            }
+        ],
+        [
+            8316,
+            {
+                "mirror venus": [
+                    [
+                        "The Mirror of Venus can be seen as an exaltation of ideal beauty, aligning the atmosphere of the painting with a perspective shared by late Victorian art."
+                    ],
+                    "The Mirror of Venus can be seen as an exaltation of ideal beauty, aligning the atmosphere of the painting with a perspective shared by late Victorian art."
+                ],
+                "figures": [
+                    [
+                        "creating a linear arrangement of poetic and oneiric figures clad in pseudo-classical clothing in the manner of a Greek-inspired frieze."
+                    ],
+                    "The figures create a linear arrangement of poetic and oneiric figures clad in pseudo-classical clothing in the manner of a Greek-inspired frieze."
+                ]
+            },
+            {
+                "oneiric figures": [
+                    "oneiric figures clad in pseudo-classical clothing in the manner of a Greek-inspired frieze."
+                ],
+                "venus": [
+                    "Venus can be seen as an exaltation of ideal beauty"
+                ]
+            }
+        ]
+    ]
+}

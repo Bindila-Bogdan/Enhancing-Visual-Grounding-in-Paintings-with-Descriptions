@@ -1,0 +1,444 @@
+{
+    "prompt_type": "basic",
+    "observations": "baseline_2",
+    "total_token_count_annotator": 142994,
+    "total_token_count_judge": 38681,
+    "unprocessed_painting_ids": [],
+    "paintings_ids_to_check": [
+        2657
+    ],
+    "paintings_ids_wo_objects": [],
+    "micro_f1_objects": 0.75,
+    "micro_f1_spans": 0.08,
+    "span_similarity_metrics": {
+        "cosine similarity": 0.48355714285714285,
+        "Levenshtein distance": 83.23809523809524,
+        "delete percentage": 44.697221428571424,
+        "false positive percentage": 71.56982619047619,
+        "coverage percentage": 36.255159523809525
+    },
+    "object_description_metrics": {
+        "factual_accuracy": 5.0,
+        "coherence": 4.515151515151516,
+        "grounding_potential": 3.1818181818181817,
+        "completeness": 4.545454545454546
+    },
+    "object_extraction_metrics": {
+        "objects_recall": 0.6254578754578755,
+        "spans_recall": 0.5541208791208792,
+        "objects_precision": 0.8461538461538461,
+        "spans_precision": 0.6896103896103897
+    },
+    "map_50": 0.14516128599643707,
+    "map_50_95": 0.12582242488861084,
+    "results": [
+        [
+            1466,
+            {
+                "mary magdalen": [
+                    [
+                        "Mary Magdalen chose to spend her last days nourished only by angels\u2019 song in an act of penitence",
+                        "Giaquinto shows her dressed for self-punishment",
+                        "she wears a painful metal belt with spurs known as a cilice\u2014and turning away from her contemplation of a skull, book, and crucifix to gaze on an angel",
+                        "this picture more likely shows Christ's follower Mary Magdalen, who, according again to The Golden Legend, took refuge in a grotto near Marseilles, where she was visited daily by angels, who gave her divine sustenance through their songs.",
+                        "In the seventeenth century emphasis was placed on Mary Magdalen's conversion and/or penitence.",
+                        "As Mary Magdalen was thought to be a converted prostitute, Baroque poets and artists showed her as at once beautiful and penitent, thereby creating an image that combines sensuous beauty with deep feeling.",
+                        "In the painting she wears a cilice\u2014a metal belt with spurs for the mortification of the flesh (fig. 3)."
+                    ],
+                    "Mary Magdalen chose to spend her last days nourished only by angels\n  \nsong in an act of penitence. Giaquinto shows her dressed for self-punishment, wearing a painful metal belt with spurs known as a cilice, and turning away from her contemplation of a skull, book, and crucifix to gaze on an angel. This picture more likely shows Christ's follower Mary Magdalen, who, according again to The Golden Legend, took refuge in a grotto near Marseilles, where she was visited daily by angels, who gave her divine sustenance through their songs. In the seventeenth century emphasis was placed on Mary Magdalen's conversion and/or penitence. As Mary Magdalen was thought to be a converted prostitute, Baroque poets and artists showed her as at once beautiful and penitent, thereby creating an image that combines sensuous beauty with deep feeling. In the painting she wears a cilice\n  \n\n  a metal belt with spurs for the mortification of the flesh (fig. 3)."
+                ],
+                "angel": [
+                    [
+                        "nourished only by angels\u2019 song",
+                        "to gaze on an angel",
+                        "where she was visited daily by angels, who gave her divine sustenance through their songs."
+                    ],
+                    "The angel is associated with Mary Magdalen, who chose to spend her last days nourished only by angels\n  \nsong and who turns to gaze on an angel. She was visited daily by angels, who gave her divine sustenance through their songs."
+                ],
+                "cilice": [
+                    [
+                        "she wears a painful metal belt with spurs known as a cilice",
+                        "In the painting she wears a cilice\u2014a metal belt with spurs for the mortification of the flesh (fig. 3)."
+                    ],
+                    "The cilice is a painful metal belt with spurs. She wears a painful metal belt with spurs known as a cilice, and in the painting she wears a cilice\n  \n\n  a metal belt with spurs for the mortification of the flesh (fig. 3)."
+                ],
+                "skull": [
+                    [
+                        "her contemplation of a skull, book, and crucifix",
+                        "The still life of meditational aids consists of a skull, a crucifix, and a book"
+                    ],
+                    "The skull is part of her contemplation of a skull, book, and crucifix. The still life of meditational aids consists of a skull, a crucifix, and a book."
+                ],
+                "book": [
+                    [
+                        "her contemplation of a skull, book, and crucifix",
+                        "The still life of meditational aids consists of a skull, a crucifix, and a book",
+                        "possibly a breviary\u2014open to a page with an illustration with the descent of the Holy Spirit, possibly referring to the dogma of the Trinity."
+                    ],
+                    "The book is part of her contemplation of a skull, book, and crucifix. The still life of meditational aids consists of a skull, a crucifix, and a book, possibly a breviary\n  \n\n  open to a page with an illustration with the descent of the Holy Spirit, possibly referring to the dogma of the Trinity."
+                ],
+                "crucifix": [
+                    [
+                        "her contemplation of a skull, book, and crucifix",
+                        "The still life of meditational aids consists of a skull, a crucifix, and a book"
+                    ],
+                    "The crucifix is part of her contemplation of a skull, book, and crucifix. The still life of meditational aids consists of a skull, a crucifix, and a book."
+                ]
+            },
+            {
+                "mary magdalen": [
+                    "chose to spend her last days nourished only by angels\u2019 song in an act of penitence.",
+                    "her dressed for self-punishment\u2014she wears a painful metal belt with spurs known as a cilice\u2014and turning away from her contemplation of a skull, book, and crucifix to gaze on an angel.",
+                    "Identity of the Female Saint: Saint Mary of Egypt was a third-century ascetic who, according to The Golden Legend, spent forty-seven years in the desert in repentance and mortification. While an identification with Saint Mary of Egypt cannot be completely eliminated, this picture more likely shows Christ's follower Mary Magdalen, who, according again to The Golden Legend, took refuge in a grotto near Marseilles, where she was visited daily by angels, who gave her divine sustenance through their songs. In the seventeenth century emphasis was placed on Mary Magdalen's conversion and/or penitence. As Mary Magdalen was thought to be a converted prostitute, Baroque poets and artists showed her as at once beautiful and penitent, thereby creating an image that combines sensuous beauty with deep feeling."
+                ],
+                "angels": [
+                    ""
+                ],
+                "skull": [
+                    ""
+                ],
+                "book": [
+                    "possibly a breviary\u2014open to a page with an illustration with the descent of the Holy Spirit, possibly referring to the dogma of the Trinity"
+                ],
+                "crucifix": [
+                    ""
+                ]
+            }
+        ],
+        [
+            2461,
+            {
+                "camels": [
+                    [
+                        "Two camels have been led up to the well to drink by a young Moorish girl in her native costume, while the old camel-driver kneels and draws up the water"
+                    ],
+                    "Two camels have been led up to the well to drink by a young Moorish girl in her native costume, while the old camel-driver kneels and draws up the water"
+                ],
+                "moorish girl": [
+                    [
+                        "Two camels have been led up to the well to drink by a young Moorish girl in her native costume, while the old camel-driver kneels and draws up the water"
+                    ],
+                    "Two camels have been led up to the well to drink by a young Moorish girl in her native costume, while the old camel-driver kneels and draws up the water"
+                ],
+                "camel-driver": [
+                    [
+                        "Two camels have been led up to the well to drink by a young Moorish girl in her native costume, while the old camel-driver kneels and draws up the water"
+                    ],
+                    "Two camels have been led up to the well to drink by a young Moorish girl in her native costume, while the old camel-driver kneels and draws up the water"
+                ]
+            },
+            {
+                "two camels": [
+                    ""
+                ],
+                "girl": [
+                    "young Moorish girl in her native costume"
+                ],
+                "old camel-driver": [
+                    ""
+                ]
+            }
+        ],
+        [
+            2549,
+            {
+                "beatitudes": [
+                    [
+                        "In 1937-38, the painter Stanley Spencer produced an intimate series of eight paintings called The Beatitudes.",
+                        "In The Beatitudes Spencer explored his emotional turmoil, dedicating each painting to a specific element that relates to love and sexual attraction.",
+                        "The message of domestic harmony and togetherness seems to dissipate in The Beatitudes, a series that centers around his relationship with Preece.",
+                        "In this way, the artist suggests that human love, even in its highest form should not be expressed through beauty, but rather through the grotesque figures in The Beatitudes."
+                    ],
+                    "In 1937-38, the painter Stanley Spencer produced an intimate series of eight paintings called The Beatitudes. In The Beatitudes Spencer explored his emotional turmoil, dedicating each painting to a specific element that relates to love and sexual attraction. The message of domestic harmony and togetherness seems to dissipate in The Beatitudes, a series that centers around his relationship with Preece. In this way, the artist suggests that human love, even in its highest form should not be expressed through beauty, but rather through the grotesque figures in The Beatitudes."
+                ],
+                "female figures": [
+                    [
+                        "Beatitude 8: Worship (1938) follows this dynamic, the male figures that resemble Spencer seem to be dwarfed and overwhelmed by the female figures.",
+                        "In the foreground, the two men are in kneeling positions as the large female bodies tower over them.",
+                        "The dominant figure in white is usually interpreted as Preece."
+                    ],
+                    "Beatitude 8: Worship (1938) follows this dynamic, the male figures that resemble Spencer seem to be dwarfed and overwhelmed by the female figures. In the foreground, the two men are in kneeling positions as the large female bodies tower over them. The dominant figure in white is usually interpreted as Preece."
+                ],
+                "jewelry": [
+                    [
+                        "She is surrounded by numerous gifts: cased jewelry, perfume, coins, and wads of money.",
+                        "In particular, the jewelry placed directly underneath Preece\u2019s dress highlights the transactional nature of the relationship: the man bows down powerless, buying gifts in return for the woman\u2019s favor."
+                    ],
+                    "She is surrounded by numerous gifts: cased jewelry, perfume, coins, and wads of money. In particular, the jewelry placed directly underneath Preece\n\n\ns dress highlights the transactional nature of the relationship: the man bows down powerless, buying gifts in return for the woman\n\n\ns favor."
+                ],
+                "male figures": [
+                    [
+                        "The male figures in the series tend to have characteristics attributed to Spencer, they are usually smaller and dominated by their female counterparts."
+                    ],
+                    "The male figures in the series tend to have characteristics attributed to Spencer, they are usually smaller and dominated by their female counterparts."
+                ]
+            },
+            {
+                "male figures": [
+                    "the male figures that resemble Spencer seem to be dwarfed and overwhelmed by the female figures. In the foreground, the two men are in kneeling positions as the large female bodies tower over them. Similarly, the two further figures seem to be absorbed by the group of women in front of them."
+                ],
+                "dominant figure white": [
+                    "The dominant figure in white is usually interpreted as Preece."
+                ],
+                "numerous gifts": [
+                    "numerous gifts: cased jewelry, perfume, coins, and wads of money. The theme of gifts had personal significance to Spencer. He lavished Preece with expensive presents, accumulating substantial amounts of debt that almost led him to financial ruin."
+                ],
+                "jewelry placed directly underneath preece's dress": [
+                    "jewelry placed directly underneath Preece\u2019s dress highlights the transactional nature of the relationship: the man bows down powerless, buying gifts in return for the woman\u2019s favor."
+                ]
+            }
+        ],
+        [
+            2613,
+            {
+                "lute": [
+                    [
+                        "Lutes are of two main types, those with trough-shaped resonators usually carved from a block of wood, and those with ovoid or circular resonators made from gourds.",
+                        "These are typically spike-lutes, in other words the neck is a stick that passes into the body of the resonator and the strings are looped over it once they pass the bridge, which is held to the skin soundboard by the pressure of the strings.",
+                        "More recently, small instruments with resonators from sardine tins or even plastic bottles can be seen.",
+                        "The strings were typically gut or tendons, but are now usually made of nylon."
+                    ],
+                    "Lutes are of two main types: those with trough-shaped resonators usually carved from a block of wood, and those with ovoid or circular resonators made from gourds. These are typically spike-lutes, in other words the neck is a stick that passes into the body of the resonator and the strings are looped over it once they pass the bridge, which is held to the skin soundboard by the pressure of the strings. More recently, small instruments with resonators from sardine tins or even plastic bottles can be seen. The strings were typically gut or tendons, but are now usually made of nylon."
+                ]
+            },
+            {
+                "lutes": [
+                    "Lutes are of two main types, those with trough-shaped resonators usually carved from a block of wood, and those with ovoid or circular resonators made from gourds. These are typically spike-lutes, in other words the neck is a stick that passes into the body of the resonator and the strings are looped over it once they pass the bridge, which is held to the skin soundboard by the pressure of the strings. More recently, small  instruments with resonators from sardine tins or even plastic bottles can be seen. The strings were typically gut or tendons, but are now usually made of nylon. Historically, these instruments seem to be associated with the northern regions and are typical of Hausa and Kanuri, but it seems they were long ago absorbed into the traditional music of many peoples of the Plateau."
+                ]
+            }
+        ],
+        [
+            2657,
+            {
+                "olive tree": [
+                    [
+                        "the subject of the olive tree"
+                    ],
+                    "The subject is the olive tree."
+                ],
+                "land": [
+                    [],
+                    ""
+                ],
+                "mud": [
+                    [
+                        "local materials like mud",
+                        "combination of mud and acrylic on wood reflects the tension between the rough cracks of mud which is dominant"
+                    ],
+                    "The combination of mud and acrylic on wood reflects the tension between the rough cracks of mud, which is dominant, using local materials like mud."
+                ],
+                "acrylic": [
+                    [
+                        "smoothly painted acrylic colors"
+                    ],
+                    "Smoothly painted acrylic colors."
+                ]
+            },
+            {
+                "individual figure": [
+                    "centered on the individual figure to convey the \u2018different states of exhausting anticipation or loss,\u2019 resulting from his experience of living under the occupation"
+                ],
+                "mud": [
+                    "The combination of mud and acrylic on wood reflects the tension between the rough cracks of mud which is dominant, in contrast to adjacent areas of smoothly painted acrylic colors"
+                ],
+                "acrylic": [
+                    ""
+                ]
+            }
+        ],
+        [
+            2702,
+            {
+                "taxi dancers": [
+                    [],
+                    ""
+                ],
+                "stockbroker": [
+                    [
+                        "there is a worried stockbroker that watches the market returns on a ticker tape machine."
+                    ],
+                    "There is a worried stockbroker that watches the market returns on a ticker tape machine."
+                ],
+                "ticker tape machine": [
+                    [
+                        ""
+                    ],
+                    ""
+                ],
+                "dancers": [
+                    [
+                        ""
+                    ],
+                    ""
+                ],
+                "hands": [
+                    [
+                        "Outreaching Hands alludes to the breadlines of the Great Depression by showing only hands reaching for bread and other hands holding money."
+                    ],
+                    "Outreaching Hands alludes to the breadlines of the Great Depression by showing only hands reaching for bread and other hands holding money."
+                ],
+                "bar": [
+                    [
+                        ""
+                    ],
+                    ""
+                ]
+            },
+            {
+                "women dance": [
+                    "taxi dancers: women who dance with their male partners for ten cents a ticket"
+                ],
+                "worried stockbroker": [
+                    "a worried stockbroker that watches the market returns on a ticker tape machine. Benton painted the mural at a time of great economic despair and inequity of the Great Depression, that began in 1929."
+                ]
+            }
+        ],
+        [
+            8197,
+            {
+                "women's satin dresses": [
+                    [
+                        "lavished his brush on the women's satin dresses"
+                    ],
+                    "The artist lavished his brush on the women's satin dresses."
+                ]
+            },
+            {
+                "satin dresses": [
+                    ""
+                ],
+                "powdery skin": [
+                    ""
+                ],
+                "hair": [
+                    "the casual perfection at their hair"
+                ],
+                "shepherdess": [
+                    "the shepherdess type as an idealized protagonist for his decorative pictures"
+                ]
+            }
+        ],
+        [
+            9053,
+            {
+                "neptune": [
+                    [
+                        "Triumph of Neptune",
+                        "Amphitrite fled from Neptune's wooing, but he sent dolphins after her which succeeded in persuading her to return to become his bride."
+                    ],
+                    "Triumph of Neptune. Amphitrite fled from Neptune's wooing, but he sent dolphins after her which succeeded in persuading her to return to become his bride."
+                ],
+                "amphitrite": [
+                    [
+                        "Amphitrite fled from Neptune's wooing, but he sent dolphins after her which succeeded in persuading her to return to become his bride.",
+                        "She rides beside his chariot on a dolphin's back, an arch of drapery billows over her head, a common feature of sea-goddesses from antiquity."
+                    ],
+                    "Amphitrite fled from Neptune's wooing, but he sent dolphins after her which succeeded in persuading her to return to become his bride. She rides beside his chariot on a dolphin's back, an arch of drapery billows over her head, a common feature of sea-goddesses from antiquity."
+                ],
+                "dolphins": [
+                    [
+                        "he sent dolphins after her which succeeded in persuading her to return to become his bride."
+                    ],
+                    "Dolphins were sent after Amphitrite, and they succeeded in persuading her to return to become Neptune's bride."
+                ],
+                "tritons": [
+                    [
+                        "They are surrounded by a retinue of Tritons (the name for mermen in general)"
+                    ],
+                    "They are surrounded by a retinue of Tritons (the name for mermen in general)."
+                ],
+                "nereids": [
+                    [
+                        "Nereids (sea-nymphs, the daughters of Nereus, the 'old man of the sea' in Greek mythology)"
+                    ],
+                    "Nereids are sea-nymphs, the daughters of Nereus, the 'old man of the sea' in Greek mythology."
+                ]
+            },
+            {
+                "dolphins": [
+                    "Amphitrite fled from Neptune's wooing, but he sent dolphins after her which succeeded in persuading her to return to become his bride."
+                ],
+                "neptune": [
+                    "She rides beside his chariot on a dolphin's back"
+                ],
+                "arch drapery": [
+                    "an arch of drapery billows over her head, a common feature of sea-goddesses from antiquity"
+                ],
+                "tritons": [
+                    "(the name for mermen in general)"
+                ],
+                "nereids": [
+                    "(sea-nymphs, the daughters of Nereus, the 'old man of the sea' in Greek mythology)"
+                ]
+            }
+        ],
+        [
+            9821,
+            {
+                "flag": [
+                    [
+                        "the flag, for example, as depicted here was not introduced until six months after the event"
+                    ],
+                    "The flag, as depicted here, was not introduced until six months after the event."
+                ]
+            },
+            {
+                "flag": [
+                    "the flag, for example, as depicted here was not introduced until six months after the event"
+                ]
+            }
+        ],
+        [
+            11593,
+            {
+                "calypso": [
+                    [
+                        "imprisoned on the nymph Calypso's island",
+                        "Calypso is still mourning the loss of her beloved Odysseus",
+                        "Calypso is so impressed by the youth, she offers him a warm greeting and shows him the natural beauty of her island",
+                        "Hamilton's painting is dominated by the statuesque figure of Calypso who looks a powerful and seductive temptress in her classically inspired white dress casually wrapped to reveal her figure."
+                    ],
+                    "Calypso is still mourning the loss of her beloved Odysseus and is so impressed by the youth, she offers him a warm greeting and shows him the natural beauty of her island. For seven years, Odysseus was imprisoned on the nymph Calypso's island. Hamilton's painting is dominated by the statuesque figure of Calypso who looks a powerful and seductive temptress in her classically inspired white dress casually wrapped to reveal her figure."
+                ],
+                "telemachus": [
+                    [
+                        "Telemachus, Odysseus's son, and Mentor, Odysseus's long-time friend, go on a journey to find out news about Odysseus' whereabouts after he has been missing for twenty years.",
+                        "When Telemachus and Mentor shipwreck on her island, Calypso is still mourning the loss of her beloved Odysseus.",
+                        "She immediately recognizes the similarity between Odysseus and Telemachus, and knows that he is the son of the hero.",
+                        "Telemachus tells her who his father is, and asks for her mercy.",
+                        "Telemachus regales her with stories of his adventures prior to his landing at her island."
+                    ],
+                    "Telemachus, Odysseus's son, and Mentor, Odysseus's long-time friend, go on a journey to find out news about Odysseus' whereabouts after he has been missing for twenty years. When Telemachus and Mentor shipwreck on her island, Calypso is still mourning the loss of her beloved Odysseus. She immediately recognizes the similarity between Odysseus and Telemachus, and knows that he is the son of the hero. Telemachus tells her who his father is, and asks for her mercy. Telemachus regales her with stories of his adventures prior to his landing at her island."
+                ],
+                "mentor": [
+                    [
+                        "Telemachus, Odysseus's son, and Mentor, Odysseus's long-time friend, go on a journey to find out news about Odysseus' whereabouts after he has been missing for twenty years.",
+                        "When Telemachus and Mentor shipwreck on her island, Calypso is still mourning the loss of her beloved Odysseus."
+                    ],
+                    "Telemachus, Odysseus's son, and Mentor, Odysseus's long-time friend, go on a journey to find out news about Odysseus' whereabouts after he has been missing for twenty years. When Telemachus and Mentor shipwreck on her island, Calypso is still mourning the loss of her beloved Odysseus."
+                ],
+                "odysseus": [
+                    [
+                        "Telemachus, Odysseus's son, and Mentor, Odysseus's long-time friend, go on a journey to find out news about Odysseus' whereabouts after he has been missing for twenty years.",
+                        "For seven of those years, he was imprisoned on the nymph Calypso's island, until the gods intervened and forced her to let him go.",
+                        "She immediately recognizes the similarity between Odysseus and Telemachus, and knows that he is the son of the hero.",
+                        "She reveals to him that his father Odysseus had in fact been to her island, and she laments his having left her broken-hearted."
+                    ],
+                    "Telemachus, Odysseus's son, and Mentor, Odysseus's long-time friend, go on a journey to find out news about Odysseus' whereabouts after he has been missing for twenty years. For seven of those years, he was imprisoned on the nymph Calypso's island, until the gods intervened and forced her to let him go. She immediately recognizes the similarity between Odysseus and Telemachus, and knows that he is the son of the hero. She reveals to him that his father Odysseus had in fact been to her island, and she laments his having left her broken-hearted."
+                ]
+            },
+            {
+                "nymph calypso": [
+                    "figure of Calypso who looks a powerful and seductive temptress in her classically inspired white dress casually wrapped to reveal",
+                    "nymph"
+                ],
+                "telemachus": [
+                    "Odysseus's son"
+                ],
+                "mentor": [
+                    "Odysseus's long-time friend"
+                ]
+            }
+        ]
+    ]
+}
