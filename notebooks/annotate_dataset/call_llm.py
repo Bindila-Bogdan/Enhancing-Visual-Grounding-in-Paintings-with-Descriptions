@@ -228,6 +228,17 @@ def generate(
         response_schema=list[format_class],
     )
 
+    generate_content_config_thinking = types.GenerateContentConfig(
+        temperature=0.0,
+        response_mime_type="application/json",
+        system_instruction=[
+            types.Part.from_text(text=system_prompt_text),
+        ],
+        max_output_tokens=3072,
+        response_schema=list[format_class],
+        thinking_config=types.ThinkingConfig(thinking_budget=0),
+    )
+
     called = False
     trials = 2
     prompt_tokens_count = 0
@@ -244,9 +255,10 @@ def generate(
                 )
             else:
                 response = backup_client.models.generate_content(
+                    # if GEMINI_MODEL_BACKUP is replaced by GEMINI_MODEL, change the config too
                     model=GEMINI_MODEL_BACKUP,
                     contents=prompt_parts,
-                    config=generate_content_config,
+                    config=generate_content_config_thinking,
                 )
 
             output = response.parsed
