@@ -382,7 +382,17 @@ def judge_objects_descriptions(client, object_and_spans, object_desc_metrics):
         object_and_spans_filtered["objects_description"].append(object_description)
 
     if len(object_and_spans_filtered["object_names"]) == 0:
-        return "", 0, False
+        return (
+            "",
+            0,
+            False,
+            {
+                "factual_accuracy": [],
+                "coherence": [],
+                "grounding_potential": [],
+                "completeness": [],
+            },
+        )
 
     desc_judgements, total_token_count = judge_object_description(client, object_and_spans_filtered)
 

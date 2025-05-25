@@ -20,7 +20,7 @@ FEW_SHOT_EXAMPLES_IDS = [2156, 2484, 11819, 256, 10748, 3344, 10676]
 
 
 def load_image(painting_id):
-    image = Image.open(f"{RAW_DATA_PATH}filtered_paintings/{painting_id}.png")
+    image = Image.open(f"{RAW_DATA_PATH}filtered_paintings/{painting_id}.png").convert("RGB")
     width = image.size[0]
     height = image.size[1]
 
