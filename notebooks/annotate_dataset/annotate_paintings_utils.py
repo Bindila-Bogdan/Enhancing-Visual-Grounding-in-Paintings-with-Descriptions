@@ -1,4 +1,5 @@
 import io
+import os
 import copy
 import json
 import base64
@@ -57,9 +58,11 @@ def image_to_url(image_bytes):
 
 
 def load_data():
-    paintings_data = pl.read_json(
-        f"{INTERMEDIATE_DATA_PATH}filtered_paintings_enhanced_data.json"
-    ).with_columns((pl.col("title") + " : " + pl.col("description")).alias("description"))
+    paintings_data = (
+        pl.read_json(f"{INTERMEDIATE_DATA_PATH}filtered_paintings_enhanced_data.json")
+        .with_columns((pl.col("title") + " : " + pl.col("description")).alias("description"))
+        .sort("id")
+    )
     annotations = pl.read_json(ANNOTATIONS_PATH + "manual_annotations.json").with_columns(
         pl.col("object_name").str.replace_all(",", "", literal=True).alias("object_name")
     )
@@ -108,7 +111,11 @@ def load_data():
         painting for painting in test_paintings if painting["painting_id"] not in mini_val_ids
     ]
 
-    return paintings_data, annotations, few_shot_examples, mini_val_set, mini_test_set
+    paintings_data_prep = (
+        paintings_data["id", "description"].rename({"id": "painting_id"}).to_dicts()
+    )
+
+    return paintings_data_prep, annotations, few_shot_examples, mini_val_set, mini_test_set
 
 
 def get_bbox_annotations():
@@ -198,16 +205,23 @@ def process_objects(llm_output, painting, all_predicted_objects, all_ground_trut
             for object_name in [annotation.object_name for annotation in llm_output]
         ]
     )
-    all_predicted_objects.append(predicted_objects)
+    if all_predicted_objects is not None:
+        all_predicted_objects.append(predicted_objects)
 
-    ground_truth_objects = sorted(
-        [clean_object_name(object_name) for object_name in copy.deepcopy(painting["object_name"])]
-    )
-    all_ground_truth_objects.append(ground_truth_objects)
+    if all_ground_truth_objects is not None:
+        ground_truth_objects = sorted(
+            [
+                clean_object_name(object_name)
+                for object_name in copy.deepcopy(painting["object_name"])
+            ]
+        )
+        all_ground_truth_objects.append(ground_truth_objects)
 
-    if VERBOSE:
-        print("\nPREDICTED OBJECTS AND GROUND TRUTH OBJECTS")
-        print(predicted_objects, "\n", ground_truth_objects)
+        if VERBOSE:
+            print("\nPREDICTED OBJECTS AND GROUND TRUTH OBJECTS")
+            print(predicted_objects, "\n", ground_truth_objects)
+    else:
+        ground_truth_objects = None
 
     return predicted_objects, ground_truth_objects
 
@@ -217,20 +231,25 @@ def process_spans(llm_output, painting):
         clean_object_name(annotation.object_name): annotation.description_spans
         for annotation in llm_output
     }
-    ground_truth_spans_per_object = dict(
-        zip(
-            [clean_object_name(object_name) for object_name in painting["object_name"]],
-            painting["description_spans"],
+
+    if "object_name" in list(painting.keys()) and "description_spans" in list(painting.keys()):
+        ground_truth_spans_per_object = dict(
+            zip(
+                [clean_object_name(object_name) for object_name in painting["object_name"]],
+                painting["description_spans"],
+            )
         )
-    )
+
+        ground_truth_spans = []
+        for spans in painting["description_spans"]:
+            ground_truth_spans.extend(spans)
+    else:
+        ground_truth_spans_per_object = None
+        ground_truth_spans = None
 
     predicted_spans = []
     for annotation in llm_output:
         predicted_spans.extend(annotation.description_spans)
-
-    ground_truth_spans = []
-    for spans in painting["description_spans"]:
-        ground_truth_spans.extend(spans)
 
     return (
         predicted_spans_per_object,
@@ -249,7 +268,7 @@ def get_object_descriptions(llm_output, all_predicted_object_descriptions):
     all_predicted_object_descriptions.append(predicted_object_descriptions)
 
 
-def store_results(prompt_type, name, observations, results_values, metrics):
+def store_benchmarking_results(prompt_type, name, observations, results_values, metrics):
     results_file_name = f"{RESULTS_PATH}prompting_results_{name}_{observations}.json"
 
     results = {
@@ -272,3 +291,32 @@ def store_results(prompt_type, name, observations, results_values, metrics):
 
     with open(results_file_name, "w") as file:
         json.dump(results, file, indent=4)
+
+
+def store_annotations(
+    total_token_count,
+    total_token_count_judge,
+    paintings_ids_unprocessed,
+    paintings_ids_to_check,
+    paintings_ids_wo_objects,
+    paintings_annotations,
+    start_index,
+    in_batch_index,
+    last_in_batch_index,
+):
+    annotations = {
+        "total_token_count_annotator": total_token_count,
+        "total_token_count_judge": total_token_count_judge,
+        "paintings_ids_unprocessed": paintings_ids_unprocessed,
+        "paintings_ids_to_check": paintings_ids_to_check,
+        "paintings_ids_wo_objects": paintings_ids_wo_objects,
+        "annotations": paintings_annotations,
+    }
+
+    try:
+        os.remove(f"{ANNOTATIONS_PATH}annotations_{start_index}_{last_in_batch_index}.json")
+    except:
+        pass
+
+    with open(f"{ANNOTATIONS_PATH}annotations_{start_index}_{in_batch_index}.json", "w") as file:
+        json.dump(annotations, file, indent=4)

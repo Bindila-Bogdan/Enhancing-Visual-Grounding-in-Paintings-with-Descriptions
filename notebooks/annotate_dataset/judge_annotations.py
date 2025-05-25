@@ -170,24 +170,28 @@ def get_object_extraction_suggestions(description, output, metrics):
     fp_spans, fp_objects_with_spans = get_object_extraction_fp_fn(output, description, "positive")
 
     if metrics["spans_precision"] < PRECISION_RECALL_THRESHOLD and len(fp_spans) > 0:
-        print("fp_spans\n", fp_spans)
+        if VERBOSE:
+            print("fp_spans\n", fp_spans)
         major_issues_found = True
         judge_suggestions += f"False positives spans (spans that were extracted but should have not been extracted, although the extracted object is correct):\n{fp_spans}\n"
 
     if metrics["objects_precision"] < PRECISION_RECALL_THRESHOLD and len(fp_objects_with_spans) > 0:
-        print("fp_objects_with_spans\n", fp_objects_with_spans)
+        if VERBOSE:
+            print("fp_objects_with_spans\n", fp_objects_with_spans)
         major_issues_found = True
         judge_suggestions += f"False positives objects (objects and all their spans that were extracted but should have not been extracted):\n{fp_objects_with_spans}\n"
 
     fn_spans, fn_objects_with_spans = get_object_extraction_fp_fn(output, description, "negative")
 
     if metrics["objects_recall"] < PRECISION_RECALL_THRESHOLD and len(fn_objects_with_spans) > 0:
-        print("fn_objects_with_spans\n", fn_objects_with_spans)
+        if VERBOSE:
+            print("fn_objects_with_spans\n", fn_objects_with_spans)
         major_issues_found = True
         judge_suggestions += f"False negative objects (objects together with their spans that were not extracted but should be considered):\n{fn_objects_with_spans}\n"
 
     if metrics["spans_recall"] < PRECISION_RECALL_THRESHOLD and len(fn_spans) > 0:
-        print("fn_spans\n", fn_spans)
+        if VERBOSE:
+            print("fn_spans\n", fn_spans)
         major_issues_found = True
         judge_suggestions += f"False negative spans (spans that were not extracted, but should have been extracted):\n{fn_spans}\n"
 
@@ -258,17 +262,28 @@ def judge_objects_extractions(
         client, system_prompt, user_message, ExtractionEvaluation
     )
 
-    pprint(output)
+    if VERBOSE:
+        pprint(output)
 
     metrics = compute_metrics_judge_object_extraction(output, object_and_spans, description)
     judge_suggestions = get_object_extraction_suggestions(description, output, metrics)
 
-    object_extraction_metrics["objects_recall"].append(metrics["objects_recall"])
-    object_extraction_metrics["spans_recall"].append(metrics["spans_recall"])
-    object_extraction_metrics["objects_precision"].append(metrics["objects_precision"])
-    object_extraction_metrics["spans_precision"].append(metrics["spans_precision"])
+    if BENCHMARKING:
+        object_extraction_metrics["objects_recall"].append(metrics["objects_recall"])
+        object_extraction_metrics["spans_recall"].append(metrics["spans_recall"])
+        object_extraction_metrics["objects_precision"].append(metrics["objects_precision"])
+        object_extraction_metrics["spans_precision"].append(metrics["spans_precision"])
+    else:
+        output["false_positive_spans"] = [
+            [suggestion.object_name, suggestion.spans_with_issue]
+            for suggestion in output["false_positive_spans"]
+        ]
+        output["false_negative_spans"] = [
+            [suggestion.object_name, suggestion.spans_with_issue]
+            for suggestion in output["false_negative_spans"]
+        ]
 
-    return judge_suggestions, metrics, total_token_count
+    return judge_suggestions, metrics, total_token_count, output
 
 
 # judge object description
@@ -371,7 +386,8 @@ def judge_objects_descriptions(client, object_and_spans, object_desc_metrics):
 
     desc_judgements, total_token_count = judge_object_description(client, object_and_spans_filtered)
 
-    print(desc_judgements)
+    if VERBOSE:
+        print(desc_judgements)
 
     if not (
         len(desc_judgements["factual_accuracy"])
@@ -380,17 +396,21 @@ def judge_objects_descriptions(client, object_and_spans, object_desc_metrics):
         == len(desc_judgements["completeness"])
         == len(object_and_spans_filtered["objects_description"])
     ):
-        print("The judge didn't provide all description scores.")
+        if VERBOSE:
+            print("The judge didn't provide all description scores.")
 
-        return "", total_token_count, True
+        return "", total_token_count, True, desc_judgements
 
-    object_desc_metrics["factual_accuracy"].extend(desc_judgements["factual_accuracy"])
-    object_desc_metrics["coherence"].extend(desc_judgements["coherence"])
-    object_desc_metrics["grounding_potential"].extend(desc_judgements["grounding_potential"])
-    object_desc_metrics["completeness"].extend(desc_judgements["completeness"])
+    if BENCHMARKING:
+        object_desc_metrics["factual_accuracy"].extend(desc_judgements["factual_accuracy"])
+        object_desc_metrics["coherence"].extend(desc_judgements["coherence"])
+        object_desc_metrics["grounding_potential"].extend(desc_judgements["grounding_potential"])
+        object_desc_metrics["completeness"].extend(desc_judgements["completeness"])
 
-    judge_suggestions = get_object_description_suggestions(
-        object_and_spans_filtered, desc_judgements
-    )
+        judge_suggestions = get_object_description_suggestions(
+            object_and_spans_filtered, desc_judgements
+        )
+    else:
+        judge_suggestions = ""
 
-    return judge_suggestions, total_token_count, False
+    return judge_suggestions, total_token_count, False, desc_judgements

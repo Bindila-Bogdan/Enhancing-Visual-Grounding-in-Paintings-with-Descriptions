@@ -1,5 +1,6 @@
 # model names
 GEMINI_MODEL = "gemini-2.0-flash"
+GEMINI_MODEL_BACKUP = "gemini-2.5-flash-preview-05-20"
 OPEN_AI_MODEL = "gpt-4.1"
 SENTENCE_SIMILARITY_MODEL = "all-mpnet-base-v2"
 GROUNDING_MODEL_ID = "IDEA-Research/grounding-dino-base"
@@ -7,13 +8,19 @@ GROUNDING_MODEL_ID = "IDEA-Research/grounding-dino-base"
 # general settings
 MIN_IMG_SIZE = 768
 USE_VERTEX = True
-VERBOSE = True
 JUDGE_OUTPUT = True
 PROMPT_TYPE = "basic"
+BENCHMARKING = False
 
 # judge feedback thresholds
-PRECISION_RECALL_THRESHOLD = 0.5
-DESCRIPTION_METRIC_THRESHOLD = 3
+if BENCHMARKING:
+    VERBOSE = True
+    PRECISION_RECALL_THRESHOLD = 0.5
+    DESCRIPTION_METRIC_THRESHOLD = 3
+else:
+    VERBOSE = False
+    PRECISION_RECALL_THRESHOLD = 1.1
+    DESCRIPTION_METRIC_THRESHOLD = 6
 
 # baseline prompts
 OBJECT_EXTRACTION_BASELINE_SYSTEM_PROMPT = (
@@ -217,6 +224,7 @@ Your role is to take the name of each object and the associated set of short des
 - Include all description spans provided for that object — **do not omit any**.
 - Be written using only the spans assigned to the specific object — **do not mix spans or include from other objects**.
 - If an object has no associated description spans, return an empty string '""' for its object_description.
+- Be grammatically correct.
 
 **Strict Constraints**
 - Do not add details that are not explicitly mentioned in the provided description spans.

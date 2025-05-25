@@ -12,11 +12,9 @@ from config import *
 from annotate_paintings_utils import load_image, image_to_bytes
 
 
-def get_llm_client():
+def get_llm_client(location="europe-west9"):
     if USE_VERTEX:
-        return genai.Client(
-            project="enhancing-visual-grounding", vertexai=True, location="europe-west9"
-        )
+        return genai.Client(project="enhancing-visual-grounding", vertexai=True, location=location)
     else:
         with open("../../config/keys.json", "r") as file:
             os.environ["GEMINI_API_KEY"] = json.load(file)["gemini_api_key"]
@@ -190,6 +188,7 @@ def get_basic_object_description(examples, additional_data):
 
 def generate(
     client,
+    backup_client,
     examples,
     image,
     description,
@@ -197,7 +196,6 @@ def generate(
     prompt_type,
     feedback,
 ):
-
     prompt_parts, system_prompt_text, format_class = get_prompt(
         examples, image, copy.deepcopy(description), additional_data, prompt_type
     )
@@ -238,15 +236,28 @@ def generate(
 
     while not called or trials != 0:
         try:
-            response = client.models.generate_content(
-                model=GEMINI_MODEL,
-                contents=prompt_parts,
-                config=generate_content_config,
-            )
-            output = response.parsed
+            if trials == 2:
+                response = client.models.generate_content(
+                    model=GEMINI_MODEL,
+                    contents=prompt_parts,
+                    config=generate_content_config,
+                )
+            else:
+                response = backup_client.models.generate_content(
+                    model=GEMINI_MODEL_BACKUP,
+                    contents=prompt_parts,
+                    config=generate_content_config,
+                )
 
+            output = response.parsed
             prompt_tokens_count += response.usage_metadata.prompt_token_count
             output_tokens_count += response.usage_metadata.candidates_token_count
+
+            try:
+                output_tokens_count += response.usage_metadata.thoughts_token_count
+            except:
+                pass
+
             total_token_count += prompt_tokens_count + output_tokens_count
 
             if output is None:
