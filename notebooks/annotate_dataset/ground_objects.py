@@ -8,6 +8,7 @@ from PIL import ImageDraw, ImageFont
 from transformers import AutoProcessor, AutoModelForZeroShotObjectDetection
 
 from config import *
+from annotate_paintings_utils import *
 
 
 def get_device():
@@ -32,7 +33,7 @@ def get_grounding_model(device, seed=42):
     return processor, model
 
 
-def display_annotated_image(image, labels_scores_boxes):
+def display_annotated_image(image, labels_scores_boxes, show_small_image=False):
     font = ImageFont.truetype("../../config/alata-regular.ttf", 18)
     draw = ImageDraw.Draw(image, "RGBA")
 
@@ -43,7 +44,10 @@ def display_annotated_image(image, labels_scores_boxes):
         draw.rectangle(coords, outline=random_color, width=5)
         draw.text(text_position, label + " " + str(round(score, 2)), fill=random_color, font=font)
 
-    display(image)
+    if show_small_image:
+        display(resize_image(image))
+    else:
+        display(image)
 
 
 def detect_objects(

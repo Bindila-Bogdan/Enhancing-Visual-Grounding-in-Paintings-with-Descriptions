@@ -19,8 +19,7 @@ STOP_WORDS = stopwords.words("english")
 FEW_SHOT_EXAMPLES_IDS = [2156, 2484, 11819, 256, 10748, 3344, 10676]
 
 
-def load_image(painting_id):
-    image = Image.open(f"{RAW_DATA_PATH}filtered_paintings/{painting_id}.png").convert("RGB")
+def resize_image(image):
     width = image.size[0]
     height = image.size[1]
 
@@ -32,9 +31,13 @@ def load_image(painting_id):
         width = int(width / (height / MIN_IMG_SIZE))
         height = MIN_IMG_SIZE
 
-    resized_image = image.resize((width, height))
+    return image.resize((width, height))
 
-    return resized_image, image
+
+def load_image(painting_id):
+    image = Image.open(f"{RAW_DATA_PATH}filtered_paintings/{painting_id}.png").convert("RGB")
+
+    return resize_image(image), image
 
 
 def image_to_bytes(image):

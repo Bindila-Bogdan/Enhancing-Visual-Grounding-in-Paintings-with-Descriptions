@@ -274,7 +274,7 @@ def annotate_paintings_batch(start_index, stop_index, store_freq=25):
                 "painting_id": painting["painting_id"],
                 "objects": predicted_spans_per_object,
                 "bounding_boxes": [
-                    [bbox[0], [float(bbox[1]), [float(bbox_coord) for bbox_coord in bbox[2]]]]
+                    [bbox[0], float(bbox[1]), [float(bbox_coord) for bbox_coord in bbox[2]]]
                     for bbox in labels_scores_boxes
                 ],
                 "extraction_judgement": {**extraction_judgement, **extraction_judge_metrics},
