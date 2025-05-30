@@ -1,5 +1,6 @@
 import io
 import os
+import re
 import copy
 import json
 import base64
@@ -159,10 +160,14 @@ def get_bbox_annotations():
 
 
 def clean_object_name(object_name):
+    object_name = re.sub(
+        r"\s+", " ", re.sub(r"[^a-zA-Z0-9]", " ", object_name.replace("'s", "").replace("’s", ""))
+    ).strip()
+
     input_words = object_name.lower().split(" ")
     cleaned_object_name = " ".join(
         [word.replace("\n", "") for word in input_words if word.replace("\n", "") not in STOP_WORDS]
-    )
+    ).strip()
 
     return cleaned_object_name
 
