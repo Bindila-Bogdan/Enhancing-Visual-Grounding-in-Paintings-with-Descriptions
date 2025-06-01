@@ -8,8 +8,23 @@ import Levenshtein
 from sentence_transformers import SentenceTransformer
 from torchmetrics.detection import MeanAveragePrecision
 
-
+from config import *
 from annotate_paintings_utils import clean_object_name
+
+
+def match_fuzzy(prediction, ground_truth_objects):
+    matched_gt = None
+    fuzzy_match_index = -1
+
+    for gt_index, ground_truth in enumerate(ground_truth_objects):
+        if set(ground_truth.split(" ")).issubset(set(prediction.split(" "))) or set(
+            prediction.split(" ")
+        ).issubset(set(ground_truth.split(" "))):
+            matched_gt = ground_truth
+            fuzzy_match_index = gt_index
+            break
+
+    return matched_gt, fuzzy_match_index
 
 
 # compute the detection quality of described objects
@@ -27,7 +42,23 @@ def count_tp_fp_fn(predictions, ground_truth, tp_fp_fn):
     tp_fp_fn[2] = len(ground_truth_copy)
 
 
-def compute_micro_f1(tp_fp_fn, name, verbose):
+def count_tp_fp_fn_fuzzy(predictions, ground_truth, tp_fp_fn):
+    predictions_copy = copy.deepcopy(predictions)
+    ground_truth_copy = copy.deepcopy(ground_truth)
+
+    for prediction in predictions_copy:
+        matched_gt, fuzzy_match_index = match_fuzzy(prediction, ground_truth_copy)
+
+        if fuzzy_match_index != -1:
+            tp_fp_fn[0] += 1
+            ground_truth_copy.remove(matched_gt)
+        else:
+            tp_fp_fn[1] += 1
+
+    tp_fp_fn[2] = len(ground_truth_copy)
+
+
+def compute_micro_f1(tp_fp_fn, name):
     if tp_fp_fn[0] + tp_fp_fn[1] == 0:
         precision = 0
     else:
@@ -45,15 +76,15 @@ def compute_micro_f1(tp_fp_fn, name, verbose):
 
     micro_f1 = round(micro_f1, 2)
 
-    if verbose:
+    if VERBOSE:
         print(f"Micro F1 for extracting {name}: {micro_f1}")
 
     return micro_f1
 
 
 # compute the description span extraction quality
-def get_sentence_similarity_model(model_name):
-    return SentenceTransformer(model_name)
+def get_sentence_similarity_model():
+    return SentenceTransformer(SENTENCE_SIMILARITY_MODEL)
 
 
 def assess_span_extraction_quality(ground_truth_span, extracted_span):
@@ -103,7 +134,7 @@ def compute_levenshtein_distance(ground_truth_span, extracted_span):
     return Levenshtein.distance(ground_truth_span, extracted_span)
 
 
-def compare_spans(ground_truth_span, extracted_span, model, verbose):
+def compare_spans(ground_truth_span, extracted_span, model):
     similarity = float(
         model.similarity(model.encode([ground_truth_span]), model.encode([extracted_span]))[0][0]
     )
@@ -120,18 +151,17 @@ def compare_spans(ground_truth_span, extracted_span, model, verbose):
         "coverage percentage": round(coverage_percentage, 4),
     }
 
-    if verbose:
-        pprint(span_extraction_metrics)
-
     return span_extraction_metrics
 
 
 def compute_spans_quality(
-    ground_truth_spans, predicted_spans, span_similarity_metrics, sentence_similarity_model, verbose
+    ground_truth_spans, predicted_spans, span_similarity_metrics, sentence_similarity_model
 ):
     for object_name in predicted_spans.keys():
-        if object_name in ground_truth_spans.keys():
-            ground_truth_object_spans = sorted(ground_truth_spans[object_name])
+        matched_gt, _ = match_fuzzy(object_name, list(ground_truth_spans.keys()))
+
+        if matched_gt is not None:
+            ground_truth_object_spans = sorted(ground_truth_spans[matched_gt])
             extracted_object_spans = sorted(predicted_spans[object_name])
 
             for extracted_object_span in extracted_object_spans:
@@ -153,7 +183,6 @@ def compute_spans_quality(
                     most_similar_ground_truth_span,
                     extracted_object_span,
                     sentence_similarity_model,
-                    verbose,
                 )
 
                 for metric, value in similarity_metrics.items():
@@ -177,8 +206,8 @@ def get_bounding_boxes(
         "labels": torch.tensor(
             [
                 (
-                    labels_to_ids[detection[0]]
-                    if detection[0] in labels_to_ids.keys()
+                    labels_to_ids[match_fuzzy(detection[0], labels_to_ids.keys())[0]]
+                    if match_fuzzy(detection[0], labels_to_ids.keys())[0] is not None
                     else max(labels_to_ids.values()) + 1
                 )
                 for detection in labels_scores_boxes
@@ -215,7 +244,7 @@ def get_bounding_boxes(
     all_ground_truth_bboxes.append(target_bboxes)
 
 
-def compute_mean_average_precision(predictions, targets, device, verbose):
+def compute_mean_average_precision(predictions, targets, device):
     metric = MeanAveragePrecision(box_format="xyxy", iou_type="bbox", class_metrics=True).to(device)
 
     metric.update(predictions, targets)
@@ -224,7 +253,7 @@ def compute_mean_average_precision(predictions, targets, device, verbose):
     map_50 = float(metrics["map_50"])
     map_50_95 = float(metrics["map"])
 
-    if verbose:
+    if VERBOSE:
         print(f"mAP@50: {map_50}")
         print(f"mAP@50-95: {map_50_95}")
 

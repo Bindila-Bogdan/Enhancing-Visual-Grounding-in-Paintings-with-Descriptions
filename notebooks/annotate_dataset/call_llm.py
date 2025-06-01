@@ -2,19 +2,24 @@ import os
 import copy
 import json
 import time
+from pprint import pprint
 
 from google import genai
 from pydantic import BaseModel
 from google.genai import types
 
+from config import *
 from annotate_paintings_utils import load_image, image_to_bytes
 
 
-def get_llm_client():
-    with open("../../config/keys.json", "r") as file:
-        os.environ["GEMINI_API_KEY"] = json.load(file)["gemini_api_key"]
+def get_llm_client(location="europe-west9"):
+    if USE_VERTEX:
+        return genai.Client(project="enhancing-visual-grounding", vertexai=True, location=location)
+    else:
+        with open("../../config/keys.json", "r") as file:
+            os.environ["GEMINI_API_KEY"] = json.load(file)["gemini_api_key"]
 
-    return genai.Client(api_key=os.environ.get("GEMINI_API_KEY"))
+        return genai.Client(api_key=os.environ.get("GEMINI_API_KEY"))
 
 
 def show_available_models(client):
@@ -45,12 +50,14 @@ def get_basic_object_extraction(examples, image, description):
 
     prompt_parts = []
     prompt_parts.append(
-        types.Content(role="user", parts=[types.Part.from_text(text="\nHere are some examples:")])
+        types.Content(
+            role="user", parts=[types.Part.from_text(text="\n### Here are some examples ###\n")]
+        )
     )
 
     for example in examples:
         example_description = example["description"]
-        example_image = load_image(example["painting_id"])
+        example_image, _ = load_image(example["painting_id"])
 
         prompt_parts.append(
             types.Content(
@@ -76,10 +83,20 @@ def get_basic_object_extraction(examples, image, description):
         prompt_parts.append(
             types.Content(
                 role="model",
-                parts=[types.Part.from_text(text=f"{example_detected_objects}")],
+                parts=[types.Part.from_text(text=example_detected_objects)],
             )
         )
-        prompt_parts.append(types.Content(role="user", parts=[types.Part.from_text(text="---")]))
+
+    prompt_parts.append(
+        types.Content(
+            role="user",
+            parts=[
+                types.Part.from_text(
+                    text="\n---\n### End of examples ###\n\nNow process in a similar way the following data:\n"
+                )
+            ],
+        )
+    )
 
     prompt_parts.append(
         types.Content(
@@ -91,12 +108,7 @@ def get_basic_object_extraction(examples, image, description):
         )
     )
 
-    system_prompt_text = (
-        "You are an expert in art who can identify objects present in both a painting and its textual description."
-        + "After identifying them, you return the objects together with their description spans extracted from the painting description in a JSON format following the provided template."
-    )
-
-    return prompt_parts, system_prompt_text, Annotation
+    return prompt_parts, OBJECT_EXTRACTION_ENHANCED_SYSTEM_PROMPT, Annotation
 
 
 def get_basic_object_description(examples, additional_data):
@@ -108,7 +120,9 @@ def get_basic_object_description(examples, additional_data):
 
     prompt_parts = []
     prompt_parts.append(
-        types.Content(role="user", parts=[types.Part.from_text(text="\nHere are some examples:\n")])
+        types.Content(
+            role="user", parts=[types.Part.from_text(text="\n### Here are some examples ###\n")]
+        )
     )
 
     for example_painting in examples:
@@ -144,7 +158,17 @@ def get_basic_object_description(examples, additional_data):
                 parts=[types.Part.from_text(text=json.dumps(formatted_output_example))],
             )
         )
-        prompt_parts.append(types.Content(role="user", parts=[types.Part.from_text(text="---")]))
+
+    prompt_parts.append(
+        types.Content(
+            role="user",
+            parts=[
+                types.Part.from_text(
+                    text="\n---\n### End of examples ###\n\nNow process in a similar way the following data:\n"
+                )
+            ],
+        )
+    )
 
     input_text = ""
     for object_name, description_spans in zip(object_names, descriptions_spans):
@@ -159,39 +183,27 @@ def get_basic_object_description(examples, additional_data):
         )
     )
 
-    system_prompt_text = (
-        "You are given the name of objects and several short description spans about each of them. "
-        + "Your task is to combine these spans into one coherent description paragraph per object that starts with the object name and which is based solely on the provided information. "
-        + "In each description, you have to included all the provided details from the associated description spans and nothing more. "
-        + """\n**Constraints:\n**
-Do not add any details about the object that are not explicitly mentioned in the provided description spans.
-Do not infer the object's material, purpose, or origin unless it is directly stated in the text.
-Focus on combining and rephrasing the given information, not on creating new information.
-Do not assume anything about the object's cultural significance or symbolism unless the provided spans mention it."""
-    )
-
-    return prompt_parts, system_prompt_text, Annotation
+    return prompt_parts, OBJECT_DESCRIPTION_ENHANCED_SYSTEM_PROMPT, Annotation
 
 
 def generate(
     client,
+    backup_client,
     examples,
     image,
     description,
     additional_data,
     prompt_type,
-    model_name,
     feedback,
-    verbose,
 ):
-
-    print("input description")
     prompt_parts, system_prompt_text, format_class = get_prompt(
         examples, image, copy.deepcopy(description), additional_data, prompt_type
     )
 
     if feedback:
-        print("adding feedback")
+        if VERBOSE:
+            print("ADDING FEEDBACK")
+
         prompt_parts = feedback[0]
         prompt_parts.append(
             types.Content(
@@ -212,30 +224,58 @@ def generate(
         system_instruction=[
             types.Part.from_text(text=system_prompt_text),
         ],
+        max_output_tokens=3072,
         response_schema=list[format_class],
     )
 
+    generate_content_config_thinking = types.GenerateContentConfig(
+        temperature=0.0,
+        response_mime_type="application/json",
+        system_instruction=[
+            types.Part.from_text(text=system_prompt_text),
+        ],
+        max_output_tokens=3072,
+        response_schema=list[format_class],
+        thinking_config=types.ThinkingConfig(thinking_budget=0),
+    )
+
     called = False
-    trials = 3
+    trials = 2
     prompt_tokens_count = 0
     output_tokens_count = 0
     total_token_count = 0
 
     while not called or trials != 0:
         try:
-            response = client.models.generate_content(
-                model=model_name,
-                contents=prompt_parts,
-                config=generate_content_config,
-            )
-            output = response.parsed
+            if trials == 2:
+                response = client.models.generate_content(
+                    model=GEMINI_MODEL,
+                    contents=prompt_parts,
+                    config=generate_content_config,
+                )
+            else:
+                response = backup_client.models.generate_content(
+                    # if GEMINI_MODEL_BACKUP is replaced by GEMINI_MODEL, change the config too
+                    model=GEMINI_MODEL_BACKUP,
+                    contents=prompt_parts,
+                    config=generate_content_config_thinking,
+                )
 
+            output = response.parsed
             prompt_tokens_count += response.usage_metadata.prompt_token_count
             output_tokens_count += response.usage_metadata.candidates_token_count
+
+            try:
+                output_tokens_count += response.usage_metadata.thoughts_token_count
+            except:
+                pass
+
             total_token_count += prompt_tokens_count + output_tokens_count
 
             if output is None:
-                print("Output is None, try again...")
+                if VERBOSE:
+                    print("Output is None, try again...")
+                    pprint(response)
                 trials -= 1
             else:
                 break
@@ -243,15 +283,13 @@ def generate(
             called = True
 
         except:
-            print("Model is not available, try again...")
+            if VERBOSE:
+                print("Model is not available, try again...")
             time.sleep(5)
 
-    if verbose:
+    if VERBOSE:
         print(
-            f"Prompt tokens count: {prompt_tokens_count}\nOutput tokens count: {output_tokens_count}"
+            f"\nANNOTATOR OUTPUT:\nPrompt tokens count: {prompt_tokens_count} Output tokens count: {output_tokens_count}"
         )
-        print(f"Response:\n{output}\n")
-
-    print("generated response !!!", response.text)
 
     return output, total_token_count, prompt_parts, response.text

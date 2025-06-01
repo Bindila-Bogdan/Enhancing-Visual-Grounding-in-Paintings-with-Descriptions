@@ -1,0 +1,291 @@
+{
+    "prompt_type": "basic",
+    "observations": "enhanced_2_wo_feedback",
+    "total_token_count_annotator": 140621,
+    "total_token_count_judge": 0,
+    "unprocessed_painting_ids": [
+        1466,
+        2549
+    ],
+    "paintings_ids_to_check": [],
+    "paintings_ids_wo_objects": [],
+    "micro_f1_objects": 0.82,
+    "micro_f1_spans": 0.16,
+    "span_similarity_metrics": {
+        "cosine similarity": 0.4861571428571428,
+        "Levenshtein distance": 119.38095238095238,
+        "delete percentage": 44.599828571428574,
+        "false positive percentage": 70.51234761904762,
+        "coverage percentage": 41.11445714285714
+    },
+    "object_description_metrics": {
+        "factual_accuracy": NaN,
+        "coherence": NaN,
+        "grounding_potential": NaN,
+        "completeness": NaN
+    },
+    "object_extraction_metrics": {
+        "objects_recall": NaN,
+        "spans_recall": NaN,
+        "objects_precision": NaN,
+        "spans_precision": NaN
+    },
+    "map_50": 0.13636364042758942,
+    "map_50_95": 0.11818181723356247,
+    "results": [
+        [
+            2461,
+            {
+                "camels": [
+                    [
+                        "Two camels have been led up to the well to drink by a young Moorish girl in her native costume, while the old camel-driver kneels and draws up the water"
+                    ],
+                    "Two camels have been led up to the well to drink by a young Moorish girl in her native costume, while the old camel-driver kneels and draws up the water"
+                ],
+                "moorish girl": [
+                    [
+                        "Two camels have been led up to the well to drink by a young Moorish girl in her native costume, while the old camel-driver kneels and draws up the water"
+                    ],
+                    "Two camels have been led up to the well to drink by a young Moorish girl in her native costume, while the old camel-driver kneels and draws up the water"
+                ],
+                "camel-driver": [
+                    [
+                        "Two camels have been led up to the well to drink by a young Moorish girl in her native costume, while the old camel-driver kneels and draws up the water"
+                    ],
+                    "Two camels have been led up to the well to drink by a young Moorish girl in her native costume, while the old camel-driver kneels and draws up the water"
+                ]
+            },
+            {
+                "two camels": [
+                    ""
+                ],
+                "girl": [
+                    "young Moorish girl in her native costume"
+                ],
+                "old camel-driver": [
+                    ""
+                ]
+            }
+        ],
+        [
+            2613,
+            {
+                "lutes": [
+                    [
+                        "Lutes are of two main types, those with trough-shaped resonators usually carved from a block of wood, and those with ovoid or circular resonators made from gourds."
+                    ],
+                    "Lutes are of two main types: those with trough-shaped resonators usually carved from a block of wood, and those with ovoid or circular resonators made from gourds. "
+                ],
+                "spike-lutes": [
+                    [
+                        "spike-lutes, in other words the neck is a stick that passes into the body of the resonator and the strings are looped over it once they pass the bridge, which is held to the skin soundboard by the pressure of the strings."
+                    ],
+                    "Spike-lutes have a neck that is a stick that passes into the body of the resonator, and the strings are looped over it once they pass the bridge, which is held to the skin soundboard by the pressure of the strings. "
+                ],
+                "strings": [
+                    [
+                        "The strings were typically gut or tendons, but are now usually made of nylon."
+                    ],
+                    "The strings were typically gut or tendons, but are now usually made of nylon. "
+                ],
+                "musical bow": [
+                    [
+                        "The musical bow is found west of the Plateau proper, in the region of Southern Zaria.",
+                        "Shaped like a hunting bow, the string is held between the open lips so that the mouth acts as a resonant cavity.",
+                        "The performer holds a short stick in one hand and presses it against the string to divide it at intervals to produce different harmonic series.",
+                        "Another longer and thinner stick then strikes the string directly; by altering the shape of the mouth cavity, the different harmonic can be emphasized in the same manner as a Jews\u2019 harp.",
+                        "The musical bow is associated with the agricultural year and can be played together with a singer for songs of social comment."
+                    ],
+                    "The musical bow is found west of the Plateau proper, in the region of Southern Zaria. Shaped like a hunting bow, the string is held between the open lips so that the mouth acts as a resonant cavity. The performer holds a short stick in one hand and presses it against the string to divide it at intervals to produce different harmonic series. Another longer and thinner stick then strikes the string directly; by altering the shape of the mouth cavity, the different harmonic can be emphasized in the same manner as a Jews\n\nharp. The musical bow is associated with the agricultural year and can be played together with a singer for songs of social comment."
+                ]
+            },
+            {
+                "lutes": [
+                    "Lutes are of two main types, those with trough-shaped resonators usually carved from a block of wood, and those with ovoid or circular resonators made from gourds. These are typically spike-lutes, in other words the neck is a stick that passes into the body of the resonator and the strings are looped over it once they pass the bridge, which is held to the skin soundboard by the pressure of the strings. More recently, small  instruments with resonators from sardine tins or even plastic bottles can be seen. The strings were typically gut or tendons, but are now usually made of nylon. Historically, these instruments seem to be associated with the northern regions and are typical of Hausa and Kanuri, but it seems they were long ago absorbed into the traditional music of many peoples of the Plateau."
+                ]
+            }
+        ],
+        [
+            2657,
+            {
+                "individual figure": [
+                    [
+                        ""
+                    ],
+                    ""
+                ]
+            },
+            {
+                "individual figure": [
+                    "centered on the individual figure to convey the \u2018different states of exhausting anticipation or loss,\u2019 resulting from his experience of living under the occupation"
+                ],
+                "mud": [
+                    "The combination of mud and acrylic on wood reflects the tension between the rough cracks of mud which is dominant, in contrast to adjacent areas of smoothly painted acrylic colors"
+                ],
+                "acrylic": [
+                    ""
+                ]
+            }
+        ],
+        [
+            2702,
+            {
+                "ticker tape machine": [
+                    [
+                        "there is a worried stockbroker that watches the market returns on a ticker tape machine."
+                    ],
+                    "There is a worried stockbroker that watches the market returns on a ticker tape machine."
+                ]
+            },
+            {
+                "women dance": [
+                    "taxi dancers: women who dance with their male partners for ten cents a ticket"
+                ],
+                "worried stockbroker": [
+                    "a worried stockbroker that watches the market returns on a ticker tape machine. Benton painted the mural at a time of great economic despair and inequity of the Great Depression, that began in 1929."
+                ]
+            }
+        ],
+        [
+            8197,
+            {
+                "satin dresses": [
+                    [
+                        "lavished his brush on the women's satin dresses"
+                    ],
+                    "The artist lavished his brush on the women's satin dresses."
+                ]
+            },
+            {
+                "satin dresses": [
+                    ""
+                ],
+                "powdery skin": [
+                    ""
+                ],
+                "hair": [
+                    "the casual perfection at their hair"
+                ],
+                "shepherdess": [
+                    "the shepherdess type as an idealized protagonist for his decorative pictures"
+                ]
+            }
+        ],
+        [
+            9053,
+            {
+                "neptune": [
+                    [
+                        "Amphitrite fled from Neptune's wooing, but he sent dolphins after her which succeeded in persuading her to return to become his bride."
+                    ],
+                    "Amphitrite fled from Neptune's wooing, but he sent dolphins after her which succeeded in persuading her to return to become his bride. "
+                ],
+                "amphitrite": [
+                    [
+                        "She rides beside his chariot on a dolphin's back, an arch of drapery billows over her head, a common feature of sea-goddesses from antiquity."
+                    ],
+                    "Amphitrite rides beside his chariot on a dolphin's back, and an arch of drapery billows over her head, a common feature of sea-goddesses from antiquity. "
+                ],
+                "dolphins": [
+                    [
+                        "he sent dolphins after her which succeeded in persuading her to return to become his bride."
+                    ],
+                    "Neptune sent dolphins after Amphitrite, which succeeded in persuading her to return to become his bride. "
+                ],
+                "chariot": [
+                    [
+                        ""
+                    ],
+                    ""
+                ],
+                "tritons": [
+                    [
+                        "They are surrounded by a retinue of Tritons (the name for mermen in general)"
+                    ],
+                    "They are surrounded by a retinue of Tritons (the name for mermen in general)."
+                ],
+                "nereids": [
+                    [
+                        "They are surrounded by a retinue of Tritons (the name for mermen in general) and Nereids (sea-nymphs, the daughters of Nereus, the 'old man of the sea' in Greek mythology)."
+                    ],
+                    "They are surrounded by a retinue of Tritons (the name for mermen in general) and Nereids (sea-nymphs, the daughters of Nereus, the 'old man of the sea' in Greek mythology)."
+                ]
+            },
+            {
+                "dolphins": [
+                    "Amphitrite fled from Neptune's wooing, but he sent dolphins after her which succeeded in persuading her to return to become his bride."
+                ],
+                "neptune": [
+                    "She rides beside his chariot on a dolphin's back"
+                ],
+                "arch drapery": [
+                    "an arch of drapery billows over her head, a common feature of sea-goddesses from antiquity"
+                ],
+                "tritons": [
+                    "(the name for mermen in general)"
+                ],
+                "nereids": [
+                    "(sea-nymphs, the daughters of Nereus, the 'old man of the sea' in Greek mythology)"
+                ]
+            }
+        ],
+        [
+            9821,
+            {
+                "flag": [
+                    [
+                        "the flag, for example, as depicted here was not introduced until six months after the event"
+                    ],
+                    "The flag, for example, as depicted here was not introduced until six months after the event."
+                ]
+            },
+            {
+                "flag": [
+                    "the flag, for example, as depicted here was not introduced until six months after the event"
+                ]
+            }
+        ],
+        [
+            11593,
+            {
+                "calypso": [
+                    [
+                        "Calypso is still mourning the loss of her beloved Odysseus",
+                        "Calypso is so impressed by the youth, she offers him a warm greeting and shows him the natural beauty of her island.",
+                        "Hamilton's painting is dominated by the statuesque figure of Calypso who looks a powerful and seductive temptress in her classically inspired white dress casually wrapped to reveal her figure."
+                    ],
+                    "Calypso is still mourning the loss of her beloved Odysseus, and is so impressed by the youth, she offers him a warm greeting and shows him the natural beauty of her island. In Hamilton's painting, Calypso is dominated by the statuesque figure who looks a powerful and seductive temptress in her classically inspired white dress casually wrapped to reveal her figure."
+                ],
+                "telemachus": [
+                    [
+                        "Telemachus, Odysseus's son, and Mentor, Odysseus's long-time friend, go on a journey to find out news about Odysseus' whereabouts after he has been missing for twenty years.",
+                        "When Telemachus and Mentor shipwreck on her island, Calypso is still mourning the loss of her beloved Odysseus.",
+                        "She immediately recognizes the similarity between Odysseus and Telemachus, and knows that he is the son of the hero.",
+                        "Telemachus tells her who his father is, and asks for her mercy.",
+                        "Telemachus regales her with stories of his adventures prior to his landing at her island."
+                    ],
+                    "Telemachus, Odysseus's son, and Mentor, Odysseus's long-time friend, go on a journey to find out news about Odysseus' whereabouts after he has been missing for twenty years. When Telemachus and Mentor shipwreck on her island, Calypso is still mourning the loss of her beloved Odysseus. She immediately recognizes the similarity between Odysseus and Telemachus, and knows that he is the son of the hero. Telemachus tells her who his father is, and asks for her mercy, and regales her with stories of his adventures prior to his landing at her island."
+                ],
+                "mentor": [
+                    [
+                        "Telemachus, Odysseus's son, and Mentor, Odysseus's long-time friend, go on a journey to find out news about Odysseus' whereabouts after he has been missing for twenty years.",
+                        "When Telemachus and Mentor shipwreck on her island, Calypso is still mourning the loss of her beloved Odysseus."
+                    ],
+                    "Telemachus, Odysseus's son, and Mentor, Odysseus's long-time friend, go on a journey to find out news about Odysseus' whereabouts after he has been missing for twenty years. When Telemachus and Mentor shipwreck on her island, Calypso is still mourning the loss of her beloved Odysseus."
+                ]
+            },
+            {
+                "nymph calypso": [
+                    "figure of Calypso who looks a powerful and seductive temptress in her classically inspired white dress casually wrapped to reveal",
+                    "nymph"
+                ],
+                "telemachus": [
+                    "Odysseus's son"
+                ],
+                "mentor": [
+                    "Odysseus's long-time friend"
+                ]
+            }
+        ]
+    ]
+}

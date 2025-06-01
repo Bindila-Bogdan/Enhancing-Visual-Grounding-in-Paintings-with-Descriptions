@@ -1,0 +1,266 @@
+{
+    "prompt_type": "basic",
+    "observations": "enhanced_2",
+    "total_token_count_annotator": 187731,
+    "total_token_count_judge": 38200,
+    "unprocessed_painting_ids": [
+        1466,
+        2549
+    ],
+    "paintings_ids_to_check": [
+        9821
+    ],
+    "paintings_ids_wo_objects": [
+        2657,
+        2702
+    ],
+    "micro_f1_objects": 0.83,
+    "micro_f1_spans": 0.34,
+    "span_similarity_metrics": {
+        "cosine similarity": 0.5778866666666667,
+        "Levenshtein distance": 78.0,
+        "delete percentage": 26.43976,
+        "false positive percentage": 35.79768,
+        "coverage percentage": 46.89357333333333
+    },
+    "object_description_metrics": {
+        "factual_accuracy": 4.571428571428571,
+        "coherence": 4.571428571428571,
+        "grounding_potential": 3.619047619047619,
+        "completeness": 4.619047619047619
+    },
+    "object_extraction_metrics": {
+        "objects_recall": 0.8708791208791209,
+        "spans_recall": 0.6785714285714286,
+        "objects_precision": 0.7948717948717949,
+        "spans_precision": 0.47426739926739925
+    },
+    "map_50": 0.20588235557079315,
+    "map_50_95": 0.1720733791589737,
+    "results": [
+        [
+            2461,
+            {
+                "camels": [
+                    [
+                        "Two camels have been led up to the well to drink"
+                    ],
+                    "Two camels have been led up to the well to drink"
+                ],
+                "moorish girl": [
+                    [
+                        "young Moorish girl in her native costume"
+                    ],
+                    "The Moorish girl is a young girl in her native costume"
+                ],
+                "camel-driver": [
+                    [
+                        "old camel-driver kneels and draws up the water"
+                    ],
+                    "The old camel-driver kneels and draws up the water"
+                ]
+            },
+            {
+                "two camels": [
+                    ""
+                ],
+                "girl": [
+                    "young Moorish girl in her native costume"
+                ],
+                "old camel-driver": [
+                    ""
+                ]
+            }
+        ],
+        [
+            2613,
+            {
+                "lutes": [
+                    [
+                        "Lutes are of two main types, those with trough-shaped resonators usually carved from a block of wood, and those with ovoid or circular resonators made from gourds."
+                    ],
+                    "Lutes are of two main types: those with trough-shaped resonators usually carved from a block of wood, and those with ovoid or circular resonators made from gourds. "
+                ],
+                "spike-lutes": [
+                    [
+                        "spike-lutes, in other words the neck is a stick that passes into the body of the resonator and the strings are looped over it once they pass the bridge, which is held to the skin soundboard by the pressure of the strings."
+                    ],
+                    "Spike-lutes, in other words the neck is a stick that passes into the body of the resonator and the strings are looped over it once they pass the bridge, which is held to the skin soundboard by the pressure of the strings. "
+                ],
+                "strings": [
+                    [
+                        "The strings were typically gut or tendons, but are now usually made of nylon."
+                    ],
+                    "The strings were typically gut or tendons, but are now usually made of nylon. "
+                ],
+                "musical bow": [
+                    [
+                        "The musical bow is found west of the Plateau proper, in the region of Southern Zaria.",
+                        "Shaped like a hunting bow, the string is held between the open lips so that the mouth acts as a resonant cavity.",
+                        "The performer holds a short stick in one hand and presses it against the string to divide it at intervals to produce different harmonic series.",
+                        "Another longer and thinner stick then strikes the string directly; by altering the shape of the mouth cavity, the different harmonic can be emphasized in the same manner as a Jews\u2019 harp.",
+                        "The musical bow is associated with the agricultural year and can be played together with a singer for songs of social comment."
+                    ],
+                    "The musical bow is found west of the Plateau proper, in the region of Southern Zaria. Shaped like a hunting bow, the string is held between the open lips so that the mouth acts as a resonant cavity. The performer holds a short stick in one hand and presses it against the string to divide it at intervals to produce different harmonic series. Another longer and thinner stick then strikes the string directly; by altering the shape of the mouth cavity, the different harmonic can be emphasized in the same manner as a Jews\t harp. The musical bow is associated with the agricultural year and can be played together with a singer for songs of social comment."
+                ]
+            },
+            {
+                "lutes": [
+                    "Lutes are of two main types, those with trough-shaped resonators usually carved from a block of wood, and those with ovoid or circular resonators made from gourds. These are typically spike-lutes, in other words the neck is a stick that passes into the body of the resonator and the strings are looped over it once they pass the bridge, which is held to the skin soundboard by the pressure of the strings. More recently, small  instruments with resonators from sardine tins or even plastic bottles can be seen. The strings were typically gut or tendons, but are now usually made of nylon. Historically, these instruments seem to be associated with the northern regions and are typical of Hausa and Kanuri, but it seems they were long ago absorbed into the traditional music of many peoples of the Plateau."
+                ]
+            }
+        ],
+        [
+            8197,
+            {
+                "satin dresses": [
+                    [
+                        "lavished his brush on the women's satin dresses"
+                    ],
+                    "The artist lavished his brush on the satin dresses."
+                ],
+                "women": [
+                    [
+                        "lavished his brush on the women's satin dresses"
+                    ],
+                    "The women are depicted with the artist lavishing his brush on their satin dresses."
+                ],
+                "hair": [
+                    [
+                        "the casual perfection at their hair"
+                    ],
+                    "The casual perfection is evident at their hair."
+                ],
+                "skin": [
+                    [
+                        ""
+                    ],
+                    ""
+                ]
+            },
+            {
+                "satin dresses": [
+                    ""
+                ],
+                "powdery skin": [
+                    ""
+                ],
+                "hair": [
+                    "the casual perfection at their hair"
+                ],
+                "shepherdess": [
+                    "the shepherdess type as an idealized protagonist for his decorative pictures"
+                ]
+            }
+        ],
+        [
+            9053,
+            {
+                "neptune": [
+                    [
+                        "Amphitrite fled from Neptune's wooing, but he sent dolphins after her which succeeded in persuading her to return to become his bride."
+                    ],
+                    "Amphitrite fled from Neptune's wooing, but he sent dolphins after her which succeeded in persuading her to return to become his bride. "
+                ],
+                "amphitrite": [
+                    [
+                        "She rides beside his chariot on a dolphin's back, an arch of drapery billows over her head, a common feature of sea-goddesses from antiquity."
+                    ],
+                    "Amphitrite rides beside Neptune's chariot on a dolphin's back, and an arch of drapery billows over her head, a common feature of sea-goddesses from antiquity. "
+                ],
+                "dolphins": [
+                    [
+                        "he sent dolphins after her which succeeded in persuading her to return to become his bride."
+                    ],
+                    "Neptune sent dolphins after Amphitrite, which succeeded in persuading her to return to become his bride. "
+                ],
+                "chariot": [
+                    [
+                        "She rides beside his chariot on a dolphin's back"
+                    ],
+                    "Amphitrite rides beside Neptune's chariot on a dolphin's back"
+                ],
+                "tritons": [
+                    [
+                        "They are surrounded by a retinue of Tritons (the name for mermen in general)"
+                    ],
+                    "They are surrounded by a retinue of Tritons (the name for mermen in general)."
+                ],
+                "nereids": [
+                    [
+                        "They are surrounded by a retinue of Tritons (the name for mermen in general) and Nereids (sea-nymphs, the daughters of Nereus, the 'old man of the sea' in Greek mythology)."
+                    ],
+                    "They are surrounded by a retinue of Tritons (the name for mermen in general) and Nereids (sea-nymphs, the daughters of Nereus, the 'old man of the sea' in Greek mythology)."
+                ]
+            },
+            {
+                "dolphins": [
+                    "Amphitrite fled from Neptune's wooing, but he sent dolphins after her which succeeded in persuading her to return to become his bride."
+                ],
+                "neptune": [
+                    "She rides beside his chariot on a dolphin's back"
+                ],
+                "arch drapery": [
+                    "an arch of drapery billows over her head, a common feature of sea-goddesses from antiquity"
+                ],
+                "tritons": [
+                    "(the name for mermen in general)"
+                ],
+                "nereids": [
+                    "(sea-nymphs, the daughters of Nereus, the 'old man of the sea' in Greek mythology)"
+                ]
+            }
+        ],
+        [
+            9821,
+            {
+                "flag": [
+                    [
+                        "the flag, for example, as depicted here was not introduced until six months after the event"
+                    ],
+                    "The flag, as depicted here, was not introduced until six months after the event."
+                ]
+            },
+            {
+                "flag": [
+                    "the flag, for example, as depicted here was not introduced until six months after the event"
+                ]
+            }
+        ],
+        [
+            11593,
+            {
+                "calypso": [
+                    [
+                        "Hamilton's painting is dominated by the statuesque figure of Calypso who looks a powerful and seductive temptress in her classically inspired white dress casually wrapped to reveal her figure."
+                    ],
+                    "Hamilton's painting is dominated by the statuesque figure of Calypso who looks a powerful and seductive temptress in her classically inspired white dress casually wrapped to reveal her figure."
+                ],
+                "telemachus": [
+                    [
+                        ""
+                    ],
+                    ""
+                ],
+                "mentor": [
+                    [
+                        ""
+                    ],
+                    ""
+                ]
+            },
+            {
+                "nymph calypso": [
+                    "figure of Calypso who looks a powerful and seductive temptress in her classically inspired white dress casually wrapped to reveal",
+                    "nymph"
+                ],
+                "telemachus": [
+                    "Odysseus's son"
+                ],
+                "mentor": [
+                    "Odysseus's long-time friend"
+                ]
+            }
+        ]
+    ]
+}
