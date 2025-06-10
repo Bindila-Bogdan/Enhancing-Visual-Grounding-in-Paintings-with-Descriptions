@@ -9,7 +9,7 @@ from sentence_transformers import SentenceTransformer
 from torchmetrics.detection import MeanAveragePrecision
 
 from config import *
-from annotate_paintings_utils import clean_object_name
+from annotate_paintings_utils import clean_object_name, clean_description_span
 
 
 def match_fuzzy(prediction, ground_truth_objects):
@@ -29,8 +29,8 @@ def match_fuzzy(prediction, ground_truth_objects):
 
 # compute the detection quality of described objects
 def count_tp_fp_fn(predictions, ground_truth, tp_fp_fn):
-    predictions_copy = copy.deepcopy(predictions)
-    ground_truth_copy = copy.deepcopy(ground_truth)
+    predictions_copy = [clean_description_span(desc) for desc in copy.deepcopy(predictions)]
+    ground_truth_copy = [clean_description_span(desc) for desc in copy.deepcopy(ground_truth)]
 
     for prediction in predictions_copy:
         if prediction in ground_truth_copy:
