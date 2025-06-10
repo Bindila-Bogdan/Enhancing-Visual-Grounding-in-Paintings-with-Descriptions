@@ -12,7 +12,7 @@ from config import *
 from annotate_paintings_utils import load_image, image_to_bytes
 
 
-def get_llm_client(location="europe-west9"):
+def get_llm_client(location="global"):
     if USE_VERTEX:
         return genai.Client(project="enhancing-visual-grounding", vertexai=True, location=location)
     else:
