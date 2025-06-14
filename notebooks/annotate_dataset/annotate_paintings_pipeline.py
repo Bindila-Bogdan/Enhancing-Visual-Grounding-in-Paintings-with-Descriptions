@@ -175,64 +175,74 @@ def annotate_paintings_batch(start_index, stop_index, store_freq=25):
     last_in_batch_index = 0
 
     for in_batch_index, painting in enumerate(tqdm(paintings_data[start_index:stop_index])):
-        resized_image, image = load_image(painting["painting_id"])
+        try:
+            resized_image, image = load_image(painting["painting_id"])
+        except:
+            continue
+
         if VERBOSE:
             print(f"PAINTING DESCRIPTION\n{painting['description']}")
 
-        # extract described objects
-        (
-            llm_output_objects,
-            object_and_spans,
-            painting_id_wo_objects,
-            unprocessed_painting_id,
-            total_token_count,
-            total_token_count_judge,
-            extraction_judge_metrics,
-            extraction_judgement,
-        ) = extract_objects(
-            llm_client,
-            backup_llm_client,
-            judge_client,
-            few_shot_examples,
-            resized_image,
-            painting,
-            total_token_count,
-            total_token_count_judge,
-        )
+        try:
+            # extract described objects
+            (
+                llm_output_objects,
+                object_and_spans,
+                painting_id_wo_objects,
+                unprocessed_painting_id,
+                total_token_count,
+                total_token_count_judge,
+                extraction_judge_metrics,
+                extraction_judgement,
+            ) = extract_objects(
+                llm_client,
+                backup_llm_client,
+                judge_client,
+                few_shot_examples,
+                resized_image,
+                painting,
+                total_token_count,
+                total_token_count_judge,
+            )
 
-        if unprocessed_painting_id is not None:
-            paintings_ids_unprocessed.append(unprocessed_painting_id)
+            if unprocessed_painting_id is not None:
+                paintings_ids_unprocessed.append(unprocessed_painting_id)
+                continue
+
+            if painting_id_wo_objects is not None:
+                paintings_ids_wo_objects.append(painting_id_wo_objects)
+                continue
+
+            # create description per object
+            (
+                llm_output_descriptions,
+                unprocessed_painting_id,
+                painting_id_to_check,
+                total_token_count,
+                total_token_count_judge,
+                description_judgement,
+            ) = compose_object_description(
+                llm_client,
+                backup_llm_client,
+                judge_client,
+                few_shot_examples,
+                copy.deepcopy(object_and_spans),
+                painting["painting_id"],
+                total_token_count,
+                total_token_count_judge,
+            )
+
+            if unprocessed_painting_id is not None:
+                paintings_ids_unprocessed.append(unprocessed_painting_id)
+                continue
+
+            if painting_id_to_check is not None:
+                paintings_ids_to_check.append(painting_id_to_check)
+
+        except:
+            paintings_ids_unprocessed.append(painting["painting_id"])
+            print("OPENAI ERROR")
             continue
-
-        if painting_id_wo_objects is not None:
-            paintings_ids_wo_objects.append(painting_id_wo_objects)
-            continue
-
-        # create description per object
-        (
-            llm_output_descriptions,
-            unprocessed_painting_id,
-            painting_id_to_check,
-            total_token_count,
-            total_token_count_judge,
-            description_judgement,
-        ) = compose_object_description(
-            llm_client,
-            backup_llm_client,
-            judge_client,
-            few_shot_examples,
-            copy.deepcopy(object_and_spans),
-            painting["painting_id"],
-            total_token_count,
-            total_token_count_judge,
-        )
-
-        if unprocessed_painting_id is not None:
-            paintings_ids_unprocessed.append(unprocessed_painting_id)
-            continue
-
-        if painting_id_to_check is not None:
-            paintings_ids_to_check.append(painting_id_to_check)
 
         # handle objects
         predicted_objects, _ = process_objects(llm_output_objects, painting, None, None)
@@ -277,7 +287,8 @@ def annotate_paintings_batch(start_index, stop_index, store_freq=25):
                 "objects": predicted_spans_per_object,
                 "bounding_boxes": [
                     [bbox[0], float(bbox[1]), [float(bbox_coord) for bbox_coord in bbox[2]]]
-                    for bbox in labels_scores_boxes if bbox[0] in extracted_objects
+                    for bbox in labels_scores_boxes
+                    if bbox[0] in extracted_objects
                 ],
                 "extraction_judgement": {**extraction_judgement, **extraction_judge_metrics},
                 "description_judgement": description_judgement,

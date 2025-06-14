@@ -262,15 +262,18 @@ def generate(
                 )
 
             output = response.parsed
-            prompt_tokens_count += response.usage_metadata.prompt_token_count
-            output_tokens_count += response.usage_metadata.candidates_token_count
 
             try:
                 output_tokens_count += response.usage_metadata.thoughts_token_count
             except:
                 pass
 
-            total_token_count += prompt_tokens_count + output_tokens_count
+            try:
+                prompt_tokens_count += response.usage_metadata.prompt_token_count
+                output_tokens_count += response.usage_metadata.candidates_token_count
+                total_token_count += prompt_tokens_count + output_tokens_count
+            except:
+                pass
 
             if output is None:
                 if VERBOSE:
@@ -282,7 +285,7 @@ def generate(
 
             called = True
 
-        except:
+        except Exception as e:
             if VERBOSE:
                 print("Model is not available, try again...")
             time.sleep(5)
