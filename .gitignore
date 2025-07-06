@@ -183,3 +183,9 @@ data/raw/wikiart_paintings/*.png
 data/raw/wikiart_paintings/*.csv
 data/raw/wikiart_paintings/*.png
 data/raw/wikiart_paintings/wikiart_data/*.json
+data/fine-tuning/train/*.png
+data/fine-tuning/val/*.png
+data/fine-tuning/test/*.png
+data/baseline/train/*.png
+data/baseline/val/*.png
+data/baseline/test/*.png
