@@ -189,3 +189,6 @@ data/fine-tuning/test/*.png
 data/baseline/train/*.png
 data/baseline/val/*.png
 data/baseline/test/*.png
+data/fine-tuning_clip/test/*.png
+data/fine-tuning_clip/val/*.png
+data/fine-tuning_clip/train/*.png
