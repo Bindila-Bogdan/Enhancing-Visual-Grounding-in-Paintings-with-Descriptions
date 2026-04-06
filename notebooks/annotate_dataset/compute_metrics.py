@@ -102,7 +102,7 @@ def assess_span_extraction_quality(ground_truth_span, extracted_span):
     matches = 0
     deletions = 0
     insertions = 0
-
+    
     for tag, a0, a1, b0, b1 in opcodes:
         if tag == "delete":
             deletions += a1 - a0
