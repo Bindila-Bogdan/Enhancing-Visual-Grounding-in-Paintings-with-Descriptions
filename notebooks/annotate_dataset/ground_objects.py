@@ -50,7 +50,7 @@ def display_annotated_image(image, labels_scores_boxes, show_small_image=False):
         display(image)
 
 
-def detect_objects(
+def detect_objects_parallel(
     image, objects, processor, model, device, object_threshold=0.3, text_threshold=0.3
 ):
 
@@ -84,4 +84,47 @@ def detect_objects(
 
         display_annotated_image(image, labels_scores_boxes)
 
-    return labels_scores_boxes, results
+    return labels_scores_boxes
+
+
+def detect_objects(
+    image, objects, processor, model, device, object_threshold=0.3, text_threshold=0.3
+):
+
+    painting_labels_scores_boxes = []
+
+    for object_name in objects:
+        inputs = processor(images=image, text=object_name + " .", return_tensors="pt").to(device)
+
+        with torch.no_grad():
+            outputs = model(**inputs)
+
+        results = processor.post_process_grounded_object_detection(
+            outputs,
+            inputs.input_ids,
+            # threshold for filtering object detection predictions (lower -> more bounding boxes)
+            threshold=object_threshold,
+            # threshold for filtering text detection predictions (lower -> the input text is taken exactly)
+            text_threshold=text_threshold,
+            target_sizes=[image.size[::-1]],
+        )
+
+        assert len(results) == 1
+
+        labels = results[0]["text_labels"]
+        scores = results[0]["scores"].cpu().numpy()
+        box_coordinates = [list(coords) for coords in results[0]["boxes"].cpu().numpy()]
+        painting_labels_scores_boxes.extend(
+            sorted(list(zip(labels, scores, box_coordinates)), key=lambda x: x[1])
+        )
+
+    painting_labels_scores_boxes = sorted(painting_labels_scores_boxes, key=lambda x: x[1])
+
+    if VERBOSE:
+        print("\nGROUNDED OBJECTS")
+        for label, score, coords in painting_labels_scores_boxes:
+            print(label, float(score), [float(coord) for coord in coords])
+
+        display_annotated_image(image, painting_labels_scores_boxes)
+
+    return painting_labels_scores_boxes

@@ -1,22 +1,26 @@
 {
     "prompt_type": "basic",
     "observations": "enhanced_2_wo_feedback",
-    "total_token_count_annotator": 140621,
+    "total_token_count_annotator": 307880,
     "total_token_count_judge": 0,
     "unprocessed_painting_ids": [
         1466,
-        2549
+        2083,
+        2356
     ],
     "paintings_ids_to_check": [],
-    "paintings_ids_wo_objects": [],
-    "micro_f1_objects": 0.82,
-    "micro_f1_spans": 0.16,
+    "paintings_ids_wo_objects": [
+        1931,
+        2237
+    ],
+    "micro_f1_objects": 0.81,
+    "micro_f1_spans": 0.36,
     "span_similarity_metrics": {
-        "cosine similarity": 0.4861571428571428,
-        "Levenshtein distance": 119.38095238095238,
-        "delete percentage": 44.599828571428574,
-        "false positive percentage": 70.51234761904762,
-        "coverage percentage": 41.11445714285714
+        "cosine similarity": 0.5880292682926829,
+        "Levenshtein distance": 99.53658536585365,
+        "delete percentage": 35.241282926829264,
+        "false positive percentage": 56.16251707317073,
+        "coverage percentage": 47.685546341463414
     },
     "object_description_metrics": {
         "factual_accuracy": NaN,
@@ -30,9 +34,146 @@
         "objects_precision": NaN,
         "spans_precision": NaN
     },
-    "map_50": 0.13636364042758942,
-    "map_50_95": 0.11818181723356247,
+    "map_50": 0.28379470109939575,
+    "map_50_95": 0.2467569261789322,
     "results": [
+        [
+            517,
+            {
+                "straw hat": [
+                    [
+                        ""
+                    ],
+                    ""
+                ],
+                "mirror": [
+                    [
+                        "I purposely bought a good enough mirror to work from myself, for want of a model.\""
+                    ],
+                    "I purposely bought a good enough mirror to work from myself, for want of a model.\""
+                ]
+            },
+            {
+                "straw hat": [
+                    ""
+                ]
+            }
+        ],
+        [
+            1321,
+            {
+                "cypresses": [
+                    [
+                        "The subject, which he found \"beautiful as regards lines and proportions, like an Egyptian obelisk,\""
+                    ],
+                    "The subject, Cypresses, which he found \"beautiful as regards lines and proportions, like an Egyptian obelisk,\""
+                ]
+            },
+            {
+                "cypresses": [
+                    "painted in late June 1889, shortly after Van Gogh began his yearlong stay at the asylum in Saint-R\u00e9my",
+                    "\"beautiful as regards lines and proportions, like an Egyptian obelisk,\"",
+                    "\"It\u2019s the dark patch in a sun-drenched landscape, but it\u2019s one of the most interesting dark notes, the most difficult to hit off exactly that I can imagine.\""
+                ]
+            }
+        ],
+        [
+            1341,
+            {
+                "flowers": [
+                    [
+                        "When I paint flowers, I feel free to try out tones and values and worry less about destroying the canvas"
+                    ],
+                    "When I paint flowers, I feel free to try out tones and values and worry less about destroying the canvas."
+                ]
+            },
+            {
+                "bouquet chrysanthemums": [
+                    ""
+                ],
+                "flowers": [
+                    ""
+                ]
+            }
+        ],
+        [
+            1463,
+            {
+                "exotic vegetation": [
+                    [
+                        "He based the exotic vegetation of his many jungle pictures on studies that he made in Paris\u2019s botanical gardens"
+                    ],
+                    "He based the exotic vegetation of his many jungle pictures on studies that he made in Paris\ns botanical gardens."
+                ],
+                "wild beasts": [
+                    [
+                        "adapted the wild beasts from popular ethnographic journals and illustrated children's books."
+                    ],
+                    "The wild beasts were adapted from popular ethnographic journals and illustrated children's books."
+                ]
+            },
+            {
+                "lion": [
+                    ""
+                ],
+                "exotic vegetation": [
+                    "based the exotic vegetation of his many jungle pictures on studies that he made in Paris\u2019s botanical gardens"
+                ],
+                "wild beasts": [
+                    "wild beasts from popular ethnographic journals and illustrated children's books"
+                ]
+            }
+        ],
+        [
+            1667,
+            {
+                "portrait": [
+                    [
+                        "The style of this portrait, with its simplified forms and flat color, blends aspects of Symbolism and Fauvism and is typical of Picabia's maturing style as he began to try his hand at different approaches."
+                    ],
+                    "The style of this portrait, with its simplified forms and flat color, blends aspects of Symbolism and Fauvism and is typical of Picabia's maturing style as he began to try his hand at different approaches."
+                ],
+                "mistinguett": [
+                    [
+                        "The model for the picture, Mistinguett, was a successful actress and singer, and was one of Picabia's first famous friends from the entertainment industry (she was at one time the lover of Maurice Chevalier)."
+                    ],
+                    "The model for the picture, Mistinguett, was a successful actress and singer, and was one of Picabia's first famous friends from the entertainment industry (she was at one time the lover of Maurice Chevalier)."
+                ]
+            },
+            {
+                "model": [
+                    "The model for the picture, Mistinguett, was a successful actress and singer, and was one of Picabia's first famous friends from the entertainment industry (she was at one time the lover of Maurice Chevalier)."
+                ]
+            }
+        ],
+        [
+            2441,
+            {
+                "taxi cab": [
+                    [
+                        "an abandoned Taxi Cab, its trunk popped open in the marshes against the backdrop of the New York City skyline at daybreak."
+                    ],
+                    "An abandoned Taxi Cab, its trunk popped open in the marshes against the backdrop of the New York City skyline at daybreak."
+                ],
+                "new york city skyline": [
+                    [
+                        "against the backdrop of the New York City skyline at daybreak."
+                    ],
+                    "The New York City skyline is seen against the backdrop at daybreak."
+                ]
+            },
+            {
+                "taxi cab": [
+                    "an abandoned Taxi Cab, its trunk popped open in the marshes"
+                ],
+                "marshes": [
+                    ""
+                ],
+                "skyline": [
+                    "the backdrop of the New York City skyline at daybreak"
+                ]
+            }
+        ],
         [
             2461,
             {
@@ -48,7 +189,7 @@
                     ],
                     "Two camels have been led up to the well to drink by a young Moorish girl in her native costume, while the old camel-driver kneels and draws up the water"
                 ],
-                "camel-driver": [
+                "camel driver": [
                     [
                         "Two camels have been led up to the well to drink by a young Moorish girl in her native costume, while the old camel-driver kneels and draws up the water"
                     ],
@@ -62,8 +203,51 @@
                 "girl": [
                     "young Moorish girl in her native costume"
                 ],
-                "old camel-driver": [
+                "old camel driver": [
                     ""
+                ]
+            }
+        ],
+        [
+            2549,
+            {
+                "jewelry": [
+                    [
+                        "the jewelry placed directly underneath Preece\u2019s dress highlights the transactional nature of the relationship: the man bows down powerless, buying gifts in return for the woman\u2019s favor."
+                    ],
+                    "The jewelry placed directly underneath Preece\ns dress highlights the transactional nature of the relationship: the man bows down powerless, buying gifts in return for the woman\ns favor."
+                ],
+                "perfume": [
+                    [
+                        "perfume"
+                    ],
+                    "perfume"
+                ],
+                "coins": [
+                    [
+                        "coins"
+                    ],
+                    "coins"
+                ],
+                "wads money": [
+                    [
+                        ""
+                    ],
+                    ""
+                ]
+            },
+            {
+                "male figures": [
+                    "the male figures that resemble Spencer seem to be dwarfed and overwhelmed by the female figures. In the foreground, the two men are in kneeling positions as the large female bodies tower over them. Similarly, the two further figures seem to be absorbed by the group of women in front of them."
+                ],
+                "dominant figure white": [
+                    "The dominant figure in white is usually interpreted as Preece."
+                ],
+                "numerous gifts": [
+                    "numerous gifts: cased jewelry, perfume, coins, and wads of money. The theme of gifts had personal significance to Spencer. He lavished Preece with expensive presents, accumulating substantial amounts of debt that almost led him to financial ruin."
+                ],
+                "jewelry placed directly underneath preece dress": [
+                    "jewelry placed directly underneath Preece\u2019s dress highlights the transactional nature of the relationship: the man bows down powerless, buying gifts in return for the woman\u2019s favor."
                 ]
             }
         ],
@@ -72,21 +256,16 @@
             {
                 "lutes": [
                     [
-                        "Lutes are of two main types, those with trough-shaped resonators usually carved from a block of wood, and those with ovoid or circular resonators made from gourds."
-                    ],
-                    "Lutes are of two main types: those with trough-shaped resonators usually carved from a block of wood, and those with ovoid or circular resonators made from gourds. "
-                ],
-                "spike-lutes": [
-                    [
+                        "Lutes are of two main types, those with trough-shaped resonators usually carved from a block of wood, and those with ovoid or circular resonators made from gourds.",
                         "spike-lutes, in other words the neck is a stick that passes into the body of the resonator and the strings are looped over it once they pass the bridge, which is held to the skin soundboard by the pressure of the strings."
                     ],
-                    "Spike-lutes have a neck that is a stick that passes into the body of the resonator, and the strings are looped over it once they pass the bridge, which is held to the skin soundboard by the pressure of the strings. "
+                    "Lutes are of two main types: those with trough-shaped resonators usually carved from a block of wood, and those with ovoid or circular resonators made from gourds. They are also spike-lutes, in other words the neck is a stick that passes into the body of the resonator and the strings are looped over it once they pass the bridge, which is held to the skin soundboard by the pressure of the strings."
                 ],
                 "strings": [
                     [
                         "The strings were typically gut or tendons, but are now usually made of nylon."
                     ],
-                    "The strings were typically gut or tendons, but are now usually made of nylon. "
+                    "The strings were typically gut or tendons, but are now usually made of nylon now usually made of nylon"
                 ],
                 "musical bow": [
                     [
@@ -96,7 +275,7 @@
                         "Another longer and thinner stick then strikes the string directly; by altering the shape of the mouth cavity, the different harmonic can be emphasized in the same manner as a Jews\u2019 harp.",
                         "The musical bow is associated with the agricultural year and can be played together with a singer for songs of social comment."
                     ],
-                    "The musical bow is found west of the Plateau proper, in the region of Southern Zaria. Shaped like a hunting bow, the string is held between the open lips so that the mouth acts as a resonant cavity. The performer holds a short stick in one hand and presses it against the string to divide it at intervals to produce different harmonic series. Another longer and thinner stick then strikes the string directly; by altering the shape of the mouth cavity, the different harmonic can be emphasized in the same manner as a Jews\n\nharp. The musical bow is associated with the agricultural year and can be played together with a singer for songs of social comment."
+                    "The musical bow is found west of the Plateau proper, in the region of Southern Zaria. Shaped like a hunting bow, the string is held between the open lips so that the mouth acts as a resonant cavity. The performer holds a short stick in one hand and presses it against the string to divide it at intervals to produce different harmonic series. Another longer and thinner stick then strikes the string directly; by altering the shape of the mouth cavity, the different harmonic can be emphasized in the same manner as a Jews\n\n\u2019 harp. The musical bow is associated with the agricultural year and can be played together with a singer for songs of social comment."
                 ]
             },
             {
@@ -147,6 +326,53 @@
             }
         ],
         [
+            4416,
+            {
+                "edward iii": [
+                    [
+                        "The king is on horseback just to the right of centre and the figures accompanying him can be identified with the aid of a key provided by the artist for George III."
+                    ],
+                    "Edward III is on horseback just to the right of centre, and the figures accompanying him can be identified with the aid of a key provided by the artist for George III."
+                ],
+                "english archers": [
+                    [
+                        "dependent upon the skill of the English archers seen in the upper right of the composition."
+                    ],
+                    "The skill of the English archers, seen in the upper right of the composition, is depended upon."
+                ]
+            },
+            {
+                "king": [
+                    "king was trying to cross the River Somme at Blanche Tache, near Abbeville, in order to escape the French army",
+                    "Edward III encountered and engaged a part of the French force under Godemar de Faye, the outcome of which, like the Battle of Cr\u00e9cy itself",
+                    "The king is on horseback just to the right of centre"
+                ],
+                "archers": [
+                    "the Battle of Cr\u00e9cy itself, was dependent upon the skill of the English archers seen in the upper right of the composition."
+                ]
+            }
+        ],
+        [
+            6660,
+            {
+                "women": [
+                    [
+                        "the women's dining hall serves as the backdrop for a touching human story that is revealed to us through the work's narrative title."
+                    ],
+                    "The women's dining hall serves as the backdrop for a touching human story that is revealed to us through the work's narrative title."
+                ]
+            },
+            {
+                "dining hall": [
+                    "The modest but clean setting of the women's dining hall serves as the backdrop for a touching human story that is revealed to us through the work's narrative title.",
+                    "at the Pio Albergo Trivulzio, a retirement home in Milan founded in 1771 that housed more than eight hundred men and women by 1900."
+                ],
+                "old people": [
+                    "old people"
+                ]
+            }
+        ],
+        [
             8197,
             {
                 "satin dresses": [
@@ -178,25 +404,25 @@
                     [
                         "Amphitrite fled from Neptune's wooing, but he sent dolphins after her which succeeded in persuading her to return to become his bride."
                     ],
-                    "Amphitrite fled from Neptune's wooing, but he sent dolphins after her which succeeded in persuading her to return to become his bride. "
+                    "Amphitrite fled from Neptune's wooing, but he sent dolphins after her which succeeded in persuading her to return to become his bride, Neptune sent dolphins after her which succeeded in persuading her to return to become his bride."
                 ],
                 "amphitrite": [
                     [
                         "She rides beside his chariot on a dolphin's back, an arch of drapery billows over her head, a common feature of sea-goddesses from antiquity."
                     ],
-                    "Amphitrite rides beside his chariot on a dolphin's back, and an arch of drapery billows over her head, a common feature of sea-goddesses from antiquity. "
+                    "Amphitrite rides beside his chariot on a dolphin's back, and an arch of drapery billows over her head, a common feature of sea-goddesses from antiquity."
                 ],
                 "dolphins": [
                     [
                         "he sent dolphins after her which succeeded in persuading her to return to become his bride."
                     ],
-                    "Neptune sent dolphins after Amphitrite, which succeeded in persuading her to return to become his bride. "
+                    "Neptune sent dolphins after her which succeeded in persuading her to return to become his bride."
                 ],
                 "chariot": [
                     [
-                        ""
+                        "She rides beside his chariot on a dolphin's back"
                     ],
-                    ""
+                    "She rides beside his chariot on a dolphin's back"
                 ],
                 "tritons": [
                     [
@@ -230,6 +456,78 @@
             }
         ],
         [
+            9545,
+            {
+                "easel paintings": [
+                    [
+                        ""
+                    ],
+                    ""
+                ]
+            },
+            {
+                "": [
+                    ""
+                ]
+            }
+        ],
+        [
+            9653,
+            {
+                "nautilus cup": [
+                    [
+                        "In this diagonal arrangement the precious nautilus cup dominates the composition",
+                        "De Heem rendered the mother-of-pearl gleam of the exotic nautilus shell with remarkable precision",
+                        "A long, dried-out lemon peel has been laid over the shell, linking the nautilus cup with the silver beaker in front of it, in whose engraved silver surface the peel is reflected"
+                    ],
+                    "In this diagonal arrangement, the precious nautilus cup dominates the composition. De Heem rendered the mother-of-pearl gleam of the exotic nautilus shell with remarkable precision. A long, dried-out lemon peel has been laid over the shell, linking the nautilus cup with the silver beaker in front of it, in whose engraved silver surface the peel is reflected."
+                ],
+                "lemon peel": [
+                    [
+                        "The yellow of the lemon peel is followed by the softer yellow of the glass-holder and the orange of the peach"
+                    ],
+                    "The yellow of the lemon peel is followed by the softer yellow of the glass-holder and the orange of the peach."
+                ],
+                "silver beaker": [
+                    [
+                        "linking the nautilus cup with the silver beaker in front of it, in whose engraved silver surface the peel is reflected",
+                        "This beaker, with its simple decoration, forms in its turn the background for another precious object: the glass-holder, in which a 'berkemeyer' (a glass with a thick, hollow stem and a wide, conical bowl) has been clamped"
+                    ],
+                    "The silver beaker, with its simple decoration, forms in its turn the background for another precious object: the glass-holder, in which a 'berkemeyer' (a glass with a thick, hollow stem and a wide, conical bowl) has been clamped. It is linked to the nautilus cup with the silver beaker in front of it, in whose engraved silver surface the peel is reflected."
+                ],
+                "glass holder": [
+                    [
+                        "the glass-holder, in which a 'berkemeyer' (a glass with a thick, hollow stem and a wide, conical bowl) has been clamped",
+                        "The yellow of the lemon peel is followed by the softer yellow of the glass-holder and the orange of the peach"
+                    ],
+                    "The glass-holder, in which a 'berkemeyer' (a glass with a thick, hollow stem and a wide, conical bowl) has been clamped. The yellow of the lemon peel is followed by the softer yellow of the glass-holder and the orange of the peach."
+                ],
+                "lobster": [
+                    [
+                        "the red lobster closes off the composition"
+                    ],
+                    "The red lobster closes off the composition."
+                ]
+            },
+            {
+                "red lobster": [
+                    ""
+                ],
+                "nautilus cup": [
+                    "De Heem rendered the mother-of-pearl gleam of the exotic nautilus shell with remarkable precision"
+                ],
+                "lemon peel": [
+                    "A long, dried-out lemon peel has been laid over the shell, linking the nautilus cup with the silver beaker in front of it, in whose engraved silver surface the peel is reflected"
+                ],
+                "silver beaker": [
+                    "This beaker, with its simple decoration"
+                ],
+                "glass holder": [
+                    "the glass-holder, in which a 'berkemeyer' (a glass with a thick, hollow stem and a wide, conical bowl) has been clamped"
+                ]
+            }
+        ],
+        [
             9821,
             {
                 "flag": [
@@ -246,6 +544,28 @@
             }
         ],
         [
+            10652,
+            {
+                "state barge": [
+                    [
+                        ""
+                    ],
+                    ""
+                ]
+            },
+            {
+                "cardinal richelieu": [
+                    "Richelieu thirsting for revenge"
+                ],
+                "state barge": [
+                    ""
+                ],
+                "rhone": [
+                    ""
+                ]
+            }
+        ],
+        [
             11593,
             {
                 "calypso": [
@@ -254,7 +574,7 @@
                         "Calypso is so impressed by the youth, she offers him a warm greeting and shows him the natural beauty of her island.",
                         "Hamilton's painting is dominated by the statuesque figure of Calypso who looks a powerful and seductive temptress in her classically inspired white dress casually wrapped to reveal her figure."
                     ],
-                    "Calypso is still mourning the loss of her beloved Odysseus, and is so impressed by the youth, she offers him a warm greeting and shows him the natural beauty of her island. In Hamilton's painting, Calypso is dominated by the statuesque figure who looks a powerful and seductive temptress in her classically inspired white dress casually wrapped to reveal her figure."
+                    "Calypso is still mourning the loss of her beloved Odysseus. When Telemachus and Mentor shipwreck on her island, Calypso is so impressed by the youth, she offers him a warm greeting and shows him the natural beauty of her island. Hamilton's painting is dominated by the statuesque figure of Calypso who looks a powerful and seductive temptress in her classically inspired white dress casually wrapped to reveal her figure."
                 ],
                 "telemachus": [
                     [
@@ -264,7 +584,7 @@
                         "Telemachus tells her who his father is, and asks for her mercy.",
                         "Telemachus regales her with stories of his adventures prior to his landing at her island."
                     ],
-                    "Telemachus, Odysseus's son, and Mentor, Odysseus's long-time friend, go on a journey to find out news about Odysseus' whereabouts after he has been missing for twenty years. When Telemachus and Mentor shipwreck on her island, Calypso is still mourning the loss of her beloved Odysseus. She immediately recognizes the similarity between Odysseus and Telemachus, and knows that he is the son of the hero. Telemachus tells her who his father is, and asks for her mercy, and regales her with stories of his adventures prior to his landing at her island."
+                    "Telemachus, Odysseus's son, and Mentor, Odysseus's long-time friend, go on a journey to find out news about Odysseus' whereabouts after he has been missing for twenty years. When Telemachus and Mentor shipwreck on her island, Calypso is still mourning the loss of her beloved Odysseus. She immediately recognizes the similarity between Odysseus and Telemachus, and knows that he is the son of the hero. Telemachus tells her who his father is, and asks for her mercy. Telemachus regales her with stories of his adventures prior to his landing at her island."
                 ],
                 "mentor": [
                     [

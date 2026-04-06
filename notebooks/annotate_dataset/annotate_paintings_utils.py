@@ -105,7 +105,7 @@ def load_data():
         .group_by("coarse_type", "source")
         .first()["id"]
         .to_list()
-        + [1722, 1753, 1966, 2024, 2441]
+        + [1722, 1753, 1966, 2024]
     )
 
     mini_val_set = [
@@ -170,6 +170,22 @@ def clean_object_name(object_name):
     ).strip()
 
     return cleaned_object_name
+
+
+def clean_description_span(description_span):
+    description_span = (
+        re.sub(r"\s+", " ", re.sub(r"[^a-zA-Z0-9]", " ", description_span)).strip().lower()
+    )
+
+    cleaned_description_span = " ".join(
+        [
+            word.replace("\n", "")
+            for word in description_span.split(" ")
+            if word.replace("\n", "") not in STOP_WORDS
+        ]
+    ).strip()
+
+    return cleaned_description_span
 
 
 def sort_and_clean_output(llm_output, painting):

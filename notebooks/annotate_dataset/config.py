@@ -1,6 +1,6 @@
 # model names
 GEMINI_MODEL = "gemini-2.0-flash"
-GEMINI_MODEL_BACKUP = "gemini-2.5-flash-preview-05-20"
+GEMINI_MODEL_BACKUP = "gemini-2.5-flash"
 OPEN_AI_MODEL = "gpt-4.1"
 SENTENCE_SIMILARITY_MODEL = "all-mpnet-base-v2"
 GROUNDING_MODEL_ID = "IDEA-Research/grounding-dino-base"
@@ -8,7 +8,7 @@ GROUNDING_MODEL_ID = "IDEA-Research/grounding-dino-base"
 # general settings
 MIN_IMG_SIZE = 768
 USE_VERTEX = True
-JUDGE_OUTPUT = True
+JUDGE_OUTPUT = False
 PROMPT_TYPE = "basic"
 BENCHMARKING = False
 
