@@ -175,5 +175,5 @@ notebooks/evaluate_embedding_space/font
 
 experiments
 *.zip
-data
 config
+data
