@@ -8,4 +8,4 @@ __pycache__/
 config
 data
 experiments
-notebooks/evaluate_embedding_space/font
+evaluate_embedding_space/font
