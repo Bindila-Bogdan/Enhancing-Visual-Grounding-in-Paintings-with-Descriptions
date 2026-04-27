@@ -23,7 +23,6 @@ This work addresses the gap with two contributions:
 ## Repository Structure
 
 ```
-.
 ├── create_dataset/               # Data collection from MET, WGA, and WikiArt
 ├── annotate_dataset/             # LLM-based annotation pipeline (Gemini 2.0 Flash + GPT-4.1)
 ├── post_process_dataset/         # Filtering, merging annotations, bounding box refinement
